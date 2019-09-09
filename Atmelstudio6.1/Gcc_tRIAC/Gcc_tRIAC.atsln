@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Gcc_tRIAC", "Gcc_tRIAC\Gcc_tRIAC.cproj", "{1E989E31-8864-4735-B587-9FD58F6567CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E989E31-8864-4735-B587-9FD58F6567CC}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1E989E31-8864-4735-B587-9FD58F6567CC}.Debug|AVR.Build.0 = Debug|AVR
+		{1E989E31-8864-4735-B587-9FD58F6567CC}.Release|AVR.ActiveCfg = Release|AVR
+		{1E989E31-8864-4735-B587-9FD58F6567CC}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

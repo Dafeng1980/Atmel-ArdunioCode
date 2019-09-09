@@ -1,0 +1,180 @@
+
+GccApplication3_LED.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  000000da  0000014e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000000da  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .stab         000006cc  00000000  00000000  00000150  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000097  00000000  00000000  0000081c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .comment      0000002f  00000000  00000000  000008b3  2**0
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000020  00000000  00000000  000008e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000187  00000000  00000000  00000902  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000102  00000000  00000000  00000a89  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000001a1  00000000  00000000  00000b8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000024  00000000  00000000  00000d2c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000132  00000000  00000000  00000d50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000b9  00000000  00000000  00000e82  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000010  00000000  00000000  00000f3b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   8:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  10:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  14:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  18:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  1c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  20:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  24:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  2c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  30:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  34:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  38:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  3c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  40:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  44:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  48:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  4c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  50:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  54:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  58:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  5c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  60:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  64:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 40 00 	call	0x80	; 0x80 <main>
+  78:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <_exit>
+
+0000007c <__bad_interrupt>:
+  7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000080 <main>:
+#define F_CPU 7372800
+#include <util/delay.h>
+int main(void)
+{
+	unsigned char duty_cyc_a,duty_cyc_b;  // Initial PORT Used
+	DDRD = 0b11111111;     // Set PORTD: Output
+  80:	8f ef       	ldi	r24, 0xFF	; 255
+  82:	8a b9       	out	0x0a, r24	; 10
+	PORTD = 0x00;  // Initial TIMER0 Fast PWM
+  84:	1b b8       	out	0x0b, r1	; 11
+	// Fast PWM Frequency = fclk / (N * 256), Where N is the Prescaler
+	// f_PWM = 11059200 / (64 * 256) = 675 Hz
+	TCCR0A = 0b10100001; // Fast PWM 8 Bit, Clear OCA0/OCB0 on Compare Match, Set on TOP
+  86:	81 ea       	ldi	r24, 0xA1	; 161
+  88:	84 bd       	out	0x24, r24	; 36
+	TCCR0B = 0b00000011; // Used 64 Prescaler
+  8a:	83 e0       	ldi	r24, 0x03	; 3
+  8c:	85 bd       	out	0x25, r24	; 37
+	TCNT0 = 0;           // Reset TCNT0
+  8e:	16 bc       	out	0x26, r1	; 38
+	OCR0A = 0;           // Initial the Output Compare register A & B
+  90:	17 bc       	out	0x27, r1	; 39
+	OCR0B = 0;  duty_cyc_a=0;	// Initial Duty Cycle for Channel A
+  92:	18 bc       	out	0x28, r1	; 40
+	duty_cyc_b=255;	// Initial Duty Cycle for Channel B
+  94:	2f ef       	ldi	r18, 0xFF	; 255
+	// f_PWM = 11059200 / (64 * 256) = 675 Hz
+	TCCR0A = 0b10100001; // Fast PWM 8 Bit, Clear OCA0/OCB0 on Compare Match, Set on TOP
+	TCCR0B = 0b00000011; // Used 64 Prescaler
+	TCNT0 = 0;           // Reset TCNT0
+	OCR0A = 0;           // Initial the Output Compare register A & B
+	OCR0B = 0;  duty_cyc_a=0;	// Initial Duty Cycle for Channel A
+  96:	90 e0       	ldi	r25, 0x00	; 0
+  98:	0a c0       	rjmp	.+20     	; 0xae <main+0x2e>
+	duty_cyc_b=255;	// Initial Duty Cycle for Channel B
+
+	for(;;) {            // Loop Forever
+		while(duty_cyc_a < 255) {
+			OCR0A=duty_cyc_a++;
+  9a:	97 bd       	out	0x27, r25	; 39
+  9c:	9f 5f       	subi	r25, 0xFF	; 255
+			OCR0B=duty_cyc_b--;
+  9e:	28 bd       	out	0x28, r18	; 40
+  a0:	21 50       	subi	r18, 0x01	; 1
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a2:	ef ef       	ldi	r30, 0xFF	; 255
+  a4:	f7 e4       	ldi	r31, 0x47	; 71
+  a6:	31 97       	sbiw	r30, 0x01	; 1
+  a8:	f1 f7       	brne	.-4      	; 0xa6 <main+0x26>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <main+0x2c>
+  ac:	00 00       	nop
+	OCR0A = 0;           // Initial the Output Compare register A & B
+	OCR0B = 0;  duty_cyc_a=0;	// Initial Duty Cycle for Channel A
+	duty_cyc_b=255;	// Initial Duty Cycle for Channel B
+
+	for(;;) {            // Loop Forever
+		while(duty_cyc_a < 255) {
+  ae:	9f 3f       	cpi	r25, 0xFF	; 255
+  b0:	a1 f7       	brne	.-24     	; 0x9a <main+0x1a>
+			OCR0A=duty_cyc_a++;
+			OCR0B=duty_cyc_b--;
+			_delay_ms(10);
+		}
+
+		while(duty_cyc_b < 255) {
+  b2:	2f 3f       	cpi	r18, 0xFF	; 255
+  b4:	e1 f3       	breq	.-8      	; 0xae <main+0x2e>
+  b6:	82 2f       	mov	r24, r18
+			OCR0A=duty_cyc_a--;
+  b8:	97 bd       	out	0x27, r25	; 39
+  ba:	91 50       	subi	r25, 0x01	; 1
+			OCR0B=duty_cyc_b++;
+  bc:	88 bd       	out	0x28, r24	; 40
+  be:	8f 5f       	subi	r24, 0xFF	; 255
+  c0:	ef ef       	ldi	r30, 0xFF	; 255
+  c2:	f7 e4       	ldi	r31, 0x47	; 71
+  c4:	31 97       	sbiw	r30, 0x01	; 1
+  c6:	f1 f7       	brne	.-4      	; 0xc4 <main+0x44>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <main+0x4a>
+  ca:	00 00       	nop
+			OCR0A=duty_cyc_a++;
+			OCR0B=duty_cyc_b--;
+			_delay_ms(10);
+		}
+
+		while(duty_cyc_b < 255) {
+  cc:	8f 3f       	cpi	r24, 0xFF	; 255
+  ce:	a1 f7       	brne	.-24     	; 0xb8 <main+0x38>
+  d0:	92 2f       	mov	r25, r18
+			OCR0A=duty_cyc_a--;
+			OCR0B=duty_cyc_b++;
+  d2:	28 2f       	mov	r18, r24
+  d4:	ec cf       	rjmp	.-40     	; 0xae <main+0x2e>
+
+000000d6 <_exit>:
+  d6:	f8 94       	cli
+
+000000d8 <__stop_program>:
+  d8:	ff cf       	rjmp	.-2      	; 0xd8 <__stop_program>

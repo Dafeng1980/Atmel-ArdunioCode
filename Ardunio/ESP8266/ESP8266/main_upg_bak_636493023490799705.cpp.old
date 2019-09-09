@@ -1,0 +1,18 @@
+/*
+ * ESP8266.cpp
+ *
+ * Created: 2017/12/19 17:45:43
+ * Author : PE_NPI
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+

@@ -1,0 +1,1328 @@
+
+GccApplication speak.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800100  00000aaa  00000b3e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000aaa  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000008  00800104  00800104  00000b42  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000b44  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00001210  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  000012a7  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000068  00000000  00000000  000012d6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000c90  00000000  00000000  0000133e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000277  00000000  00000000  00001fce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000002f8  00000000  00000000  00002245  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000114  00000000  00000000  00002540  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000227  00000000  00000000  00002654  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000003c5  00000000  00000000  0000287b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000048  00000000  00000000  00002c40  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 53 00 	jmp	0xa6	; 0xa6 <__vector_13>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a4 e0       	ldi	r26, 0x04	; 4
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	ac 30       	cpi	r26, 0x0C	; 12
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+
+00000084 <__do_copy_data>:
+  84:	11 e0       	ldi	r17, 0x01	; 1
+  86:	a0 e0       	ldi	r26, 0x00	; 0
+  88:	b1 e0       	ldi	r27, 0x01	; 1
+  8a:	ea ea       	ldi	r30, 0xAA	; 170
+  8c:	fa e0       	ldi	r31, 0x0A	; 10
+  8e:	02 c0       	rjmp	.+4      	; 0x94 <__do_copy_data+0x10>
+  90:	05 90       	lpm	r0, Z+
+  92:	0d 92       	st	X+, r0
+  94:	a4 30       	cpi	r26, 0x04	; 4
+  96:	b1 07       	cpc	r27, r17
+  98:	d9 f7       	brne	.-10     	; 0x90 <__do_copy_data+0xc>
+  9a:	0e 94 2a 01 	call	0x254	; 0x254 <main>
+  9e:	0c 94 53 05 	jmp	0xaa6	; 0xaa6 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <__vector_13>:
+volatile unsigned int tempo;
+
+// TIMER1 Overflow Interrupt
+ISR(TIMER1_OVF_vect)
+
+{
+  a6:	1f 92       	push	r1
+  a8:	0f 92       	push	r0
+  aa:	0f b6       	in	r0, 0x3f	; 63
+  ac:	0f 92       	push	r0
+  ae:	11 24       	eor	r1, r1
+  b0:	2f 93       	push	r18
+  b2:	3f 93       	push	r19
+  b4:	4f 93       	push	r20
+  b6:	5f 93       	push	r21
+  b8:	6f 93       	push	r22
+  ba:	7f 93       	push	r23
+  bc:	8f 93       	push	r24
+  be:	9f 93       	push	r25
+  c0:	af 93       	push	r26
+  c2:	bf 93       	push	r27
+  c4:	ef 93       	push	r30
+  c6:	ff 93       	push	r31
+	cli();                  // Disable Interrupt  // Reading User Trimpot on Analog Channel 0
+  c8:	f8 94       	cli
+	//ADMUX = 0;  // Start conversion by setting ADSC on ADCSRA Register
+	//ADCSRA |= (1<<ADSC);  // wait until convertion complete ADSC=0 -> Complete
+	//while (ADCSRA & (1<<ADSC));  // Get the ADC Result
+	//tempo=ADCW;
+	tempo=0x250;
+  ca:	80 e5       	ldi	r24, 0x50	; 80
+  cc:	92 e0       	ldi	r25, 0x02	; 2
+  ce:	90 93 06 01 	sts	0x0106, r25
+  d2:	80 93 05 01 	sts	0x0105, r24
+
+	if (led_a) {
+  d6:	80 91 07 01 	lds	r24, 0x0107
+  da:	88 23       	and	r24, r24
+  dc:	71 f0       	breq	.+28     	; 0xfa <__vector_13+0x54>
+		if (duty_cyc_a < 255) {
+  de:	80 91 0b 01 	lds	r24, 0x010B
+  e2:	8f 3f       	cpi	r24, 0xFF	; 255
+  e4:	39 f0       	breq	.+14     	; 0xf4 <__vector_13+0x4e>
+			OCR0A=duty_cyc_a++;
+  e6:	80 91 0b 01 	lds	r24, 0x010B
+  ea:	87 bd       	out	0x27, r24	; 39
+  ec:	8f 5f       	subi	r24, 0xFF	; 255
+  ee:	80 93 0b 01 	sts	0x010B, r24
+  f2:	15 c0       	rjmp	.+42     	; 0x11e <__vector_13+0x78>
+			} else {
+			led_a=0;
+  f4:	10 92 07 01 	sts	0x0107, r1
+  f8:	12 c0       	rjmp	.+36     	; 0x11e <__vector_13+0x78>
+		}
+		} else {
+		if (duty_cyc_a > 0) {
+  fa:	80 91 0b 01 	lds	r24, 0x010B
+  fe:	88 23       	and	r24, r24
+ 100:	39 f0       	breq	.+14     	; 0x110 <__vector_13+0x6a>
+			OCR0A=duty_cyc_a--;
+ 102:	80 91 0b 01 	lds	r24, 0x010B
+ 106:	87 bd       	out	0x27, r24	; 39
+ 108:	81 50       	subi	r24, 0x01	; 1
+ 10a:	80 93 0b 01 	sts	0x010B, r24
+ 10e:	07 c0       	rjmp	.+14     	; 0x11e <__vector_13+0x78>
+			} else {
+			led_a=1;
+ 110:	81 e0       	ldi	r24, 0x01	; 1
+ 112:	80 93 07 01 	sts	0x0107, r24
+			duty_cyc_a=TCNT1L;
+ 116:	80 91 84 00 	lds	r24, 0x0084
+ 11a:	80 93 0b 01 	sts	0x010B, r24
+		}
+	}
+
+	if (led_b) {
+ 11e:	80 91 04 01 	lds	r24, 0x0104
+ 122:	88 23       	and	r24, r24
+ 124:	71 f0       	breq	.+28     	; 0x142 <__vector_13+0x9c>
+		if (duty_cyc_b < 255) {
+ 126:	80 91 0a 01 	lds	r24, 0x010A
+ 12a:	8f 3f       	cpi	r24, 0xFF	; 255
+ 12c:	39 f0       	breq	.+14     	; 0x13c <__vector_13+0x96>
+			OCR0B=duty_cyc_b++;
+ 12e:	80 91 0a 01 	lds	r24, 0x010A
+ 132:	88 bd       	out	0x28, r24	; 40
+ 134:	8f 5f       	subi	r24, 0xFF	; 255
+ 136:	80 93 0a 01 	sts	0x010A, r24
+ 13a:	1a c0       	rjmp	.+52     	; 0x170 <__vector_13+0xca>
+			} else {
+			led_b=0;
+ 13c:	10 92 04 01 	sts	0x0104, r1
+ 140:	17 c0       	rjmp	.+46     	; 0x170 <__vector_13+0xca>
+		}
+		} else {
+		if (duty_cyc_b > 0) {
+ 142:	80 91 0a 01 	lds	r24, 0x010A
+ 146:	88 23       	and	r24, r24
+ 148:	39 f0       	breq	.+14     	; 0x158 <__vector_13+0xb2>
+			OCR0B=duty_cyc_b--;
+ 14a:	80 91 0a 01 	lds	r24, 0x010A
+ 14e:	88 bd       	out	0x28, r24	; 40
+ 150:	81 50       	subi	r24, 0x01	; 1
+ 152:	80 93 0a 01 	sts	0x010A, r24
+ 156:	0c c0       	rjmp	.+24     	; 0x170 <__vector_13+0xca>
+			} else {
+			led_b=1;
+ 158:	81 e0       	ldi	r24, 0x01	; 1
+ 15a:	80 93 04 01 	sts	0x0104, r24
+			duty_cyc_b=(unsigned char) rand() % 255; ;
+ 15e:	0e 94 24 05 	call	0xa48	; 0xa48 <rand>
+ 162:	91 e0       	ldi	r25, 0x01	; 1
+ 164:	8f 3f       	cpi	r24, 0xFF	; 255
+ 166:	08 f4       	brcc	.+2      	; 0x16a <__vector_13+0xc4>
+ 168:	90 e0       	ldi	r25, 0x00	; 0
+ 16a:	98 0f       	add	r25, r24
+ 16c:	90 93 0a 01 	sts	0x010A, r25
+		}
+	}
+
+	if (led_c) {
+ 170:	80 91 08 01 	lds	r24, 0x0108
+ 174:	88 23       	and	r24, r24
+ 176:	79 f0       	breq	.+30     	; 0x196 <__vector_13+0xf0>
+		if (duty_cyc_c < 255) {
+ 178:	80 91 09 01 	lds	r24, 0x0109
+ 17c:	8f 3f       	cpi	r24, 0xFF	; 255
+ 17e:	41 f0       	breq	.+16     	; 0x190 <__vector_13+0xea>
+			OCR2B=duty_cyc_c++;
+ 180:	80 91 09 01 	lds	r24, 0x0109
+ 184:	80 93 b4 00 	sts	0x00B4, r24
+ 188:	8f 5f       	subi	r24, 0xFF	; 255
+ 18a:	80 93 09 01 	sts	0x0109, r24
+ 18e:	16 c0       	rjmp	.+44     	; 0x1bc <__vector_13+0x116>
+			} else {
+			led_c=0;
+ 190:	10 92 08 01 	sts	0x0108, r1
+ 194:	13 c0       	rjmp	.+38     	; 0x1bc <__vector_13+0x116>
+		}
+		} else {
+		if (duty_cyc_c > 0) {
+ 196:	80 91 09 01 	lds	r24, 0x0109
+ 19a:	88 23       	and	r24, r24
+ 19c:	41 f0       	breq	.+16     	; 0x1ae <__vector_13+0x108>
+			OCR2B=duty_cyc_c--;
+ 19e:	80 91 09 01 	lds	r24, 0x0109
+ 1a2:	80 93 b4 00 	sts	0x00B4, r24
+ 1a6:	81 50       	subi	r24, 0x01	; 1
+ 1a8:	80 93 09 01 	sts	0x0109, r24
+ 1ac:	07 c0       	rjmp	.+14     	; 0x1bc <__vector_13+0x116>
+			} else {
+			led_c=1;
+ 1ae:	81 e0       	ldi	r24, 0x01	; 1
+ 1b0:	80 93 08 01 	sts	0x0108, r24
+			duty_cyc_c=TCNT1H;
+ 1b4:	80 91 85 00 	lds	r24, 0x0085
+ 1b8:	80 93 09 01 	sts	0x0109, r24
+		}
+	}  sei();                      // Enable Interrupt
+ 1bc:	78 94       	sei
+}// PlayNotes function
+ 1be:	ff 91       	pop	r31
+ 1c0:	ef 91       	pop	r30
+ 1c2:	bf 91       	pop	r27
+ 1c4:	af 91       	pop	r26
+ 1c6:	9f 91       	pop	r25
+ 1c8:	8f 91       	pop	r24
+ 1ca:	7f 91       	pop	r23
+ 1cc:	6f 91       	pop	r22
+ 1ce:	5f 91       	pop	r21
+ 1d0:	4f 91       	pop	r20
+ 1d2:	3f 91       	pop	r19
+ 1d4:	2f 91       	pop	r18
+ 1d6:	0f 90       	pop	r0
+ 1d8:	0f be       	out	0x3f, r0	; 63
+ 1da:	0f 90       	pop	r0
+ 1dc:	1f 90       	pop	r1
+ 1de:	18 95       	reti
+
+000001e0 <PlayNotes>:
+void PlayNotes(unsigned int note_frequency,unsigned int duration)
+{
+	unsigned int top_value,duty_cycle;   // Calculate the Top Value
+	// TOP = Board Clock Frequency / (2 x N x Notes Frequency)
+	// Where N is Prescler: 8
+	top_value=(F_CPU / (16 * note_frequency));   // Reset the TIMER1 16 bit Counter
+ 1e0:	82 95       	swap	r24
+ 1e2:	92 95       	swap	r25
+ 1e4:	90 7f       	andi	r25, 0xF0	; 240
+ 1e6:	98 27       	eor	r25, r24
+ 1e8:	80 7f       	andi	r24, 0xF0	; 240
+ 1ea:	98 27       	eor	r25, r24
+ 1ec:	9c 01       	movw	r18, r24
+ 1ee:	40 e0       	ldi	r20, 0x00	; 0
+ 1f0:	50 e0       	ldi	r21, 0x00	; 0
+ 1f2:	60 e0       	ldi	r22, 0x00	; 0
+ 1f4:	72 e1       	ldi	r23, 0x12	; 18
+ 1f6:	8a e7       	ldi	r24, 0x7A	; 122
+ 1f8:	90 e0       	ldi	r25, 0x00	; 0
+ 1fa:	0e 94 95 04 	call	0x92a	; 0x92a <__divmodsi4>
+ 1fe:	82 2f       	mov	r24, r18
+ 200:	93 2f       	mov	r25, r19
+	TCNT1H = 0;
+ 202:	10 92 85 00 	sts	0x0085, r1
+	TCNT1L = 0;
+ 206:	10 92 84 00 	sts	0x0084, r1
+
+	// Set the TIMER1 Counter TOP value on ICR1H and ICR1L
+	ICR1H = (top_value >> 8 ) & 0x00FF;
+ 20a:	30 93 87 00 	sts	0x0087, r19
+	ICR1L = top_value;
+ 20e:	20 93 86 00 	sts	0x0086, r18
+
+	// Set the TIMER1 PWM Duty Cycle on OCR1AH and OCR1AL
+	// Always use half of the TOP value (PWM Ducty Cycle ~ 50%)
+	duty_cycle=top_value / 2;
+ 212:	96 95       	lsr	r25
+ 214:	87 95       	ror	r24
+	OCR1AH=(duty_cycle >> 8 ) & 0x00FF;
+ 216:	90 93 89 00 	sts	0x0089, r25
+	OCR1AL=duty_cycle;   // Turn ON the TIMER1 Prescaler of 8
+ 21a:	80 93 88 00 	sts	0x0088, r24
+	TCCR1B |= (1<<CS11);
+ 21e:	e1 e8       	ldi	r30, 0x81	; 129
+ 220:	f0 e0       	ldi	r31, 0x00	; 0
+ 222:	80 81       	ld	r24, Z
+ 224:	82 60       	ori	r24, 0x02	; 2
+ 226:	80 83       	st	Z, r24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 228:	2f e7       	ldi	r18, 0x7F	; 127
+ 22a:	8a e1       	ldi	r24, 0x1A	; 26
+ 22c:	96 e0       	ldi	r25, 0x06	; 6
+ 22e:	21 50       	subi	r18, 0x01	; 1
+ 230:	80 40       	sbci	r24, 0x00	; 0
+ 232:	90 40       	sbci	r25, 0x00	; 0
+ 234:	e1 f7       	brne	.-8      	; 0x22e <PlayNotes+0x4e>
+ 236:	00 c0       	rjmp	.+0      	; 0x238 <PlayNotes+0x58>
+ 238:	00 00       	nop
+
+	// Notes Delay Duration
+	_delay_ms(250);
+
+	// Turn OFF the TIMER1 Prescaler of 8
+	TCCR1B &= ~(1<<CS11);   // Delay Between Each Notes
+ 23a:	80 81       	ld	r24, Z
+ 23c:	8d 7f       	andi	r24, 0xFD	; 253
+ 23e:	80 83       	st	Z, r24
+ 240:	2f e7       	ldi	r18, 0x7F	; 127
+ 242:	88 e3       	ldi	r24, 0x38	; 56
+ 244:	91 e0       	ldi	r25, 0x01	; 1
+ 246:	21 50       	subi	r18, 0x01	; 1
+ 248:	80 40       	sbci	r24, 0x00	; 0
+ 24a:	90 40       	sbci	r25, 0x00	; 0
+ 24c:	e1 f7       	brne	.-8      	; 0x246 <PlayNotes+0x66>
+ 24e:	00 c0       	rjmp	.+0      	; 0x250 <PlayNotes+0x70>
+ 250:	00 00       	nop
+ 252:	08 95       	ret
+
+00000254 <main>:
+	_delay_ms(50);
+}int main(void)
+{
+	unsigned char song_index;  // Initial PORT Used
+	DDRD = 0b11111111;   // Set PORTD as Output
+ 254:	8f ef       	ldi	r24, 0xFF	; 255
+ 256:	8a b9       	out	0x0a, r24	; 10
+	PORTD = 0b00000000;
+ 258:	1b b8       	out	0x0b, r1	; 11
+	DDRB = 0b11111110;   // Set PB0 as Input and other as Output
+ 25a:	8e ef       	ldi	r24, 0xFE	; 254
+ 25c:	84 b9       	out	0x04, r24	; 4
+	PORTB = 0b00000000;  // Initial the ADC Peripheral
+ 25e:	15 b8       	out	0x05, r1	; 5
+	//ADCSRA = (1<<ADEN) | (1<<ADPS2) | (1<<ADPS1);  // Use Free running Mode
+	//ADCSRB = 0b00000000;  // Disable digital input on Channel 0
+	DIDR0 = 0b00000001;  // Initial TIMER0 Fast PWM
+ 260:	81 e0       	ldi	r24, 0x01	; 1
+ 262:	80 93 7e 00 	sts	0x007E, r24
+	// Fast PWM Frequency = fclk / (N * 256), Where N is the prescaler
+	// f_PWM = 11059200 / (64 * 256) = 675 Hz
+	TCCR0A = 0b10100011; // Fast PWM 8 Bit, Clear OCA0/OCB0 on Compare Match, Set on TOP
+ 266:	93 ea       	ldi	r25, 0xA3	; 163
+ 268:	94 bd       	out	0x24, r25	; 36
+	TCCR0B = 0b00000011; // Used 64 Prescaler
+ 26a:	93 e0       	ldi	r25, 0x03	; 3
+ 26c:	95 bd       	out	0x25, r25	; 37
+	TCNT0 = 0;           // Reset TCNT0
+ 26e:	16 bc       	out	0x26, r1	; 38
+	OCR0A = 0;           // Initial the Output Compare register A & B
+ 270:	17 bc       	out	0x27, r1	; 39
+	OCR0B = 0;  // Initial TIMER1 Phase and Frequency Correct PWM
+ 272:	18 bc       	out	0x28, r1	; 40
+	// Set the Timer/Counter Control Register
+	TCCR1A = 0b11000000; // Set OC1A when up counting, Clear when down counting
+ 274:	20 ec       	ldi	r18, 0xC0	; 192
+ 276:	20 93 80 00 	sts	0x0080, r18
+	TCCR1B = 0b00010000; // Phase/Freq-correct PWM, top value = ICR1, Prescaler: Off
+ 27a:	20 e1       	ldi	r18, 0x10	; 16
+ 27c:	20 93 81 00 	sts	0x0081, r18
+
+	TIMSK1 = (1<<TOIE1); // Enable Overflow Interrupt  // Initial TIMER2 Phase Correct PWM Mode
+ 280:	80 93 6f 00 	sts	0x006F, r24
+	// Phase Correct PWM Frequency = fclk / (N * 512), Where N is the prescaler
+	// f_PWM = 11059200 / (64 * 512) = 337.5 Hz
+	TCCR2A = 0b00100001; // Fast PWM 8 Bit, Clear OC2B on Compare Match, Set on TOP
+ 284:	21 e2       	ldi	r18, 0x21	; 33
+ 286:	20 93 b0 00 	sts	0x00B0, r18
+	TCCR2B = 0b00000011; // Used 64 Prescaler
+ 28a:	90 93 b1 00 	sts	0x00B1, r25
+	TCNT2 = 0;           // Reset TCNT2
+ 28e:	10 92 b2 00 	sts	0x00B2, r1
+	OCR2B = 0;           // Initial the Output Compare register A & B  duty_cyc_a=(unsigned char) rand() % 255;
+ 292:	10 92 b4 00 	sts	0x00B4, r1
+	led_a=1;
+ 296:	80 93 07 01 	sts	0x0107, r24
+	duty_cyc_b=(unsigned char) rand() % 255;
+ 29a:	0e 94 24 05 	call	0xa48	; 0xa48 <rand>
+ 29e:	91 e0       	ldi	r25, 0x01	; 1
+ 2a0:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2a2:	08 f4       	brcc	.+2      	; 0x2a6 <main+0x52>
+ 2a4:	90 e0       	ldi	r25, 0x00	; 0
+ 2a6:	98 0f       	add	r25, r24
+ 2a8:	90 93 0a 01 	sts	0x010A, r25
+	led_b=1;
+ 2ac:	81 e0       	ldi	r24, 0x01	; 1
+ 2ae:	80 93 04 01 	sts	0x0104, r24
+	duty_cyc_c=(unsigned char) rand() % 255;
+ 2b2:	0e 94 24 05 	call	0xa48	; 0xa48 <rand>
+ 2b6:	91 e0       	ldi	r25, 0x01	; 1
+ 2b8:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2ba:	08 f4       	brcc	.+2      	; 0x2be <main+0x6a>
+ 2bc:	90 e0       	ldi	r25, 0x00	; 0
+ 2be:	98 0f       	add	r25, r24
+ 2c0:	90 93 09 01 	sts	0x0109, r25
+	led_c=1;
+ 2c4:	81 e0       	ldi	r24, 0x01	; 1
+ 2c6:	80 93 08 01 	sts	0x0108, r24
+	sei();               // Enable Interrupt  song_index=0;
+ 2ca:	78 94       	sei
+
+	// Turn OFF the TIMER1 Prescaler of 8
+	TCCR1B &= ~(1<<CS11);   // Delay Between Each Notes
+	_delay_ms(50);
+}int main(void)
+{
+ 2cc:	13 e0       	ldi	r17, 0x03	; 3
+			}
+		}
+		else {
+			PlayNotes(E5,1100 + tempo); PlayNotes(E5,800 + tempo);
+			PlayNotes(D5,1600 + tempo);
+			song_index=1;
+ 2ce:	d1 e0       	ldi	r29, 0x01	; 1
+				PlayNotes(C5,550 + tempo); PlayNotes(C5,175 + tempo);
+				PlayNotes(C5,100 + tempo); PlayNotes(C5,100 + tempo);
+				PlayNotes(C5,150 + tempo); PlayNotes(C5,1300 + tempo);
+				PlayNotes(C5,800 + tempo); PlayNotes(B4,400 + tempo);
+				PlayNotes(C5,300 + tempo); PlayNotes(D5,300 + tempo);
+				PlayNotes(C5,2300 + tempo);	    song_index = 0;
+ 2d0:	00 e0       	ldi	r16, 0x00	; 0
+
+	// Turn OFF the TIMER1 Prescaler of 8
+	TCCR1B &= ~(1<<CS11);   // Delay Between Each Notes
+	_delay_ms(50);
+}int main(void)
+{
+ 2d2:	c1 2f       	mov	r28, r17
+	sei();               // Enable Interrupt  song_index=0;
+	//tempo=0;
+
+	for(;;) {            // Loop Forever
+		// Playing "What a Wonderfull World" Song Notes
+		PlayNotes(G4,300 + tempo); PlayNotes(A4,100 + tempo);
+ 2d4:	60 91 05 01 	lds	r22, 0x0105
+ 2d8:	70 91 06 01 	lds	r23, 0x0106
+ 2dc:	64 5d       	subi	r22, 0xD4	; 212
+ 2de:	7e 4f       	sbci	r23, 0xFE	; 254
+ 2e0:	88 e8       	ldi	r24, 0x88	; 136
+ 2e2:	91 e0       	ldi	r25, 0x01	; 1
+ 2e4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 2e8:	60 91 05 01 	lds	r22, 0x0105
+ 2ec:	70 91 06 01 	lds	r23, 0x0106
+ 2f0:	6c 59       	subi	r22, 0x9C	; 156
+ 2f2:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2f4:	88 eb       	ldi	r24, 0xB8	; 184
+ 2f6:	91 e0       	ldi	r25, 0x01	; 1
+ 2f8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,500 + tempo); PlayNotes(C5,450 + tempo);
+ 2fc:	60 91 05 01 	lds	r22, 0x0105
+ 300:	70 91 06 01 	lds	r23, 0x0106
+ 304:	6c 50       	subi	r22, 0x0C	; 12
+ 306:	7e 4f       	sbci	r23, 0xFE	; 254
+ 308:	8b e0       	ldi	r24, 0x0B	; 11
+ 30a:	92 e0       	ldi	r25, 0x02	; 2
+ 30c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 310:	60 91 05 01 	lds	r22, 0x0105
+ 314:	70 91 06 01 	lds	r23, 0x0106
+ 318:	6e 53       	subi	r22, 0x3E	; 62
+ 31a:	7e 4f       	sbci	r23, 0xFE	; 254
+ 31c:	8b e0       	ldi	r24, 0x0B	; 11
+ 31e:	92 e0       	ldi	r25, 0x02	; 2
+ 320:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(G5,1150 + tempo); PlayNotes(A5,350 + tempo);
+ 324:	60 91 05 01 	lds	r22, 0x0105
+ 328:	70 91 06 01 	lds	r23, 0x0106
+ 32c:	62 58       	subi	r22, 0x82	; 130
+ 32e:	7b 4f       	sbci	r23, 0xFB	; 251
+ 330:	8f e0       	ldi	r24, 0x0F	; 15
+ 332:	93 e0       	ldi	r25, 0x03	; 3
+ 334:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 338:	60 91 05 01 	lds	r22, 0x0105
+ 33c:	70 91 06 01 	lds	r23, 0x0106
+ 340:	62 5a       	subi	r22, 0xA2	; 162
+ 342:	7e 4f       	sbci	r23, 0xFE	; 254
+ 344:	80 e7       	ldi	r24, 0x70	; 112
+ 346:	93 e0       	ldi	r25, 0x03	; 3
+ 348:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(A5,350 + tempo); PlayNotes(A5,150 + tempo);
+ 34c:	60 91 05 01 	lds	r22, 0x0105
+ 350:	70 91 06 01 	lds	r23, 0x0106
+ 354:	62 5a       	subi	r22, 0xA2	; 162
+ 356:	7e 4f       	sbci	r23, 0xFE	; 254
+ 358:	80 e7       	ldi	r24, 0x70	; 112
+ 35a:	93 e0       	ldi	r25, 0x03	; 3
+ 35c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 360:	60 91 05 01 	lds	r22, 0x0105
+ 364:	70 91 06 01 	lds	r23, 0x0106
+ 368:	6a 56       	subi	r22, 0x6A	; 106
+ 36a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 36c:	80 e7       	ldi	r24, 0x70	; 112
+ 36e:	93 e0       	ldi	r25, 0x03	; 3
+ 370:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(G5,1150 + tempo); PlayNotes(F5,450 + tempo);
+ 374:	60 91 05 01 	lds	r22, 0x0105
+ 378:	70 91 06 01 	lds	r23, 0x0106
+ 37c:	62 58       	subi	r22, 0x82	; 130
+ 37e:	7b 4f       	sbci	r23, 0xFB	; 251
+ 380:	8f e0       	ldi	r24, 0x0F	; 15
+ 382:	93 e0       	ldi	r25, 0x03	; 3
+ 384:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 388:	60 91 05 01 	lds	r22, 0x0105
+ 38c:	70 91 06 01 	lds	r23, 0x0106
+ 390:	6e 53       	subi	r22, 0x3E	; 62
+ 392:	7e 4f       	sbci	r23, 0xFE	; 254
+ 394:	8a eb       	ldi	r24, 0xBA	; 186
+ 396:	92 e0       	ldi	r25, 0x02	; 2
+ 398:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(F5,300 + tempo); PlayNotes(F5,250 + tempo);
+ 39c:	60 91 05 01 	lds	r22, 0x0105
+ 3a0:	70 91 06 01 	lds	r23, 0x0106
+ 3a4:	64 5d       	subi	r22, 0xD4	; 212
+ 3a6:	7e 4f       	sbci	r23, 0xFE	; 254
+ 3a8:	8a eb       	ldi	r24, 0xBA	; 186
+ 3aa:	92 e0       	ldi	r25, 0x02	; 2
+ 3ac:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 3b0:	60 91 05 01 	lds	r22, 0x0105
+ 3b4:	70 91 06 01 	lds	r23, 0x0106
+ 3b8:	66 50       	subi	r22, 0x06	; 6
+ 3ba:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3bc:	8a eb       	ldi	r24, 0xBA	; 186
+ 3be:	92 e0       	ldi	r25, 0x02	; 2
+ 3c0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(E5,1150 + tempo); PlayNotes(D5,600 + tempo);
+ 3c4:	60 91 05 01 	lds	r22, 0x0105
+ 3c8:	70 91 06 01 	lds	r23, 0x0106
+ 3cc:	62 58       	subi	r22, 0x82	; 130
+ 3ce:	7b 4f       	sbci	r23, 0xFB	; 251
+ 3d0:	83 e9       	ldi	r24, 0x93	; 147
+ 3d2:	92 e0       	ldi	r25, 0x02	; 2
+ 3d4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 3d8:	60 91 05 01 	lds	r22, 0x0105
+ 3dc:	70 91 06 01 	lds	r23, 0x0106
+ 3e0:	68 5a       	subi	r22, 0xA8	; 168
+ 3e2:	7d 4f       	sbci	r23, 0xFD	; 253
+ 3e4:	8b e4       	ldi	r24, 0x4B	; 75
+ 3e6:	92 e0       	ldi	r25, 0x02	; 2
+ 3e8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(E5,175 + tempo); PlayNotes(D5,100 + tempo);
+ 3ec:	60 91 05 01 	lds	r22, 0x0105
+ 3f0:	70 91 06 01 	lds	r23, 0x0106
+ 3f4:	61 55       	subi	r22, 0x51	; 81
+ 3f6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3f8:	83 e9       	ldi	r24, 0x93	; 147
+ 3fa:	92 e0       	ldi	r25, 0x02	; 2
+ 3fc:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 400:	60 91 05 01 	lds	r22, 0x0105
+ 404:	70 91 06 01 	lds	r23, 0x0106
+ 408:	6c 59       	subi	r22, 0x9C	; 156
+ 40a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 40c:	8b e4       	ldi	r24, 0x4B	; 75
+ 40e:	92 e0       	ldi	r25, 0x02	; 2
+ 410:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,1050 + tempo);	PlayNotes(C5,550 + tempo);
+ 414:	60 91 05 01 	lds	r22, 0x0105
+ 418:	70 91 06 01 	lds	r23, 0x0106
+ 41c:	66 5e       	subi	r22, 0xE6	; 230
+ 41e:	7b 4f       	sbci	r23, 0xFB	; 251
+ 420:	8b e0       	ldi	r24, 0x0B	; 11
+ 422:	92 e0       	ldi	r25, 0x02	; 2
+ 424:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 428:	60 91 05 01 	lds	r22, 0x0105
+ 42c:	70 91 06 01 	lds	r23, 0x0106
+ 430:	6a 5d       	subi	r22, 0xDA	; 218
+ 432:	7d 4f       	sbci	r23, 0xFD	; 253
+ 434:	8b e0       	ldi	r24, 0x0B	; 11
+ 436:	92 e0       	ldi	r25, 0x02	; 2
+ 438:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,175 + tempo);
+ 43c:	60 91 05 01 	lds	r22, 0x0105
+ 440:	70 91 06 01 	lds	r23, 0x0106
+ 444:	61 55       	subi	r22, 0x51	; 81
+ 446:	7f 4f       	sbci	r23, 0xFF	; 255
+ 448:	8b e0       	ldi	r24, 0x0B	; 11
+ 44a:	92 e0       	ldi	r25, 0x02	; 2
+ 44c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,100 + tempo); PlayNotes(C5,100 + tempo);
+ 450:	60 91 05 01 	lds	r22, 0x0105
+ 454:	70 91 06 01 	lds	r23, 0x0106
+ 458:	6c 59       	subi	r22, 0x9C	; 156
+ 45a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 45c:	8b e0       	ldi	r24, 0x0B	; 11
+ 45e:	92 e0       	ldi	r25, 0x02	; 2
+ 460:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 464:	60 91 05 01 	lds	r22, 0x0105
+ 468:	70 91 06 01 	lds	r23, 0x0106
+ 46c:	6c 59       	subi	r22, 0x9C	; 156
+ 46e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 470:	8b e0       	ldi	r24, 0x0B	; 11
+ 472:	92 e0       	ldi	r25, 0x02	; 2
+ 474:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,150 + tempo); PlayNotes(C5,1300 + tempo);
+ 478:	60 91 05 01 	lds	r22, 0x0105
+ 47c:	70 91 06 01 	lds	r23, 0x0106
+ 480:	6a 56       	subi	r22, 0x6A	; 106
+ 482:	7f 4f       	sbci	r23, 0xFF	; 255
+ 484:	8b e0       	ldi	r24, 0x0B	; 11
+ 486:	92 e0       	ldi	r25, 0x02	; 2
+ 488:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 48c:	60 91 05 01 	lds	r22, 0x0105
+ 490:	70 91 06 01 	lds	r23, 0x0106
+ 494:	6c 5e       	subi	r22, 0xEC	; 236
+ 496:	7a 4f       	sbci	r23, 0xFA	; 250
+ 498:	8b e0       	ldi	r24, 0x0B	; 11
+ 49a:	92 e0       	ldi	r25, 0x02	; 2
+ 49c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,600 + tempo); PlayNotes(B4,200 + tempo);
+ 4a0:	60 91 05 01 	lds	r22, 0x0105
+ 4a4:	70 91 06 01 	lds	r23, 0x0106
+ 4a8:	68 5a       	subi	r22, 0xA8	; 168
+ 4aa:	7d 4f       	sbci	r23, 0xFD	; 253
+ 4ac:	8b e0       	ldi	r24, 0x0B	; 11
+ 4ae:	92 e0       	ldi	r25, 0x02	; 2
+ 4b0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 4b4:	60 91 05 01 	lds	r22, 0x0105
+ 4b8:	70 91 06 01 	lds	r23, 0x0106
+ 4bc:	68 53       	subi	r22, 0x38	; 56
+ 4be:	7f 4f       	sbci	r23, 0xFF	; 255
+ 4c0:	8e ee       	ldi	r24, 0xEE	; 238
+ 4c2:	91 e0       	ldi	r25, 0x01	; 1
+ 4c4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		PlayNotes(C5,200); PlayNotes(D5,200 + tempo);
+ 4c8:	68 ec       	ldi	r22, 0xC8	; 200
+ 4ca:	70 e0       	ldi	r23, 0x00	; 0
+ 4cc:	8b e0       	ldi	r24, 0x0B	; 11
+ 4ce:	92 e0       	ldi	r25, 0x02	; 2
+ 4d0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 4d4:	60 91 05 01 	lds	r22, 0x0105
+ 4d8:	70 91 06 01 	lds	r23, 0x0106
+ 4dc:	68 53       	subi	r22, 0x38	; 56
+ 4de:	7f 4f       	sbci	r23, 0xFF	; 255
+ 4e0:	8b e4       	ldi	r24, 0x4B	; 75
+ 4e2:	92 e0       	ldi	r25, 0x02	; 2
+ 4e4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+		if (song_index >= 1) {
+ 4e8:	cc 23       	and	r28, r28
+ 4ea:	09 f4       	brne	.+2      	; 0x4ee <main+0x29a>
+ 4ec:	86 c0       	rjmp	.+268    	; 0x5fa <__stack+0xfb>
+			PlayNotes(C5,1600 + tempo);
+ 4ee:	60 91 05 01 	lds	r22, 0x0105
+ 4f2:	70 91 06 01 	lds	r23, 0x0106
+ 4f6:	60 5c       	subi	r22, 0xC0	; 192
+ 4f8:	79 4f       	sbci	r23, 0xF9	; 249
+ 4fa:	8b e0       	ldi	r24, 0x0B	; 11
+ 4fc:	92 e0       	ldi	r25, 0x02	; 2
+ 4fe:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			if (song_index == 3) {
+ 502:	c3 30       	cpi	r28, 0x03	; 3
+ 504:	09 f0       	breq	.+2      	; 0x508 <__stack+0x9>
+ 506:	99 c0       	rjmp	.+306    	; 0x63a <__stack+0x13b>
+ 508:	2f e7       	ldi	r18, 0x7F	; 127
+ 50a:	8b e8       	ldi	r24, 0x8B	; 139
+ 50c:	98 e0       	ldi	r25, 0x08	; 8
+ 50e:	21 50       	subi	r18, 0x01	; 1
+ 510:	80 40       	sbci	r24, 0x00	; 0
+ 512:	90 40       	sbci	r25, 0x00	; 0
+ 514:	e1 f7       	brne	.-8      	; 0x50e <__stack+0xf>
+ 516:	00 c0       	rjmp	.+0      	; 0x518 <__stack+0x19>
+ 518:	00 00       	nop
+				_delay_ms(100 + 250);
+				PlayNotes(C5,550 + tempo); PlayNotes(C5,175 + tempo);
+ 51a:	60 91 05 01 	lds	r22, 0x0105
+ 51e:	70 91 06 01 	lds	r23, 0x0106
+ 522:	6a 5d       	subi	r22, 0xDA	; 218
+ 524:	7d 4f       	sbci	r23, 0xFD	; 253
+ 526:	8b e0       	ldi	r24, 0x0B	; 11
+ 528:	92 e0       	ldi	r25, 0x02	; 2
+ 52a:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 52e:	60 91 05 01 	lds	r22, 0x0105
+ 532:	70 91 06 01 	lds	r23, 0x0106
+ 536:	61 55       	subi	r22, 0x51	; 81
+ 538:	7f 4f       	sbci	r23, 0xFF	; 255
+ 53a:	8b e0       	ldi	r24, 0x0B	; 11
+ 53c:	92 e0       	ldi	r25, 0x02	; 2
+ 53e:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+				PlayNotes(C5,100 + tempo); PlayNotes(C5,100 + tempo);
+ 542:	60 91 05 01 	lds	r22, 0x0105
+ 546:	70 91 06 01 	lds	r23, 0x0106
+ 54a:	6c 59       	subi	r22, 0x9C	; 156
+ 54c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 54e:	8b e0       	ldi	r24, 0x0B	; 11
+ 550:	92 e0       	ldi	r25, 0x02	; 2
+ 552:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 556:	60 91 05 01 	lds	r22, 0x0105
+ 55a:	70 91 06 01 	lds	r23, 0x0106
+ 55e:	6c 59       	subi	r22, 0x9C	; 156
+ 560:	7f 4f       	sbci	r23, 0xFF	; 255
+ 562:	8b e0       	ldi	r24, 0x0B	; 11
+ 564:	92 e0       	ldi	r25, 0x02	; 2
+ 566:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+				PlayNotes(C5,150 + tempo); PlayNotes(C5,1300 + tempo);
+ 56a:	60 91 05 01 	lds	r22, 0x0105
+ 56e:	70 91 06 01 	lds	r23, 0x0106
+ 572:	6a 56       	subi	r22, 0x6A	; 106
+ 574:	7f 4f       	sbci	r23, 0xFF	; 255
+ 576:	8b e0       	ldi	r24, 0x0B	; 11
+ 578:	92 e0       	ldi	r25, 0x02	; 2
+ 57a:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 57e:	60 91 05 01 	lds	r22, 0x0105
+ 582:	70 91 06 01 	lds	r23, 0x0106
+ 586:	6c 5e       	subi	r22, 0xEC	; 236
+ 588:	7a 4f       	sbci	r23, 0xFA	; 250
+ 58a:	8b e0       	ldi	r24, 0x0B	; 11
+ 58c:	92 e0       	ldi	r25, 0x02	; 2
+ 58e:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+				PlayNotes(C5,800 + tempo); PlayNotes(B4,400 + tempo);
+ 592:	60 91 05 01 	lds	r22, 0x0105
+ 596:	70 91 06 01 	lds	r23, 0x0106
+ 59a:	60 5e       	subi	r22, 0xE0	; 224
+ 59c:	7c 4f       	sbci	r23, 0xFC	; 252
+ 59e:	8b e0       	ldi	r24, 0x0B	; 11
+ 5a0:	92 e0       	ldi	r25, 0x02	; 2
+ 5a2:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 5a6:	60 91 05 01 	lds	r22, 0x0105
+ 5aa:	70 91 06 01 	lds	r23, 0x0106
+ 5ae:	60 57       	subi	r22, 0x70	; 112
+ 5b0:	7e 4f       	sbci	r23, 0xFE	; 254
+ 5b2:	8e ee       	ldi	r24, 0xEE	; 238
+ 5b4:	91 e0       	ldi	r25, 0x01	; 1
+ 5b6:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+				PlayNotes(C5,300 + tempo); PlayNotes(D5,300 + tempo);
+ 5ba:	60 91 05 01 	lds	r22, 0x0105
+ 5be:	70 91 06 01 	lds	r23, 0x0106
+ 5c2:	64 5d       	subi	r22, 0xD4	; 212
+ 5c4:	7e 4f       	sbci	r23, 0xFE	; 254
+ 5c6:	8b e0       	ldi	r24, 0x0B	; 11
+ 5c8:	92 e0       	ldi	r25, 0x02	; 2
+ 5ca:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 5ce:	60 91 05 01 	lds	r22, 0x0105
+ 5d2:	70 91 06 01 	lds	r23, 0x0106
+ 5d6:	64 5d       	subi	r22, 0xD4	; 212
+ 5d8:	7e 4f       	sbci	r23, 0xFE	; 254
+ 5da:	8b e4       	ldi	r24, 0x4B	; 75
+ 5dc:	92 e0       	ldi	r25, 0x02	; 2
+ 5de:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+				PlayNotes(C5,2300 + tempo);	    song_index = 0;
+ 5e2:	60 91 05 01 	lds	r22, 0x0105
+ 5e6:	70 91 06 01 	lds	r23, 0x0106
+ 5ea:	64 50       	subi	r22, 0x04	; 4
+ 5ec:	77 4f       	sbci	r23, 0xF7	; 247
+ 5ee:	8b e0       	ldi	r24, 0x0B	; 11
+ 5f0:	92 e0       	ldi	r25, 0x02	; 2
+ 5f2:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 5f6:	c0 2f       	mov	r28, r16
+ 5f8:	6d ce       	rjmp	.-806    	; 0x2d4 <main+0x80>
+			else {
+				song_index=2;
+			}
+		}
+		else {
+			PlayNotes(E5,1100 + tempo); PlayNotes(E5,800 + tempo);
+ 5fa:	60 91 05 01 	lds	r22, 0x0105
+ 5fe:	70 91 06 01 	lds	r23, 0x0106
+ 602:	64 5b       	subi	r22, 0xB4	; 180
+ 604:	7b 4f       	sbci	r23, 0xFB	; 251
+ 606:	83 e9       	ldi	r24, 0x93	; 147
+ 608:	92 e0       	ldi	r25, 0x02	; 2
+ 60a:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 60e:	60 91 05 01 	lds	r22, 0x0105
+ 612:	70 91 06 01 	lds	r23, 0x0106
+ 616:	60 5e       	subi	r22, 0xE0	; 224
+ 618:	7c 4f       	sbci	r23, 0xFC	; 252
+ 61a:	83 e9       	ldi	r24, 0x93	; 147
+ 61c:	92 e0       	ldi	r25, 0x02	; 2
+ 61e:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,1600 + tempo);
+ 622:	60 91 05 01 	lds	r22, 0x0105
+ 626:	70 91 06 01 	lds	r23, 0x0106
+ 62a:	60 5c       	subi	r22, 0xC0	; 192
+ 62c:	79 4f       	sbci	r23, 0xF9	; 249
+ 62e:	8b e4       	ldi	r24, 0x4B	; 75
+ 630:	92 e0       	ldi	r25, 0x02	; 2
+ 632:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			song_index=1;
+ 636:	cd 2f       	mov	r28, r29
+ 638:	4d ce       	rjmp	.-870    	; 0x2d4 <main+0x80>
+ 63a:	2f e7       	ldi	r18, 0x7F	; 127
+ 63c:	8b e8       	ldi	r24, 0x8B	; 139
+ 63e:	98 e0       	ldi	r25, 0x08	; 8
+ 640:	21 50       	subi	r18, 0x01	; 1
+ 642:	80 40       	sbci	r24, 0x00	; 0
+ 644:	90 40       	sbci	r25, 0x00	; 0
+ 646:	e1 f7       	brne	.-8      	; 0x640 <__stack+0x141>
+ 648:	00 c0       	rjmp	.+0      	; 0x64a <__stack+0x14b>
+ 64a:	00 00       	nop
+		}
+		if (song_index == 2) {
+			_delay_ms(100 + 250);
+			PlayNotes(C5,450 + tempo); PlayNotes(D5,150 + tempo);
+ 64c:	60 91 05 01 	lds	r22, 0x0105
+ 650:	70 91 06 01 	lds	r23, 0x0106
+ 654:	6e 53       	subi	r22, 0x3E	; 62
+ 656:	7e 4f       	sbci	r23, 0xFE	; 254
+ 658:	8b e0       	ldi	r24, 0x0B	; 11
+ 65a:	92 e0       	ldi	r25, 0x02	; 2
+ 65c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 660:	60 91 05 01 	lds	r22, 0x0105
+ 664:	70 91 06 01 	lds	r23, 0x0106
+ 668:	6a 56       	subi	r22, 0x6A	; 106
+ 66a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 66c:	8b e4       	ldi	r24, 0x4B	; 75
+ 66e:	92 e0       	ldi	r25, 0x02	; 2
+ 670:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,50 + tempo); PlayNotes(D5,50 + tempo);
+ 674:	60 91 05 01 	lds	r22, 0x0105
+ 678:	70 91 06 01 	lds	r23, 0x0106
+ 67c:	6e 5c       	subi	r22, 0xCE	; 206
+ 67e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 680:	8b e4       	ldi	r24, 0x4B	; 75
+ 682:	92 e0       	ldi	r25, 0x02	; 2
+ 684:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 688:	60 91 05 01 	lds	r22, 0x0105
+ 68c:	70 91 06 01 	lds	r23, 0x0106
+ 690:	6e 5c       	subi	r22, 0xCE	; 206
+ 692:	7f 4f       	sbci	r23, 0xFF	; 255
+ 694:	8b e4       	ldi	r24, 0x4B	; 75
+ 696:	92 e0       	ldi	r25, 0x02	; 2
+ 698:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,1 + tempo); PlayNotes(D5,1000 + tempo);
+ 69c:	60 91 05 01 	lds	r22, 0x0105
+ 6a0:	70 91 06 01 	lds	r23, 0x0106
+ 6a4:	6f 5f       	subi	r22, 0xFF	; 255
+ 6a6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6a8:	8b e4       	ldi	r24, 0x4B	; 75
+ 6aa:	92 e0       	ldi	r25, 0x02	; 2
+ 6ac:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 6b0:	60 91 05 01 	lds	r22, 0x0105
+ 6b4:	70 91 06 01 	lds	r23, 0x0106
+ 6b8:	68 51       	subi	r22, 0x18	; 24
+ 6ba:	7c 4f       	sbci	r23, 0xFC	; 252
+ 6bc:	8b e4       	ldi	r24, 0x4B	; 75
+ 6be:	92 e0       	ldi	r25, 0x02	; 2
+ 6c0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(G4,450 + tempo); PlayNotes(E5,150 + tempo);
+ 6c4:	60 91 05 01 	lds	r22, 0x0105
+ 6c8:	70 91 06 01 	lds	r23, 0x0106
+ 6cc:	6e 53       	subi	r22, 0x3E	; 62
+ 6ce:	7e 4f       	sbci	r23, 0xFE	; 254
+ 6d0:	88 e8       	ldi	r24, 0x88	; 136
+ 6d2:	91 e0       	ldi	r25, 0x01	; 1
+ 6d4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 6d8:	60 91 05 01 	lds	r22, 0x0105
+ 6dc:	70 91 06 01 	lds	r23, 0x0106
+ 6e0:	6a 56       	subi	r22, 0x6A	; 106
+ 6e2:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6e4:	83 e9       	ldi	r24, 0x93	; 147
+ 6e6:	92 e0       	ldi	r25, 0x02	; 2
+ 6e8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,50 + tempo); PlayNotes(E5,50 + tempo);
+ 6ec:	60 91 05 01 	lds	r22, 0x0105
+ 6f0:	70 91 06 01 	lds	r23, 0x0106
+ 6f4:	6e 5c       	subi	r22, 0xCE	; 206
+ 6f6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6f8:	83 e9       	ldi	r24, 0x93	; 147
+ 6fa:	92 e0       	ldi	r25, 0x02	; 2
+ 6fc:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 700:	60 91 05 01 	lds	r22, 0x0105
+ 704:	70 91 06 01 	lds	r23, 0x0106
+ 708:	6e 5c       	subi	r22, 0xCE	; 206
+ 70a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 70c:	83 e9       	ldi	r24, 0x93	; 147
+ 70e:	92 e0       	ldi	r25, 0x02	; 2
+ 710:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,1 + tempo); PlayNotes(E5,1000 + tempo);
+ 714:	60 91 05 01 	lds	r22, 0x0105
+ 718:	70 91 06 01 	lds	r23, 0x0106
+ 71c:	6f 5f       	subi	r22, 0xFF	; 255
+ 71e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 720:	83 e9       	ldi	r24, 0x93	; 147
+ 722:	92 e0       	ldi	r25, 0x02	; 2
+ 724:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 728:	60 91 05 01 	lds	r22, 0x0105
+ 72c:	70 91 06 01 	lds	r23, 0x0106
+ 730:	68 51       	subi	r22, 0x18	; 24
+ 732:	7c 4f       	sbci	r23, 0xFC	; 252
+ 734:	83 e9       	ldi	r24, 0x93	; 147
+ 736:	92 e0       	ldi	r25, 0x02	; 2
+ 738:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(C5,350 + tempo); PlayNotes(D5,250 + tempo);
+ 73c:	60 91 05 01 	lds	r22, 0x0105
+ 740:	70 91 06 01 	lds	r23, 0x0106
+ 744:	62 5a       	subi	r22, 0xA2	; 162
+ 746:	7e 4f       	sbci	r23, 0xFE	; 254
+ 748:	8b e0       	ldi	r24, 0x0B	; 11
+ 74a:	92 e0       	ldi	r25, 0x02	; 2
+ 74c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 750:	60 91 05 01 	lds	r22, 0x0105
+ 754:	70 91 06 01 	lds	r23, 0x0106
+ 758:	66 50       	subi	r22, 0x06	; 6
+ 75a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 75c:	8b e4       	ldi	r24, 0x4B	; 75
+ 75e:	92 e0       	ldi	r25, 0x02	; 2
+ 760:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,100 + tempo); PlayNotes(D5,75 + tempo);
+ 764:	60 91 05 01 	lds	r22, 0x0105
+ 768:	70 91 06 01 	lds	r23, 0x0106
+ 76c:	6c 59       	subi	r22, 0x9C	; 156
+ 76e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 770:	8b e4       	ldi	r24, 0x4B	; 75
+ 772:	92 e0       	ldi	r25, 0x02	; 2
+ 774:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 778:	60 91 05 01 	lds	r22, 0x0105
+ 77c:	70 91 06 01 	lds	r23, 0x0106
+ 780:	65 5b       	subi	r22, 0xB5	; 181
+ 782:	7f 4f       	sbci	r23, 0xFF	; 255
+ 784:	8b e4       	ldi	r24, 0x4B	; 75
+ 786:	92 e0       	ldi	r25, 0x02	; 2
+ 788:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,350 + tempo); PlayNotes(C5,150 + tempo);
+ 78c:	60 91 05 01 	lds	r22, 0x0105
+ 790:	70 91 06 01 	lds	r23, 0x0106
+ 794:	62 5a       	subi	r22, 0xA2	; 162
+ 796:	7e 4f       	sbci	r23, 0xFE	; 254
+ 798:	8b e4       	ldi	r24, 0x4B	; 75
+ 79a:	92 e0       	ldi	r25, 0x02	; 2
+ 79c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 7a0:	60 91 05 01 	lds	r22, 0x0105
+ 7a4:	70 91 06 01 	lds	r23, 0x0106
+ 7a8:	6a 56       	subi	r22, 0x6A	; 106
+ 7aa:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7ac:	8b e0       	ldi	r24, 0x0B	; 11
+ 7ae:	92 e0       	ldi	r25, 0x02	; 2
+ 7b0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,250 + tempo); PlayNotes(E5,1000 + tempo);
+ 7b4:	60 91 05 01 	lds	r22, 0x0105
+ 7b8:	70 91 06 01 	lds	r23, 0x0106
+ 7bc:	66 50       	subi	r22, 0x06	; 6
+ 7be:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7c0:	8b e4       	ldi	r24, 0x4B	; 75
+ 7c2:	92 e0       	ldi	r25, 0x02	; 2
+ 7c4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 7c8:	60 91 05 01 	lds	r22, 0x0105
+ 7cc:	70 91 06 01 	lds	r23, 0x0106
+ 7d0:	68 51       	subi	r22, 0x18	; 24
+ 7d2:	7c 4f       	sbci	r23, 0xFC	; 252
+ 7d4:	83 e9       	ldi	r24, 0x93	; 147
+ 7d6:	92 e0       	ldi	r25, 0x02	; 2
+ 7d8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,250 + tempo); PlayNotes(G5,175 + tempo);
+ 7dc:	60 91 05 01 	lds	r22, 0x0105
+ 7e0:	70 91 06 01 	lds	r23, 0x0106
+ 7e4:	66 50       	subi	r22, 0x06	; 6
+ 7e6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7e8:	83 e9       	ldi	r24, 0x93	; 147
+ 7ea:	92 e0       	ldi	r25, 0x02	; 2
+ 7ec:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 7f0:	60 91 05 01 	lds	r22, 0x0105
+ 7f4:	70 91 06 01 	lds	r23, 0x0106
+ 7f8:	61 55       	subi	r22, 0x51	; 81
+ 7fa:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7fc:	8f e0       	ldi	r24, 0x0F	; 15
+ 7fe:	93 e0       	ldi	r25, 0x03	; 3
+ 800:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(A5,450 + tempo); PlayNotes(A5,100 + tempo);
+ 804:	60 91 05 01 	lds	r22, 0x0105
+ 808:	70 91 06 01 	lds	r23, 0x0106
+ 80c:	6e 53       	subi	r22, 0x3E	; 62
+ 80e:	7e 4f       	sbci	r23, 0xFE	; 254
+ 810:	80 e7       	ldi	r24, 0x70	; 112
+ 812:	93 e0       	ldi	r25, 0x03	; 3
+ 814:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 818:	60 91 05 01 	lds	r22, 0x0105
+ 81c:	70 91 06 01 	lds	r23, 0x0106
+ 820:	6c 59       	subi	r22, 0x9C	; 156
+ 822:	7f 4f       	sbci	r23, 0xFF	; 255
+ 824:	80 e7       	ldi	r24, 0x70	; 112
+ 826:	93 e0       	ldi	r25, 0x03	; 3
+ 828:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,150 + tempo); PlayNotes(G5,1000 + tempo);
+ 82c:	60 91 05 01 	lds	r22, 0x0105
+ 830:	70 91 06 01 	lds	r23, 0x0106
+ 834:	6a 56       	subi	r22, 0x6A	; 106
+ 836:	7f 4f       	sbci	r23, 0xFF	; 255
+ 838:	83 e9       	ldi	r24, 0x93	; 147
+ 83a:	92 e0       	ldi	r25, 0x02	; 2
+ 83c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 840:	60 91 05 01 	lds	r22, 0x0105
+ 844:	70 91 06 01 	lds	r23, 0x0106
+ 848:	68 51       	subi	r22, 0x18	; 24
+ 84a:	7c 4f       	sbci	r23, 0xFC	; 252
+ 84c:	8f e0       	ldi	r24, 0x0F	; 15
+ 84e:	93 e0       	ldi	r25, 0x03	; 3
+ 850:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(A5,100 + tempo); PlayNotes(A5,50 + tempo);
+ 854:	60 91 05 01 	lds	r22, 0x0105
+ 858:	70 91 06 01 	lds	r23, 0x0106
+ 85c:	6c 59       	subi	r22, 0x9C	; 156
+ 85e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 860:	80 e7       	ldi	r24, 0x70	; 112
+ 862:	93 e0       	ldi	r25, 0x03	; 3
+ 864:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 868:	60 91 05 01 	lds	r22, 0x0105
+ 86c:	70 91 06 01 	lds	r23, 0x0106
+ 870:	6e 5c       	subi	r22, 0xCE	; 206
+ 872:	7f 4f       	sbci	r23, 0xFF	; 255
+ 874:	80 e7       	ldi	r24, 0x70	; 112
+ 876:	93 e0       	ldi	r25, 0x03	; 3
+ 878:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,150 + tempo); PlayNotes(G5,1000 + tempo);
+ 87c:	60 91 05 01 	lds	r22, 0x0105
+ 880:	70 91 06 01 	lds	r23, 0x0106
+ 884:	6a 56       	subi	r22, 0x6A	; 106
+ 886:	7f 4f       	sbci	r23, 0xFF	; 255
+ 888:	83 e9       	ldi	r24, 0x93	; 147
+ 88a:	92 e0       	ldi	r25, 0x02	; 2
+ 88c:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 890:	60 91 05 01 	lds	r22, 0x0105
+ 894:	70 91 06 01 	lds	r23, 0x0106
+ 898:	68 51       	subi	r22, 0x18	; 24
+ 89a:	7c 4f       	sbci	r23, 0xFC	; 252
+ 89c:	8f e0       	ldi	r24, 0x0F	; 15
+ 89e:	93 e0       	ldi	r25, 0x03	; 3
+ 8a0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+
+			PlayNotes(A5,100 + tempo); PlayNotes(A5,50 + tempo);
+ 8a4:	60 91 05 01 	lds	r22, 0x0105
+ 8a8:	70 91 06 01 	lds	r23, 0x0106
+ 8ac:	6c 59       	subi	r22, 0x9C	; 156
+ 8ae:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8b0:	80 e7       	ldi	r24, 0x70	; 112
+ 8b2:	93 e0       	ldi	r25, 0x03	; 3
+ 8b4:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 8b8:	60 91 05 01 	lds	r22, 0x0105
+ 8bc:	70 91 06 01 	lds	r23, 0x0106
+ 8c0:	6e 5c       	subi	r22, 0xCE	; 206
+ 8c2:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8c4:	80 e7       	ldi	r24, 0x70	; 112
+ 8c6:	93 e0       	ldi	r25, 0x03	; 3
+ 8c8:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(E5,150 + tempo); PlayNotes(G5,1000 + tempo);
+ 8cc:	60 91 05 01 	lds	r22, 0x0105
+ 8d0:	70 91 06 01 	lds	r23, 0x0106
+ 8d4:	6a 56       	subi	r22, 0x6A	; 106
+ 8d6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8d8:	83 e9       	ldi	r24, 0x93	; 147
+ 8da:	92 e0       	ldi	r25, 0x02	; 2
+ 8dc:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 8e0:	60 91 05 01 	lds	r22, 0x0105
+ 8e4:	70 91 06 01 	lds	r23, 0x0106
+ 8e8:	68 51       	subi	r22, 0x18	; 24
+ 8ea:	7c 4f       	sbci	r23, 0xFC	; 252
+ 8ec:	8f e0       	ldi	r24, 0x0F	; 15
+ 8ee:	93 e0       	ldi	r25, 0x03	; 3
+ 8f0:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(F5,450 + tempo); PlayNotes(E5,650);
+ 8f4:	60 91 05 01 	lds	r22, 0x0105
+ 8f8:	70 91 06 01 	lds	r23, 0x0106
+ 8fc:	6e 53       	subi	r22, 0x3E	; 62
+ 8fe:	7e 4f       	sbci	r23, 0xFE	; 254
+ 900:	8a eb       	ldi	r24, 0xBA	; 186
+ 902:	92 e0       	ldi	r25, 0x02	; 2
+ 904:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 908:	6a e8       	ldi	r22, 0x8A	; 138
+ 90a:	72 e0       	ldi	r23, 0x02	; 2
+ 90c:	83 e9       	ldi	r24, 0x93	; 147
+ 90e:	92 e0       	ldi	r25, 0x02	; 2
+ 910:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+			PlayNotes(D5,1300 + tempo);
+ 914:	60 91 05 01 	lds	r22, 0x0105
+ 918:	70 91 06 01 	lds	r23, 0x0106
+ 91c:	6c 5e       	subi	r22, 0xEC	; 236
+ 91e:	7a 4f       	sbci	r23, 0xFA	; 250
+ 920:	8b e4       	ldi	r24, 0x4B	; 75
+ 922:	92 e0       	ldi	r25, 0x02	; 2
+ 924:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <PlayNotes>
+ 928:	d4 cc       	rjmp	.-1624   	; 0x2d2 <main+0x7e>
+
+0000092a <__divmodsi4>:
+ 92a:	05 2e       	mov	r0, r21
+ 92c:	97 fb       	bst	r25, 7
+ 92e:	16 f4       	brtc	.+4      	; 0x934 <__divmodsi4+0xa>
+ 930:	00 94       	com	r0
+ 932:	07 d0       	rcall	.+14     	; 0x942 <__divmodsi4_neg1>
+ 934:	57 fd       	sbrc	r21, 7
+ 936:	0d d0       	rcall	.+26     	; 0x952 <__divmodsi4_neg2>
+ 938:	0e 94 b1 04 	call	0x962	; 0x962 <__udivmodsi4>
+ 93c:	07 fc       	sbrc	r0, 7
+ 93e:	09 d0       	rcall	.+18     	; 0x952 <__divmodsi4_neg2>
+ 940:	7e f4       	brtc	.+30     	; 0x960 <__divmodsi4_exit>
+
+00000942 <__divmodsi4_neg1>:
+ 942:	90 95       	com	r25
+ 944:	80 95       	com	r24
+ 946:	70 95       	com	r23
+ 948:	61 95       	neg	r22
+ 94a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 94c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 94e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 950:	08 95       	ret
+
+00000952 <__divmodsi4_neg2>:
+ 952:	50 95       	com	r21
+ 954:	40 95       	com	r20
+ 956:	30 95       	com	r19
+ 958:	21 95       	neg	r18
+ 95a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 95c:	4f 4f       	sbci	r20, 0xFF	; 255
+ 95e:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000960 <__divmodsi4_exit>:
+ 960:	08 95       	ret
+
+00000962 <__udivmodsi4>:
+ 962:	a1 e2       	ldi	r26, 0x21	; 33
+ 964:	1a 2e       	mov	r1, r26
+ 966:	aa 1b       	sub	r26, r26
+ 968:	bb 1b       	sub	r27, r27
+ 96a:	fd 01       	movw	r30, r26
+ 96c:	0d c0       	rjmp	.+26     	; 0x988 <__udivmodsi4_ep>
+
+0000096e <__udivmodsi4_loop>:
+ 96e:	aa 1f       	adc	r26, r26
+ 970:	bb 1f       	adc	r27, r27
+ 972:	ee 1f       	adc	r30, r30
+ 974:	ff 1f       	adc	r31, r31
+ 976:	a2 17       	cp	r26, r18
+ 978:	b3 07       	cpc	r27, r19
+ 97a:	e4 07       	cpc	r30, r20
+ 97c:	f5 07       	cpc	r31, r21
+ 97e:	20 f0       	brcs	.+8      	; 0x988 <__udivmodsi4_ep>
+ 980:	a2 1b       	sub	r26, r18
+ 982:	b3 0b       	sbc	r27, r19
+ 984:	e4 0b       	sbc	r30, r20
+ 986:	f5 0b       	sbc	r31, r21
+
+00000988 <__udivmodsi4_ep>:
+ 988:	66 1f       	adc	r22, r22
+ 98a:	77 1f       	adc	r23, r23
+ 98c:	88 1f       	adc	r24, r24
+ 98e:	99 1f       	adc	r25, r25
+ 990:	1a 94       	dec	r1
+ 992:	69 f7       	brne	.-38     	; 0x96e <__udivmodsi4_loop>
+ 994:	60 95       	com	r22
+ 996:	70 95       	com	r23
+ 998:	80 95       	com	r24
+ 99a:	90 95       	com	r25
+ 99c:	9b 01       	movw	r18, r22
+ 99e:	ac 01       	movw	r20, r24
+ 9a0:	bd 01       	movw	r22, r26
+ 9a2:	cf 01       	movw	r24, r30
+ 9a4:	08 95       	ret
+
+000009a6 <do_rand>:
+ 9a6:	8f 92       	push	r8
+ 9a8:	9f 92       	push	r9
+ 9aa:	af 92       	push	r10
+ 9ac:	bf 92       	push	r11
+ 9ae:	cf 92       	push	r12
+ 9b0:	df 92       	push	r13
+ 9b2:	ef 92       	push	r14
+ 9b4:	ff 92       	push	r15
+ 9b6:	cf 93       	push	r28
+ 9b8:	df 93       	push	r29
+ 9ba:	ec 01       	movw	r28, r24
+ 9bc:	68 81       	ld	r22, Y
+ 9be:	79 81       	ldd	r23, Y+1	; 0x01
+ 9c0:	8a 81       	ldd	r24, Y+2	; 0x02
+ 9c2:	9b 81       	ldd	r25, Y+3	; 0x03
+ 9c4:	61 15       	cp	r22, r1
+ 9c6:	71 05       	cpc	r23, r1
+ 9c8:	81 05       	cpc	r24, r1
+ 9ca:	91 05       	cpc	r25, r1
+ 9cc:	21 f4       	brne	.+8      	; 0x9d6 <do_rand+0x30>
+ 9ce:	64 e2       	ldi	r22, 0x24	; 36
+ 9d0:	79 ed       	ldi	r23, 0xD9	; 217
+ 9d2:	8b e5       	ldi	r24, 0x5B	; 91
+ 9d4:	97 e0       	ldi	r25, 0x07	; 7
+ 9d6:	2d e1       	ldi	r18, 0x1D	; 29
+ 9d8:	33 ef       	ldi	r19, 0xF3	; 243
+ 9da:	41 e0       	ldi	r20, 0x01	; 1
+ 9dc:	50 e0       	ldi	r21, 0x00	; 0
+ 9de:	0e 94 95 04 	call	0x92a	; 0x92a <__divmodsi4>
+ 9e2:	49 01       	movw	r8, r18
+ 9e4:	5a 01       	movw	r10, r20
+ 9e6:	9b 01       	movw	r18, r22
+ 9e8:	ac 01       	movw	r20, r24
+ 9ea:	a7 ea       	ldi	r26, 0xA7	; 167
+ 9ec:	b1 e4       	ldi	r27, 0x41	; 65
+ 9ee:	0e 94 34 05 	call	0xa68	; 0xa68 <__muluhisi3>
+ 9f2:	6b 01       	movw	r12, r22
+ 9f4:	7c 01       	movw	r14, r24
+ 9f6:	ac ee       	ldi	r26, 0xEC	; 236
+ 9f8:	b4 ef       	ldi	r27, 0xF4	; 244
+ 9fa:	a5 01       	movw	r20, r10
+ 9fc:	94 01       	movw	r18, r8
+ 9fe:	0e 94 42 05 	call	0xa84	; 0xa84 <__mulohisi3>
+ a02:	c6 0e       	add	r12, r22
+ a04:	d7 1e       	adc	r13, r23
+ a06:	e8 1e       	adc	r14, r24
+ a08:	f9 1e       	adc	r15, r25
+ a0a:	f7 fe       	sbrs	r15, 7
+ a0c:	06 c0       	rjmp	.+12     	; 0xa1a <do_rand+0x74>
+ a0e:	81 e0       	ldi	r24, 0x01	; 1
+ a10:	c8 1a       	sub	r12, r24
+ a12:	d1 08       	sbc	r13, r1
+ a14:	e1 08       	sbc	r14, r1
+ a16:	80 e8       	ldi	r24, 0x80	; 128
+ a18:	f8 0a       	sbc	r15, r24
+ a1a:	c8 82       	st	Y, r12
+ a1c:	d9 82       	std	Y+1, r13	; 0x01
+ a1e:	ea 82       	std	Y+2, r14	; 0x02
+ a20:	fb 82       	std	Y+3, r15	; 0x03
+ a22:	e8 94       	clt
+ a24:	d7 f8       	bld	r13, 7
+ a26:	ee 24       	eor	r14, r14
+ a28:	ff 24       	eor	r15, r15
+ a2a:	c6 01       	movw	r24, r12
+ a2c:	df 91       	pop	r29
+ a2e:	cf 91       	pop	r28
+ a30:	ff 90       	pop	r15
+ a32:	ef 90       	pop	r14
+ a34:	df 90       	pop	r13
+ a36:	cf 90       	pop	r12
+ a38:	bf 90       	pop	r11
+ a3a:	af 90       	pop	r10
+ a3c:	9f 90       	pop	r9
+ a3e:	8f 90       	pop	r8
+ a40:	08 95       	ret
+
+00000a42 <rand_r>:
+ a42:	0e 94 d3 04 	call	0x9a6	; 0x9a6 <do_rand>
+ a46:	08 95       	ret
+
+00000a48 <rand>:
+ a48:	80 e0       	ldi	r24, 0x00	; 0
+ a4a:	91 e0       	ldi	r25, 0x01	; 1
+ a4c:	0e 94 d3 04 	call	0x9a6	; 0x9a6 <do_rand>
+ a50:	08 95       	ret
+
+00000a52 <srand>:
+ a52:	a0 e0       	ldi	r26, 0x00	; 0
+ a54:	b0 e0       	ldi	r27, 0x00	; 0
+ a56:	80 93 00 01 	sts	0x0100, r24
+ a5a:	90 93 01 01 	sts	0x0101, r25
+ a5e:	a0 93 02 01 	sts	0x0102, r26
+ a62:	b0 93 03 01 	sts	0x0103, r27
+ a66:	08 95       	ret
+
+00000a68 <__muluhisi3>:
+ a68:	0e 94 47 05 	call	0xa8e	; 0xa8e <__umulhisi3>
+ a6c:	a5 9f       	mul	r26, r21
+ a6e:	90 0d       	add	r25, r0
+ a70:	b4 9f       	mul	r27, r20
+ a72:	90 0d       	add	r25, r0
+ a74:	a4 9f       	mul	r26, r20
+ a76:	80 0d       	add	r24, r0
+ a78:	91 1d       	adc	r25, r1
+ a7a:	11 24       	eor	r1, r1
+ a7c:	08 95       	ret
+
+00000a7e <__mulshisi3>:
+ a7e:	b7 ff       	sbrs	r27, 7
+ a80:	0c 94 34 05 	jmp	0xa68	; 0xa68 <__muluhisi3>
+
+00000a84 <__mulohisi3>:
+ a84:	0e 94 34 05 	call	0xa68	; 0xa68 <__muluhisi3>
+ a88:	82 1b       	sub	r24, r18
+ a8a:	93 0b       	sbc	r25, r19
+ a8c:	08 95       	ret
+
+00000a8e <__umulhisi3>:
+ a8e:	a2 9f       	mul	r26, r18
+ a90:	b0 01       	movw	r22, r0
+ a92:	b3 9f       	mul	r27, r19
+ a94:	c0 01       	movw	r24, r0
+ a96:	a3 9f       	mul	r26, r19
+ a98:	01 d0       	rcall	.+2      	; 0xa9c <__umulhisi3+0xe>
+ a9a:	b2 9f       	mul	r27, r18
+ a9c:	70 0d       	add	r23, r0
+ a9e:	81 1d       	adc	r24, r1
+ aa0:	11 24       	eor	r1, r1
+ aa2:	91 1d       	adc	r25, r1
+ aa4:	08 95       	ret
+
+00000aa6 <_exit>:
+ aa6:	f8 94       	cli
+
+00000aa8 <__stop_program>:
+ aa8:	ff cf       	rjmp	.-2      	; 0xaa8 <__stop_program>
