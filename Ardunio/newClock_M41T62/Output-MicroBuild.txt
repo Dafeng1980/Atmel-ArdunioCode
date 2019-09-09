@@ -1,0 +1,7 @@
+﻿
+Compiling 'newClock_M41T62' for 'ATmega644'
+Program size: 18,874 bytes (used 29% of a 64,512 byte maximum) (1.08 secs)
+Minimum Memory Usage: 772 bytes (19% of a 4096 byte maximum)
+ 
+Uploading 'newClock_M41T62' to 'ATmega644' using 'COM3'
+	The upload process has finished.

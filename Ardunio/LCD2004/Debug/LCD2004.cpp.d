@@ -1,0 +1,20 @@
+C:\Users\Dafen\AppData\Local\Temp\VMBuilds\LCD2004\MegaCore-master_128\Debug\LCD2004.cpp.o: \
+ C:\Users\Dafen\AppData\Local\Temp\VMBuilds\LCD2004\MegaCore-master_128\Debug\LCD2004.cpp \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/arduino.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/binary.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/WCharacter.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/WString.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/HardwareSerial.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Stream.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Print.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Printable.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/USBAPI.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Arduino.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/wiring_extras.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\variants\standard/pins_arduino.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\libraries\Wire/Wire.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Stream.h \
+ D:\Documents\Arduino\libraries\Adafruit_LiquidCrystal/Adafruit_LiquidCrystal.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Arduino.h \
+ C:\Arduino1_8\hardware\MegaCore-master\avr\cores\MegaCore/Print.h \
+ D:\Documents\Arduino\libraries\Adafruit_LiquidCrystal/utility/Adafruit_MCP23008.h

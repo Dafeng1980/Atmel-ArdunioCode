@@ -1,0 +1,247 @@
+
+AVRGCC3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000d4  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  00000128  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000090  00000000  00000000  000007f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000020  00000000  00000000  00000884  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00000041  00000000  00000000  000008a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000141  00000000  00000000  000008e5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000000dd  00000000  00000000  00000a26  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002ac  00000000  00000000  00000b03  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000050  00000000  00000000  00000db0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000000ce  00000000  00000000  00000e00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000006e  00000000  00000000  00000ece  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_pubtypes 0000002b  00000000  00000000  00000f3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	29 d0       	rcall	.+82     	; 0x86 <main>
+  34:	4d c0       	rjmp	.+154    	; 0xd0 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <DelayMs>:
+
+
+void DelayMs(unsigned int ms)
+{
+unsigned int i;
+for(i=0;i<ms;i++)
+  38:	00 97       	sbiw	r24, 0x00	; 0
+  3a:	61 f0       	breq	.+24     	; 0x54 <__SREG__+0x15>
+  3c:	20 e0       	ldi	r18, 0x00	; 0
+  3e:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  40:	4a ef       	ldi	r20, 0xFA	; 250
+  42:	50 e0       	ldi	r21, 0x00	; 0
+  44:	fa 01       	movw	r30, r20
+  46:	31 97       	sbiw	r30, 0x01	; 1
+  48:	f1 f7       	brne	.-4      	; 0x46 <__SREG__+0x7>
+  4a:	2f 5f       	subi	r18, 0xFF	; 255
+  4c:	3f 4f       	sbci	r19, 0xFF	; 255
+  4e:	28 17       	cp	r18, r24
+  50:	39 07       	cpc	r19, r25
+  52:	c0 f3       	brcs	.-16     	; 0x44 <__SREG__+0x5>
+  54:	08 95       	ret
+
+00000056 <led_out_a>:
+	返回参数：无
+	特殊说明：此函数后面会多次用到，请留意。
+*/
+void led_out_a(unsigned char led_a) {
+
+	PORTB = led_a & 0x3F;								/*将输入值的低6位赋值给PB口*/
+  56:	98 2f       	mov	r25, r24
+  58:	9f 73       	andi	r25, 0x3F	; 63
+  5a:	98 bb       	out	0x18, r25	; 24
+	if (led_a & 0x80) {									/*取输入值最高位bit7并对应输出*/
+  5c:	88 23       	and	r24, r24
+  5e:	14 f4       	brge	.+4      	; 0x64 <led_out_a+0xe>
+		PORTC |= (1 << PC3);							/*置高其中一位*/
+  60:	ab 9a       	sbi	0x15, 3	; 21
+  62:	01 c0       	rjmp	.+2      	; 0x66 <led_out_a+0x10>
+		}
+	else {
+		PORTC &= ~(1 << PC3);							/*置低其中一位*/
+  64:	ab 98       	cbi	0x15, 3	; 21
+		}
+	if (led_a & 0x40) {									/*取输入值最高位bit6并对应输出*/
+  66:	86 ff       	sbrs	r24, 6
+  68:	02 c0       	rjmp	.+4      	; 0x6e <led_out_a+0x18>
+		PORTC |= (1 << PC2);
+  6a:	aa 9a       	sbi	0x15, 2	; 21
+  6c:	08 95       	ret
+		}
+	else {
+		PORTC &= ~(1 << PC2);
+  6e:	aa 98       	cbi	0x15, 2	; 21
+  70:	08 95       	ret
+
+00000072 <io_init>:
+	返回参数：无
+	特殊说明：此函数后面会多次用到，请留意。
+*/
+void io_init(void) {
+
+	DDRB = 0xFF;										/*方向输出*/
+  72:	8f ef       	ldi	r24, 0xFF	; 255
+  74:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x00;										/*低电平*/
+  76:	18 ba       	out	0x18, r1	; 24
+	DDRC = 0x0C;										/*对应LED引脚为输出*/
+  78:	9c e0       	ldi	r25, 0x0C	; 12
+  7a:	94 bb       	out	0x14, r25	; 20
+	PORTC = 0xF3;										/*对应LED引脚输出低电平*/
+  7c:	93 ef       	ldi	r25, 0xF3	; 243
+  7e:	95 bb       	out	0x15, r25	; 21
+	DDRD = 0x00;										/*方向输入*/
+  80:	11 ba       	out	0x11, r1	; 17
+	PORTD = 0xFF;										/*打开内部上拉*/
+  82:	82 bb       	out	0x12, r24	; 18
+}
+  84:	08 95       	ret
+
+00000086 <main>:
+
+
+
+int main(void)
+{
+  86:	df 92       	push	r13
+  88:	ef 92       	push	r14
+  8a:	ff 92       	push	r15
+  8c:	0f 93       	push	r16
+  8e:	1f 93       	push	r17
+  90:	cf 93       	push	r28
+  92:	df 93       	push	r29
+	unsigned char j =0;
+	io_init();
+  94:	ee df       	rcall	.-36     	; 0x72 <io_init>
+	
+    while (1)
+    {
+		j=0x01;
+  96:	11 e0       	ldi	r17, 0x01	; 1
+		while (j!=0)
+  98:	ee 24       	eor	r14, r14
+  9a:	ff 24       	eor	r15, r15
+  9c:	68 94       	set
+  9e:	e3 f8       	bld	r14, 3
+  a0:	00 e8       	ldi	r16, 0x80	; 128
+	unsigned char j =0;
+	io_init();
+	
+    while (1)
+    {
+		j=0x01;
+  a2:	dd 24       	eor	r13, r13
+  a4:	d3 94       	inc	r13
+  a6:	06 c0       	rjmp	.+12     	; 0xb4 <main+0x2e>
+		while (j!=0)
+		{
+			led_out_a(j);
+  a8:	81 2f       	mov	r24, r17
+  aa:	d5 df       	rcall	.-86     	; 0x56 <led_out_a>
+			DelayMs(100);
+  ac:	84 e6       	ldi	r24, 0x64	; 100
+  ae:	90 e0       	ldi	r25, 0x00	; 0
+  b0:	c3 df       	rcall	.-122    	; 0x38 <DelayMs>
+		
+			j=j<<1;
+  b2:	11 0f       	add	r17, r17
+	io_init();
+	
+    while (1)
+    {
+		j=0x01;
+		while (j!=0)
+  b4:	11 23       	and	r17, r17
+  b6:	c1 f7       	brne	.-16     	; 0xa8 <main+0x22>
+  b8:	e7 01       	movw	r28, r14
+  ba:	10 2f       	mov	r17, r16
+		}			
+			j=0x80;
+					
+			while (j!=0)
+			{
+				led_out_a(j);
+  bc:	81 2f       	mov	r24, r17
+  be:	cb df       	rcall	.-106    	; 0x56 <led_out_a>
+				DelayMs(200);
+  c0:	88 ec       	ldi	r24, 0xC8	; 200
+  c2:	90 e0       	ldi	r25, 0x00	; 0
+  c4:	b9 df       	rcall	.-142    	; 0x38 <DelayMs>
+			
+				j=j>>1;
+  c6:	16 95       	lsr	r17
+  c8:	21 97       	sbiw	r28, 0x01	; 1
+		
+			j=j<<1;
+		}			
+			j=0x80;
+					
+			while (j!=0)
+  ca:	c1 f7       	brne	.-16     	; 0xbc <main+0x36>
+	unsigned char j =0;
+	io_init();
+	
+    while (1)
+    {
+		j=0x01;
+  cc:	1d 2d       	mov	r17, r13
+  ce:	f2 cf       	rjmp	.-28     	; 0xb4 <main+0x2e>
+
+000000d0 <_exit>:
+  d0:	f8 94       	cli
+
+000000d2 <__stop_program>:
+  d2:	ff cf       	rjmp	.-2      	; 0xd2 <__stop_program>

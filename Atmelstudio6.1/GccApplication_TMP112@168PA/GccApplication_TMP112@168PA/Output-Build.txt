@@ -1,0 +1,21 @@
+﻿------ Build started: Project: temputure_LED, Configuration: Debug AVR ------
+Build started.
+Project "temputure_LED.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Compiler.targets" from project "D:\My Documents\Atmel Studio\temputure_LED\temputure_LED\temputure_LED.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		D:\Program Files (x86)\Atmel\Atmel Studio 6.0\make\make.exe all 
+		make: Nothing to be done for `all'.
+	Done executing task "RunCompilerTask".
+	Task "RunOutputFileVerifyTask"
+				Program Memory Usage 	:	1094 bytes   6.7 % Full
+				Data Memory Usage 		:	18 bytes   1.8 % Full
+	Done executing task "RunOutputFileVerifyTask".
+Done building target "CoreBuild" in project "temputure_LED.cproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Avr.common.targets" from project "D:\My Documents\Atmel Studio\temputure_LED\temputure_LED\temputure_LED.cproj" (entry point):
+Done building target "Build" in project "temputure_LED.cproj".
+Done building project "temputure_LED.cproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

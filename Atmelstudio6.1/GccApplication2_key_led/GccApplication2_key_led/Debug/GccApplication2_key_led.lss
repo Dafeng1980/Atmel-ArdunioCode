@@ -1,0 +1,200 @@
+
+GccApplication2_key_led.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000a0  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  000000f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000085  00000000  00000000  000007c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000080  00000000  00000000  00000848  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000339  00000000  00000000  000008c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 0000009f  00000000  00000000  00000c01  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   000002a8  00000000  00000000  00000ca0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000034  00000000  00000000  00000f48  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    000000cf  00000000  00000000  00000f7c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e0 ea       	ldi	r30, 0xA0	; 160
+  3a:	f0 e0       	ldi	r31, 0x00	; 0
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a0 36       	cpi	r26, 0x60	; 96
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	0c d0       	rcall	.+24     	; 0x72 <main>
+  5a:	20 c0       	rjmp	.+64     	; 0x9c <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <io_init>:
+#include <avr/io.h>
+#include <avr/sfr_defs.h>
+
+void io_init(void)
+{
+	DDRB=0xFF;
+  5e:	8f ef       	ldi	r24, 0xFF	; 255
+  60:	87 bb       	out	0x17, r24	; 23
+	PORTB=0x00;
+  62:	18 ba       	out	0x18, r1	; 24
+	DDRC=0x0C;
+  64:	9c e0       	ldi	r25, 0x0C	; 12
+  66:	94 bb       	out	0x14, r25	; 20
+	PORTC=0xF3;
+  68:	93 ef       	ldi	r25, 0xF3	; 243
+  6a:	95 bb       	out	0x15, r25	; 21
+	DDRD=0x00;
+  6c:	11 ba       	out	0x11, r1	; 17
+	PORTD=0xFF;
+  6e:	82 bb       	out	0x12, r24	; 18
+}
+  70:	08 95       	ret
+
+00000072 <main>:
+
+int main(void)
+{
+    io_init();
+  72:	f5 df       	rcall	.-22     	; 0x5e <io_init>
+	while (1)
+    {
+		if(bit_is_clear(PIND,PD2))
+		{
+			PORTB=_BV(PB0);
+  74:	41 e0       	ldi	r20, 0x01	; 1
+			
+        //TODO:: Please write your application code 
+    }
+	if (bit_is_clear(PIND,PD3))
+	{
+		PORTB=_BV(PB1);
+  76:	32 e0       	ldi	r19, 0x02	; 2
+	}
+	if (bit_is_clear(PIND,PD4))
+	{
+		PORTB=_BV(PB2);
+  78:	24 e0       	ldi	r18, 0x04	; 4
+	}
+	if (bit_is_clear(PIND,PD5))
+	{
+		PORTB=_BV(PB3);
+  7a:	98 e0       	ldi	r25, 0x08	; 8
+	}
+	if (bit_is_clear(PIND,PD6))
+	{
+		PORTB=_BV(PB4);
+  7c:	80 e1       	ldi	r24, 0x10	; 16
+	}
+	if (bit_is_clear(PIND,PD7))
+	{
+		PORTB=_BV(PB5);
+  7e:	50 e2       	ldi	r21, 0x20	; 32
+int main(void)
+{
+    io_init();
+	while (1)
+    {
+		if(bit_is_clear(PIND,PD2))
+  80:	82 9b       	sbis	0x10, 2	; 16
+		{
+			PORTB=_BV(PB0);
+  82:	48 bb       	out	0x18, r20	; 24
+			
+        //TODO:: Please write your application code 
+    }
+	if (bit_is_clear(PIND,PD3))
+  84:	83 9b       	sbis	0x10, 3	; 16
+	{
+		PORTB=_BV(PB1);
+  86:	38 bb       	out	0x18, r19	; 24
+	}
+	if (bit_is_clear(PIND,PD4))
+  88:	84 9b       	sbis	0x10, 4	; 16
+	{
+		PORTB=_BV(PB2);
+  8a:	28 bb       	out	0x18, r18	; 24
+	}
+	if (bit_is_clear(PIND,PD5))
+  8c:	85 9b       	sbis	0x10, 5	; 16
+	{
+		PORTB=_BV(PB3);
+  8e:	98 bb       	out	0x18, r25	; 24
+	}
+	if (bit_is_clear(PIND,PD6))
+  90:	86 9b       	sbis	0x10, 6	; 16
+	{
+		PORTB=_BV(PB4);
+  92:	88 bb       	out	0x18, r24	; 24
+	}
+	if (bit_is_clear(PIND,PD7))
+  94:	87 99       	sbic	0x10, 7	; 16
+  96:	f4 cf       	rjmp	.-24     	; 0x80 <main+0xe>
+	{
+		PORTB=_BV(PB5);
+  98:	58 bb       	out	0x18, r21	; 24
+  9a:	f2 cf       	rjmp	.-28     	; 0x80 <main+0xe>
+
+0000009c <_exit>:
+  9c:	f8 94       	cli
+
+0000009e <__stop_program>:
+  9e:	ff cf       	rjmp	.-2      	; 0x9e <__stop_program>

@@ -1,0 +1,97 @@
+/*
+ * LedDisplay.c
+ *
+ * Created: 2012/7/18 21:37:39
+ *  Author: fe
+ */ 
+
+
+#include <avr/io.h>
+#include <avr/delay.h>
+#include <avr/pgmspace.h>
+#define SET_SHC PORTD|=1<<PD3 //HC595 shift regsiter set PD3
+#define CLR_SHC PORTD&=~(1<<PD3)
+#define SET_AB PORTB|=1<<PB0//Row HC164 Output PB0
+#define CLR_AB PORTB&=~(1<<PB0)
+#define SET_SCL PORTB|=1<<PB1 //Row HC164 clock PB1
+#define CLR_SCL PORTB&=~(1<<PB1)
+
+
+
+
+#define uchar unsigned char
+#define uint unsigned int
+uchar buffer_wd[32];
+
+const prog_uchar uchar  bmp[10][8]={
+{0xe3,0xdd,0xdd,0xdd,0xdd,0xdd,0xdd,0xe3},    //0
+{0xf7,0xc7,0xf7,0xf7,0xf7,0xf7,0xf7,0xc1},    //1
+{0xe3,0xdd,0xdd,0xfd,0xfb,0xf7,0xef,0xc1},    //2
+{0xe3,0xdd,0xfd,0xe3,0xfd,0xfd,0xdd,0xe3},    //3
+{0xfb,0xf3,0xeb,0xdb,0xdb,0xc1,0xfb,0xf1},    //4
+{0xc1,0xdf,0xdf,0xc3,0xfd,0xfd,0xdd,0xe3},    //5
+{0xe3,0xdd,0xdf,0xc3,0xdd,0xdd,0xdd,0xe3},    //6
+{0xc1,0xdd,0xfd,0xfb,0xf7,0xf7,0xf7,0xf7},    //7
+{0xe3,0xdd,0xdd,0xe3,0xdd,0xdd,0xdd,0xe3},    //8
+{0xe3,0xdd,0xdd,0xdd,0xe1,0xfd,0xdd,0xe3},    //9
+};
+void DelayMs(uint ms)
+{
+	uint i;
+		for(i=0;i<ms;i++)
+			_delay_loop_2(250*2);
+}
+
+void SPI_T(unsigned char a)
+{
+	SPDR=a;
+		while(!(SPSR&(1<<SPIF)))
+	{
+		;
+	}
+}	
+void Spi_init(void)
+{
+	DDRB|=_BV(PB5)|_BV(PB3);
+	SPCR=0x71;
+	SPSR=0x00;
+}
+void display()
+{
+	uchar i;
+	for(i=0;i<16;i++)
+	{
+			CLR_SCL;
+			CLR_SHC;
+			SPI_T(~buffer_wd[i*2+1]);
+			SPI_T(~buffer_wd[i*2]);
+			SET_SCL;
+			SET_SHC;
+			SET_AB;
+	}
+	CLR_AB;
+}
+
+void diplayNo(uchar num,uchar dec)
+{
+	uchar i;
+	
+	
+}
+
+
+
+
+
+
+
+
+int main(void)
+{
+	Spi_init();
+	DelayMs(10);
+    while(1)
+    {
+      ;   //TODO:: Please write your application code 
+    }
+}

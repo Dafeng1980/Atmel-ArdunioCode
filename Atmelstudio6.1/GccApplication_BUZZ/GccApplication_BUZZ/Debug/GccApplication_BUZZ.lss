@@ -1,0 +1,253 @@
+
+GccApplication_BUZZ.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000dc  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  00000130  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000085  00000000  00000000  000007fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000080  00000000  00000000  00000888  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   000003c5  00000000  00000000  00000908  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000126  00000000  00000000  00000ccd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000361  00000000  00000000  00000df3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000044  00000000  00000000  00001154  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    000000e1  00000000  00000000  00001198  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000064  00000000  00000000  00001279  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ec ed       	ldi	r30, 0xDC	; 220
+  3a:	f0 e0       	ldi	r31, 0x00	; 0
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a0 36       	cpi	r26, 0x60	; 96
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	1b d0       	rcall	.+54     	; 0x90 <main>
+  5a:	3e c0       	rjmp	.+124    	; 0xd8 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <DelayMs>:
+#include <avr/delay.h>
+#include <avr/sfr_defs.h>
+void DelayMs(unsigned int ms)
+{
+	unsigned int i;
+	for(i=0;i<ms;i++)
+  5e:	00 97       	sbiw	r24, 0x00	; 0
+  60:	61 f0       	breq	.+24     	; 0x7a <DelayMs+0x1c>
+  62:	20 e0       	ldi	r18, 0x00	; 0
+  64:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  66:	4a ef       	ldi	r20, 0xFA	; 250
+  68:	50 e0       	ldi	r21, 0x00	; 0
+  6a:	fa 01       	movw	r30, r20
+  6c:	31 97       	sbiw	r30, 0x01	; 1
+  6e:	f1 f7       	brne	.-4      	; 0x6c <DelayMs+0xe>
+  70:	2f 5f       	subi	r18, 0xFF	; 255
+  72:	3f 4f       	sbci	r19, 0xFF	; 255
+  74:	28 17       	cp	r18, r24
+  76:	39 07       	cpc	r19, r25
+  78:	c1 f7       	brne	.-16     	; 0x6a <DelayMs+0xc>
+  7a:	08 95       	ret
+
+0000007c <io_init>:
+	_delay_loop_2(250);
+}
+void io_init(void)
+{
+	DDRB=0xFF;
+  7c:	8f ef       	ldi	r24, 0xFF	; 255
+  7e:	87 bb       	out	0x17, r24	; 23
+	PORTB=0x00;
+  80:	18 ba       	out	0x18, r1	; 24
+	DDRC=0x0C;
+  82:	9c e0       	ldi	r25, 0x0C	; 12
+  84:	94 bb       	out	0x14, r25	; 20
+	PORTC=0xF3;
+  86:	93 ef       	ldi	r25, 0xF3	; 243
+  88:	95 bb       	out	0x15, r25	; 21
+	DDRD=0x00;
+  8a:	11 ba       	out	0x11, r1	; 17
+	PORTD=0xFF;
+  8c:	82 bb       	out	0x12, r24	; 18
+}
+  8e:	08 95       	ret
+
+00000090 <main>:
+int main(void)
+{
+	unsigned int i;
+	unsigned char j;
+	unsigned char k;
+	io_init();
+  90:	f5 df       	rcall	.-22     	; 0x7c <io_init>
+		if (PIND!=0xFF)   //*判断是否有按键按下
+		{
+			DelayMs(30); //*防抖动延时
+			k=~PIND;
+			k=k+50;
+		if(PIND!=0xFF)  //*再次判断（两次判断可有效滤除抖动）
+  92:	0c eb       	ldi	r16, 0xBC	; 188
+  94:	12 e0       	ldi	r17, 0x02	; 2
+			j=0;
+			while(j<k)
+			{
+				j++;
+				}
+				PORTB^=_BV(PB1);
+  96:	c2 e0       	ldi	r28, 0x02	; 2
+		{
+			
+		for (i=0; i<700; i++)
+		{
+			j=0;
+			while(j<k)
+  98:	d0 e0       	ldi	r29, 0x00	; 0
+	unsigned char k;
+	io_init();
+	
+    while(1)
+    {
+		if (PIND!=0xFF)   //*判断是否有按键按下
+  9a:	80 b3       	in	r24, 0x10	; 16
+  9c:	8f 3f       	cpi	r24, 0xFF	; 255
+  9e:	e9 f3       	breq	.-6      	; 0x9a <main+0xa>
+		{
+			DelayMs(30); //*防抖动延时
+  a0:	8e e1       	ldi	r24, 0x1E	; 30
+  a2:	90 e0       	ldi	r25, 0x00	; 0
+  a4:	dc df       	rcall	.-72     	; 0x5e <DelayMs>
+			k=~PIND;
+  a6:	30 b3       	in	r19, 0x10	; 16
+  a8:	30 95       	com	r19
+			k=k+50;
+  aa:	3e 5c       	subi	r19, 0xCE	; 206
+		if(PIND!=0xFF)  //*再次判断（两次判断可有效滤除抖动）
+  ac:	80 b3       	in	r24, 0x10	; 16
+  ae:	8f 3f       	cpi	r24, 0xFF	; 255
+  b0:	a1 f3       	breq	.-24     	; 0x9a <main+0xa>
+  b2:	c8 01       	movw	r24, r16
+  b4:	09 c0       	rjmp	.+18     	; 0xc8 <main+0x38>
+		{
+			
+		for (i=0; i<700; i++)
+		{
+			j=0;
+			while(j<k)
+  b6:	2d 2f       	mov	r18, r29
+			{
+				j++;
+  b8:	2f 5f       	subi	r18, 0xFF	; 255
+		{
+			
+		for (i=0; i<700; i++)
+		{
+			j=0;
+			while(j<k)
+  ba:	23 17       	cp	r18, r19
+  bc:	e9 f7       	brne	.-6      	; 0xb8 <main+0x28>
+			{
+				j++;
+				}
+				PORTB^=_BV(PB1);
+  be:	28 b3       	in	r18, 0x18	; 24
+  c0:	2c 27       	eor	r18, r28
+  c2:	28 bb       	out	0x18, r18	; 24
+  c4:	01 97       	sbiw	r24, 0x01	; 1
+			k=~PIND;
+			k=k+50;
+		if(PIND!=0xFF)  //*再次判断（两次判断可有效滤除抖动）
+		{
+			
+		for (i=0; i<700; i++)
+  c6:	19 f0       	breq	.+6      	; 0xce <main+0x3e>
+		{
+			j=0;
+			while(j<k)
+  c8:	33 23       	and	r19, r19
+  ca:	a9 f7       	brne	.-22     	; 0xb6 <main+0x26>
+  cc:	f8 cf       	rjmp	.-16     	; 0xbe <main+0x2e>
+			{
+				j++;
+				}
+				PORTB^=_BV(PB1);
+		}			
+			PORTB|=_BV(PB1);
+  ce:	c1 9a       	sbi	0x18, 1	; 24
+			while(PIND!=0xFF);
+  d0:	80 b3       	in	r24, 0x10	; 16
+  d2:	8f 3f       	cpi	r24, 0xFF	; 255
+  d4:	e9 f7       	brne	.-6      	; 0xd0 <main+0x40>
+  d6:	e1 cf       	rjmp	.-62     	; 0x9a <main+0xa>
+
+000000d8 <_exit>:
+  d8:	f8 94       	cli
+
+000000da <__stop_program>:
+  da:	ff cf       	rjmp	.-2      	; 0xda <__stop_program>

@@ -1,0 +1,21 @@
+﻿------ Build started: Project: Gcc_168PA_ADC, Configuration: Debug AVR ------
+Build started.
+Project "Gcc_168PA_ADC.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Compiler.targets" from project "D:\My Documents\Atmel Studio\Gcc_168PA_ADC\Gcc_168PA_ADC\Gcc_168PA_ADC.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		D:\Program Files (x86)\Atmel\Atmel Studio 6.0\make\make.exe all 
+		make: Nothing to be done for `all'.
+	Done executing task "RunCompilerTask".
+	Task "RunOutputFileVerifyTask"
+				Program Memory Usage 	:	484 bytes   3.0 % Full
+				Data Memory Usage 		:	12 bytes   1.2 % Full
+	Done executing task "RunOutputFileVerifyTask".
+Done building target "CoreBuild" in project "Gcc_168PA_ADC.cproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Avr.common.targets" from project "D:\My Documents\Atmel Studio\Gcc_168PA_ADC\Gcc_168PA_ADC\Gcc_168PA_ADC.cproj" (entry point):
+Done building target "Build" in project "Gcc_168PA_ADC.cproj".
+Done building project "Gcc_168PA_ADC.cproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

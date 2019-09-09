@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ADC_ADC_EXAMPLE1", "ADC_ADC_EXAMPLE1\ADC_ADC_EXAMPLE1.cproj", "{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ADC_EXAMPLE11", "ADC_EXAMPLE11\ADC_EXAMPLE11.cproj", "{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TC_TIMEOUT_EXAMPLE11", "TC_TIMEOUT_EXAMPLE11\TC_TIMEOUT_EXAMPLE11.cproj", "{C48D93C7-3823-493D-B8BF-198A4A7F0D07}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MEGA_CLOCK_EXAMPLE1", "MEGA_CLOCK_EXAMPLE1\MEGA_CLOCK_EXAMPLE1.cproj", "{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|AVR = Debug|AVR
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|ARM = Release|ARM
+		Release|AVR = Release|AVR
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Debug|ARM.Build.0 = Debug|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Debug|AVR.ActiveCfg = Debug|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Debug|Mixed Platforms.ActiveCfg = Debug|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Debug|Mixed Platforms.Build.0 = Debug|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Release|ARM.ActiveCfg = Release|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Release|ARM.Build.0 = Release|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Release|AVR.ActiveCfg = Release|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Release|Mixed Platforms.ActiveCfg = Release|ARM
+		{C7E6BE8B-ADD5-4BD0-8D69-945F660130EC}.Release|Mixed Platforms.Build.0 = Release|ARM
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Debug|ARM.ActiveCfg = Debug|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Debug|AVR.ActiveCfg = Debug|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Debug|AVR.Build.0 = Debug|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Debug|Mixed Platforms.ActiveCfg = Debug|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Debug|Mixed Platforms.Build.0 = Debug|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Release|ARM.ActiveCfg = Release|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Release|AVR.ActiveCfg = Release|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Release|AVR.Build.0 = Release|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Release|Mixed Platforms.ActiveCfg = Release|AVR
+		{04DECEAE-ACA1-4EB8-895B-06C10751FDF9}.Release|Mixed Platforms.Build.0 = Release|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Debug|ARM.ActiveCfg = Debug|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Debug|AVR.Build.0 = Debug|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Debug|Mixed Platforms.ActiveCfg = Debug|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Debug|Mixed Platforms.Build.0 = Debug|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Release|ARM.ActiveCfg = Release|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Release|AVR.ActiveCfg = Release|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Release|AVR.Build.0 = Release|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Release|Mixed Platforms.ActiveCfg = Release|AVR
+		{C48D93C7-3823-493D-B8BF-198A4A7F0D07}.Release|Mixed Platforms.Build.0 = Release|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Debug|ARM.ActiveCfg = Debug|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Debug|AVR.ActiveCfg = Debug|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Debug|AVR.Build.0 = Debug|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Debug|Mixed Platforms.ActiveCfg = Debug|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Debug|Mixed Platforms.Build.0 = Debug|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Release|ARM.ActiveCfg = Release|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Release|AVR.ActiveCfg = Release|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Release|AVR.Build.0 = Release|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Release|Mixed Platforms.ActiveCfg = Release|AVR
+		{A26CE5AD-B11D-43B7-911A-EDE6BC0C8DCE}.Release|Mixed Platforms.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

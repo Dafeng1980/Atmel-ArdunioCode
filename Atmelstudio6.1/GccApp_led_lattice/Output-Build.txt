@@ -1,0 +1,21 @@
+﻿------ Build started: Project: GccApp_led_lattice, Configuration: Debug AVR ------
+Build started.
+Project "GccApp_led_lattice.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Compiler.targets" from project "D:\My Documents\Atmel Studio\GccApp_led_lattice\GccApp_led_lattice\GccApp_led_lattice.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		D:\Program Files (x86)\Atmel\Atmel Studio 6.0\make\make.exe all 
+		make: Nothing to be done for `all'.
+	Done executing task "RunCompilerTask".
+	Task "RunOutputFileVerifyTask"
+				Program Memory Usage 	:	1782 bytes   21.8 % Full
+				Data Memory Usage 		:	87 bytes   8.5 % Full
+	Done executing task "RunOutputFileVerifyTask".
+Done building target "CoreBuild" in project "GccApp_led_lattice.cproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Avr.common.targets" from project "D:\My Documents\Atmel Studio\GccApp_led_lattice\GccApp_led_lattice\GccApp_led_lattice.cproj" (entry point):
+Done building target "Build" in project "GccApp_led_lattice.cproj".
+Done building project "GccApp_led_lattice.cproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

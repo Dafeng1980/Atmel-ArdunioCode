@@ -1,0 +1,36 @@
+(ExpressProject ""
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (File ".\design7.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (NoModify))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (LastUsedLibraryBrowseDirectory "D:\Cadence\SPB_16.3\tools\capture\library")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\design7.dsn")
+      (Path "Design Resources" ".\design7.dsn" "SCHEMATIC1")
+      (Select "Design Resources" ".\design7.dsn" "SCHEMATIC1" "PAGE1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -32 0 200 0 419"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -32 54 1106 54 513")
+        (Scroll "17 238")
+        (Zoom "143")
+        (Occurrence "/"))
+      (Path "I:\MYDESG\DESIGN7.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))))

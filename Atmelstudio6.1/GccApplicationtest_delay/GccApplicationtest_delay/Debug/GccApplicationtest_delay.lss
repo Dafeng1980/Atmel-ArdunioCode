@@ -1,0 +1,260 @@
+
+GccApplicationtest_delay.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000ec  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  00000140  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000085  00000000  00000000  0000080c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000080  00000000  00000000  00000898  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   000003d8  00000000  00000000  00000918  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000119  00000000  00000000  00000cf0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000367  00000000  00000000  00000e09  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000054  00000000  00000000  00001170  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000100  00000000  00000000  000011c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000064  00000000  00000000  000012c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ec ee       	ldi	r30, 0xEC	; 236
+  3a:	f0 e0       	ldi	r31, 0x00	; 0
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a0 36       	cpi	r26, 0x60	; 96
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	29 d0       	rcall	.+82     	; 0xac <main>
+  5a:	46 c0       	rjmp	.+140    	; 0xe8 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <delayMs>:
+#define uchar unsigned char
+
+void delayMs(uint ms)
+{
+	uint i;
+	 for(i=0;i<ms;i++)
+  5e:	00 97       	sbiw	r24, 0x00	; 0
+  60:	61 f0       	breq	.+24     	; 0x7a <delayMs+0x1c>
+  62:	20 e0       	ldi	r18, 0x00	; 0
+  64:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  66:	42 ec       	ldi	r20, 0xC2	; 194
+  68:	51 e0       	ldi	r21, 0x01	; 1
+  6a:	fa 01       	movw	r30, r20
+  6c:	31 97       	sbiw	r30, 0x01	; 1
+  6e:	f1 f7       	brne	.-4      	; 0x6c <delayMs+0xe>
+  70:	2f 5f       	subi	r18, 0xFF	; 255
+  72:	3f 4f       	sbci	r19, 0xFF	; 255
+  74:	28 17       	cp	r18, r24
+  76:	39 07       	cpc	r19, r25
+  78:	c1 f7       	brne	.-16     	; 0x6a <delayMs+0xc>
+  7a:	08 95       	ret
+
+0000007c <led_out_a>:
+		_delay_loop_2(250*1.8);
+	
+}
+void led_out_a(unsigned char led_a) {
+
+	PORTB = led_a & 0x3F;								/*将输入值的低6位赋值给PB口*/
+  7c:	98 2f       	mov	r25, r24
+  7e:	9f 73       	andi	r25, 0x3F	; 63
+  80:	98 bb       	out	0x18, r25	; 24
+	if (led_a & 0x80) {									/*取输入值最高位bit7并对应输出*/
+  82:	88 23       	and	r24, r24
+  84:	14 f4       	brge	.+4      	; 0x8a <led_out_a+0xe>
+		PORTC |= (1 << PC3);							/*置高其中一位*/
+  86:	ab 9a       	sbi	0x15, 3	; 21
+  88:	01 c0       	rjmp	.+2      	; 0x8c <led_out_a+0x10>
+		}
+	else {
+		PORTC &= ~(1 << PC3);							/*置低其中一位*/
+  8a:	ab 98       	cbi	0x15, 3	; 21
+		}
+	if (led_a & 0x40) {									/*取输入值最高位bit6并对应输出*/
+  8c:	86 ff       	sbrs	r24, 6
+  8e:	02 c0       	rjmp	.+4      	; 0x94 <led_out_a+0x18>
+		PORTC |= (1 << PC2);
+  90:	aa 9a       	sbi	0x15, 2	; 21
+  92:	08 95       	ret
+		}
+	else {
+		PORTC &= ~(1 << PC2);
+  94:	aa 98       	cbi	0x15, 2	; 21
+  96:	08 95       	ret
+
+00000098 <io_init>:
+	返回参数：无
+	特殊说明：此函数后面会多次用到，请留意。
+*/
+void io_init(void) {
+
+	DDRB = 0xFF;										/*方向输出*/
+  98:	8f ef       	ldi	r24, 0xFF	; 255
+  9a:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x00;										/*低电平*/
+  9c:	18 ba       	out	0x18, r1	; 24
+	DDRC = 0x0C;										/*对应LED引脚为输出*/
+  9e:	9c e0       	ldi	r25, 0x0C	; 12
+  a0:	94 bb       	out	0x14, r25	; 20
+	PORTC = 0xF3;										/*对应LED引脚输出低电平*/
+  a2:	93 ef       	ldi	r25, 0xF3	; 243
+  a4:	95 bb       	out	0x15, r25	; 21
+	DDRD = 0x00;										/*方向输入*/
+  a6:	11 ba       	out	0x11, r1	; 17
+	PORTD = 0xFF;										/*打开内部上拉*/
+  a8:	82 bb       	out	0x12, r24	; 18
+}
+  aa:	08 95       	ret
+
+000000ac <main>:
+
+int main(void)
+{
+	uchar j=0;
+	io_init();
+  ac:	f5 df       	rcall	.-22     	; 0x98 <io_init>
+    while(1)
+    {
+        /*程序中主体部分放在一个死循环中*/
+
+        /*产生左移动效果*/
+        j = 0x01;										/*给显示变量赋值，让其最低位为高电平*/
+  ae:	c1 e0       	ldi	r28, 0x01	; 1
+        while (j != 0) {								/*判断显示变量是否为0*/
+  b0:	ee 24       	eor	r14, r14
+  b2:	ff 24       	eor	r15, r15
+  b4:	68 94       	set
+  b6:	e3 f8       	bld	r14, 3
+  b8:	00 e8       	ldi	r16, 0x80	; 128
+    while(1)
+    {
+        /*程序中主体部分放在一个死循环中*/
+
+        /*产生左移动效果*/
+        j = 0x01;										/*给显示变量赋值，让其最低位为高电平*/
+  ba:	dd 24       	eor	r13, r13
+  bc:	d3 94       	inc	r13
+  be:	06 c0       	rjmp	.+12     	; 0xcc <main+0x20>
+        while (j != 0) {								/*判断显示变量是否为0*/
+        led_out_a(j);								/*输出变量到发光二极管*/
+  c0:	8c 2f       	mov	r24, r28
+  c2:	dc df       	rcall	.-72     	; 0x7c <led_out_a>
+        delayMs(200);
+  c4:	88 ec       	ldi	r24, 0xC8	; 200
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	ca df       	rcall	.-108    	; 0x5e <delayMs>
+        j = j << 1;									/*左移动显示变量，产生流水灯效果*/
+  ca:	cc 0f       	add	r28, r28
+    {
+        /*程序中主体部分放在一个死循环中*/
+
+        /*产生左移动效果*/
+        j = 0x01;										/*给显示变量赋值，让其最低位为高电平*/
+        while (j != 0) {								/*判断显示变量是否为0*/
+  cc:	cc 23       	and	r28, r28
+  ce:	c1 f7       	brne	.-16     	; 0xc0 <main+0x14>
+  d0:	e7 01       	movw	r28, r14
+  d2:	10 2f       	mov	r17, r16
+			}
+		
+		/*产生右移动效果*/
+		j = 0x80;
+		while (j != 0) {
+			led_out_a(j);
+  d4:	81 2f       	mov	r24, r17
+  d6:	d2 df       	rcall	.-92     	; 0x7c <led_out_a>
+			delayMs(200);
+  d8:	88 ec       	ldi	r24, 0xC8	; 200
+  da:	90 e0       	ldi	r25, 0x00	; 0
+  dc:	c0 df       	rcall	.-128    	; 0x5e <delayMs>
+			j = j >> 1;
+  de:	16 95       	lsr	r17
+  e0:	21 97       	sbiw	r28, 0x01	; 1
+        j = j << 1;									/*左移动显示变量，产生流水灯效果*/
+			}
+		
+		/*产生右移动效果*/
+		j = 0x80;
+		while (j != 0) {
+  e2:	c1 f7       	brne	.-16     	; 0xd4 <main+0x28>
+    while(1)
+    {
+        /*程序中主体部分放在一个死循环中*/
+
+        /*产生左移动效果*/
+        j = 0x01;										/*给显示变量赋值，让其最低位为高电平*/
+  e4:	cd 2d       	mov	r28, r13
+  e6:	f2 cf       	rjmp	.-28     	; 0xcc <main+0x20>
+
+000000e8 <_exit>:
+  e8:	f8 94       	cli
+
+000000ea <__stop_program>:
+  ea:	ff cf       	rjmp	.-2      	; 0xea <__stop_program>

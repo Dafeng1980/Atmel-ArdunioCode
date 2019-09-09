@@ -1,0 +1,32 @@
+﻿------ Build started: Project: GccApplicationtest_delay, Configuration: Debug AVR ------
+Build started.
+Project "GccApplicationtest_delay.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "D:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Compiler.targets" from project "D:\My Documents\Atmel Studio\GccApplicationtest_delay\GccApplicationtest_delay\GccApplicationtest_delay.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		D:\Program Files (x86)\Atmel\Atmel Studio 6.0\make\make.exe all 
+		Building file: .././GccApplicationtest_delay.c
+		Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.0_663) 4.6.2
+		"D:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-gcc.exe" -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "GccApplicationtest_delay.d" -MT"GccApplicationtest_delay.d" -MT"GccApplicationtest_delay.o"  -mmcu=atmega8   -o"GccApplicationtest_delay.o" ".././GccApplicationtest_delay.c" 
+		In file included from .././GccApplicationtest_delay.c:10:0:
+d:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/delay.h(36,2): #warning "This file has been moved to <util/delay.h>." [-Wcpp]
+		In file included from d:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/delay.h:37:0,
+		                 from .././GccApplicationtest_delay.c:10:
+d:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay.h(90,3): #warning "F_CPU not defined for <util/delay.h>" [-Wcpp]
+		.././GccApplicationtest_delay.c: In function 'main':
+D:\My Documents\Atmel Studio\GccApplicationtest_delay\GccApplicationtest_delay\GccApplicationtest_delay.c(69,9): implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+		Finished building: .././GccApplicationtest_delay.c
+		Building target: GccApplicationtest_delay.elf
+		Invoking: AVR/GNU Linker : (AVR_8_bit_GNU_Toolchain_3.4.0_663) 4.6.2
+		"D:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-gcc.exe" -o GccApplicationtest_delay.elf  GccApplicationtest_delay.o   -Wl,-Map="GccApplicationtest_delay.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group  -mmcu=atmega8  
+		GccApplicationtest_delay.o: In function `main':
+D:\My Documents\Atmel Studio\GccApplicationtest_delay\GccApplicationtest_delay\Debug/.././GccApplicationtest_delay.c(69,1): undefined reference to `delay_ms'
+D:\My Documents\Atmel Studio\GccApplicationtest_delay\GccApplicationtest_delay\Debug/.././GccApplicationtest_delay.c(77,1): undefined reference to `delay_ms'
+		collect2: ld returned 1 exit status
+		make: *** [GccApplicationtest_delay.elf] Error 1
+	Done executing task "RunCompilerTask" -- FAILED.
+Done building target "CoreBuild" in project "GccApplicationtest_delay.cproj" -- FAILED.
+Done building project "GccApplicationtest_delay.cproj" -- FAILED.
+
+Build FAILED.
+========== Build: 0 succeeded or up-to-date, 1 failed, 0 skipped ==========

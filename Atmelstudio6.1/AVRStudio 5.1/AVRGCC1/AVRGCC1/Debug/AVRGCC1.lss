@@ -1,0 +1,210 @@
+
+AVRGCC1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000a4  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  000000f8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000090  00000000  00000000  000007c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000020  00000000  00000000  00000854  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00000042  00000000  00000000  00000874  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000010e  00000000  00000000  000008b6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000000a5  00000000  00000000  000009c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001d7  00000000  00000000  00000a69  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000050  00000000  00000000  00000c40  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000000b0  00000000  00000000  00000c90  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000082  00000000  00000000  00000d40  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_pubtypes 0000001e  00000000  00000000  00000dc2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	2d d0       	rcall	.+90     	; 0x8e <main>
+  34:	35 c0       	rjmp	.+106    	; 0xa0 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <delay_ms>:
+#include <avr/iom8.h>
+
+void delay_ms(unsigned int i) {
+	unsigned char b;
+	unsigned int a;
+	for (a = 1; a < i; a++) 
+  38:	82 30       	cpi	r24, 0x02	; 2
+  3a:	91 05       	cpc	r25, r1
+  3c:	48 f4       	brcc	.+18     	; 0x50 <__SREG__+0x11>
+  3e:	08 95       	ret
+  40:	41 50       	subi	r20, 0x01	; 1
+	{
+		for (b = 1; b; b++)
+  42:	f1 f7       	brne	.-4      	; 0x40 <__SREG__+0x1>
+#include <avr/iom8.h>
+
+void delay_ms(unsigned int i) {
+	unsigned char b;
+	unsigned int a;
+	for (a = 1; a < i; a++) 
+  44:	2f 5f       	subi	r18, 0xFF	; 255
+  46:	3f 4f       	sbci	r19, 0xFF	; 255
+  48:	28 17       	cp	r18, r24
+  4a:	39 07       	cpc	r19, r25
+  4c:	21 f4       	brne	.+8      	; 0x56 <__SREG__+0x17>
+  4e:	08 95       	ret
+  50:	21 e0       	ldi	r18, 0x01	; 1
+  52:	30 e0       	ldi	r19, 0x00	; 0
+ */ 
+#include <avr/io.h>
+ 
+#include <avr/iom8.h>
+
+void delay_ms(unsigned int i) {
+  54:	5f ef       	ldi	r21, 0xFF	; 255
+  56:	45 2f       	mov	r20, r21
+  58:	f3 cf       	rjmp	.-26     	; 0x40 <__SREG__+0x1>
+
+0000005a <led_out_a>:
+		}
+	}
+	
+}
+void led_out_a(unsigned char led_a) {
+	PORTB = led_a & 0x3F;
+  5a:	98 2f       	mov	r25, r24
+  5c:	9f 73       	andi	r25, 0x3F	; 63
+  5e:	98 bb       	out	0x18, r25	; 24
+	if (led_a & 0x80)
+  60:	88 23       	and	r24, r24
+  62:	14 f4       	brge	.+4      	; 0x68 <led_out_a+0xe>
+	{
+        PORTC |= (1 << PC3);
+  64:	ab 9a       	sbi	0x15, 3	; 21
+  66:	01 c0       	rjmp	.+2      	; 0x6a <led_out_a+0x10>
+		
+	} 
+	else
+	{ 
+		PORTC &= ~(1 << PC3);
+  68:	ab 98       	cbi	0x15, 3	; 21
+	}
+	if (led_a & 0x40)
+  6a:	86 ff       	sbrs	r24, 6
+  6c:	02 c0       	rjmp	.+4      	; 0x72 <led_out_a+0x18>
+	{
+        PORTC |= (1 << PC2);
+  6e:	aa 9a       	sbi	0x15, 2	; 21
+  70:	08 95       	ret
+	} 
+	else
+	{
+		PORTC &= (1 << PC2);
+  72:	85 b3       	in	r24, 0x15	; 21
+  74:	84 70       	andi	r24, 0x04	; 4
+  76:	85 bb       	out	0x15, r24	; 21
+  78:	08 95       	ret
+
+0000007a <io_init>:
+	}
+}
+void io_init(void) {
+	DDRB = 0xFF;
+  7a:	8f ef       	ldi	r24, 0xFF	; 255
+  7c:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x00;
+  7e:	18 ba       	out	0x18, r1	; 24
+	DDRC = 0x0C;
+  80:	9c e0       	ldi	r25, 0x0C	; 12
+  82:	94 bb       	out	0x14, r25	; 20
+	PORTC = 0xF3;
+  84:	93 ef       	ldi	r25, 0xF3	; 243
+  86:	95 bb       	out	0x15, r25	; 21
+	DDRD = 0x00;
+  88:	11 ba       	out	0x11, r1	; 17
+	PORTD = 0xFF;
+  8a:	82 bb       	out	0x12, r24	; 18
+}	
+  8c:	08 95       	ret
+
+0000008e <main>:
+	
+	
+
+void main(void)
+{
+  8e:	1f 93       	push	r17
+	unsigned char j = 0;
+	io_init();
+  90:	f4 df       	rcall	.-24     	; 0x7a <io_init>
+	
+    while(1)
+    {
+		j = 0x01;
+  92:	11 e0       	ldi	r17, 0x01	; 1
+		while (j != 0) {
+			led_out_a(1);
+  94:	81 e0       	ldi	r24, 0x01	; 1
+  96:	e1 df       	rcall	.-62     	; 0x5a <led_out_a>
+			delay_ms(200);
+			j = j << 1;
+  98:	11 0f       	add	r17, r17
+	io_init();
+	
+    while(1)
+    {
+		j = 0x01;
+		while (j != 0) {
+  9a:	e1 f7       	brne	.-8      	; 0x94 <main+0x6>
+	unsigned char j = 0;
+	io_init();
+	
+    while(1)
+    {
+		j = 0x01;
+  9c:	11 e0       	ldi	r17, 0x01	; 1
+  9e:	fa cf       	rjmp	.-12     	; 0x94 <main+0x6>
+
+000000a0 <_exit>:
+  a0:	f8 94       	cli
+
+000000a2 <__stop_program>:
+  a2:	ff cf       	rjmp	.-2      	; 0xa2 <__stop_program>

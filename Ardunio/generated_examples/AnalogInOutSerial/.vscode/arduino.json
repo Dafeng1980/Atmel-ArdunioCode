@@ -1,0 +1,6 @@
+{
+    "sketch": "AnalogInOutSerial.ino",
+    "port": "COM1",
+    "board": null,
+    "configuration": null
+}

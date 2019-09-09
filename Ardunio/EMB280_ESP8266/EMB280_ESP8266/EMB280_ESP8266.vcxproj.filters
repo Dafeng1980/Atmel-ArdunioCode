@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EMB280_ESP8266.ino" />
+    <None Include="ZsensorBME280.ino" />
+    <None Include="ZgatewayBT.ino" />
+    <None Include="ZgatewayIR.ino" />
+    <None Include="ZgatewayRF.ino" />
+    <None Include="ZgatewayRF2.ino" />
+    <None Include="ZgatewayRFM69.ino" />
+    <None Include="ZgatewaySRFB.ino" />
+    <None Include="ZsensorADC.ino" />
+    <None Include="ZsensorBH1750.ino" />
+    <None Include="ZsensorDHT.ino" />
+    <None Include="ZsensorHCSR501.ino" />
+    <None Include="ZsensorINA226.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.EMB280_ESP8266.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_BME280.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_BT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_IR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_RF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_ADC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_BH1750.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_DHT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_HCSR501.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_INA226.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_RFM69.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config_SRFB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="User_config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

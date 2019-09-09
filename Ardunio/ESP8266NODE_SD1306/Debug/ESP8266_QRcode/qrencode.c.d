@@ -1,0 +1,19 @@
+C:\Users\Dafen\AppData\Local\Temp\VMBuilds\ESP8266NODE_SD1306\esp8266com_nodemcuv2\Debug\ESP8266_QRcode\qrencode.c.o: \
+ D:\Documents\Arduino\libraries\ESP8266_QRcode\src\qrencode.c \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/string.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/newlib.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/config.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/machine/ieeefp.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/features.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/xtensa/config/core-isa.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/reent.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/_types.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/machine/_types.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/machine/_default_types.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/lock.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/cdefs.h \
+ C:\Arduino1_8\hardware\esp8266com\esp8266/tools/sdk/libc/xtensa-lx106-elf/include/sys/string.h \
+ D:\Documents\Arduino\libraries\ESP8266_QRcode\src\qrencode.h \
+ D:\Documents\Arduino\libraries\ESP8266_QRcode\src\qrbits.h

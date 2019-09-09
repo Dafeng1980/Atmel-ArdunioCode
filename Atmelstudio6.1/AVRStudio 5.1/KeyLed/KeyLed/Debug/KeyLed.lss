@@ -1,0 +1,175 @@
+
+KeyLed.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000007a  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  000000d0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000090  00000000  00000000  0000079c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000020  00000000  00000000  0000082c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00000027  00000000  00000000  0000084c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000097  00000000  00000000  00000873  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000063  00000000  00000000  0000090a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001c8  00000000  00000000  0000096d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000030  00000000  00000000  00000b38  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000094  00000000  00000000  00000b68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_pubtypes 0000001e  00000000  00000000  00000bfc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	0c d0       	rcall	.+24     	; 0x4c <main>
+  34:	20 c0       	rjmp	.+64     	; 0x76 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <io_init>:
+ */ 
+
+#include <avr/io.h>
+
+void io_init(void) {
+	DDRB=0xff;
+  38:	8f ef       	ldi	r24, 0xFF	; 255
+  3a:	87 bb       	out	0x17, r24	; 23
+	PORTB=0x00;
+  3c:	18 ba       	out	0x18, r1	; 24
+	DDRC=0x0c;
+  3e:	9c e0       	ldi	r25, 0x0C	; 12
+  40:	94 bb       	out	0x14, r25	; 20
+	PORTC=0xf3;
+  42:	93 ef       	ldi	r25, 0xF3	; 243
+  44:	95 bb       	out	0x15, r25	; 21
+	DDRD=0x00;
+  46:	11 ba       	out	0x11, r1	; 17
+	PORTD=0xff;
+  48:	82 bb       	out	0x12, r24	; 18
+	
+}
+  4a:	08 95       	ret
+
+0000004c <main>:
+
+int main(void)
+{
+	io_init();
+  4c:	f5 df       	rcall	.-22     	; 0x38 <io_init>
+	
+    while(1)
+    {
+		if ((PIND & (1<<PD2)) ==0)
+		{
+			PORTB = 1 << PB0;
+  4e:	41 e0       	ldi	r20, 0x01	; 1
+		}
+		if ((PIND&(1<<PD3))==0)
+		{
+			PORTB=1<<PB1;
+  50:	32 e0       	ldi	r19, 0x02	; 2
+		}
+		if ((PIND&(1<<PD4))==0)
+		{
+			PORTB=1<<PB2;
+  52:	24 e0       	ldi	r18, 0x04	; 4
+		}
+		if ((PIND&(1<<PD5))==0)
+		{
+			PORTB=1<<PB3;
+  54:	98 e0       	ldi	r25, 0x08	; 8
+		}
+		if ((PIND&(1<<PD6))==0)
+		{
+			PORTB=1<<PB4;
+  56:	80 e1       	ldi	r24, 0x10	; 16
+		}
+		if ((PIND&(1<<PD7))==0)
+		{
+			PORTB=1<<PB5;
+  58:	50 e2       	ldi	r21, 0x20	; 32
+{
+	io_init();
+	
+    while(1)
+    {
+		if ((PIND & (1<<PD2)) ==0)
+  5a:	82 9b       	sbis	0x10, 2	; 16
+		{
+			PORTB = 1 << PB0;
+  5c:	48 bb       	out	0x18, r20	; 24
+		}
+		if ((PIND&(1<<PD3))==0)
+  5e:	83 9b       	sbis	0x10, 3	; 16
+		{
+			PORTB=1<<PB1;
+  60:	38 bb       	out	0x18, r19	; 24
+		}
+		if ((PIND&(1<<PD4))==0)
+  62:	84 9b       	sbis	0x10, 4	; 16
+		{
+			PORTB=1<<PB2;
+  64:	28 bb       	out	0x18, r18	; 24
+		}
+		if ((PIND&(1<<PD5))==0)
+  66:	85 9b       	sbis	0x10, 5	; 16
+		{
+			PORTB=1<<PB3;
+  68:	98 bb       	out	0x18, r25	; 24
+		}
+		if ((PIND&(1<<PD6))==0)
+  6a:	86 9b       	sbis	0x10, 6	; 16
+		{
+			PORTB=1<<PB4;
+  6c:	88 bb       	out	0x18, r24	; 24
+		}
+		if ((PIND&(1<<PD7))==0)
+  6e:	87 99       	sbic	0x10, 7	; 16
+  70:	f4 cf       	rjmp	.-24     	; 0x5a <main+0xe>
+		{
+			PORTB=1<<PB5;
+  72:	58 bb       	out	0x18, r21	; 24
+  74:	f2 cf       	rjmp	.-28     	; 0x5a <main+0xe>
+
+00000076 <_exit>:
+  76:	f8 94       	cli
+
+00000078 <__stop_program>:
+  78:	ff cf       	rjmp	.-2      	; 0x78 <__stop_program>

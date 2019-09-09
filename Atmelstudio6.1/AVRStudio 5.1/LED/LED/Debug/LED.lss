@@ -1,0 +1,351 @@
+
+LED.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000152  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  00000152  000001c6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006cc  00000000  00000000  000001d8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000090  00000000  00000000  000008a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  00000934  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 00000041  00000000  00000000  00000954  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000016a  00000000  00000000  00000995  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000000fc  00000000  00000000  00000aff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000031a  00000000  00000000  00000bfb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000050  00000000  00000000  00000f18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000000c7  00000000  00000000  00000f68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000c2  00000000  00000000  0000102f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_pubtypes 0000002b  00000000  00000000  000010f1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+   4:	23 c0       	rjmp	.+70     	; 0x4c <__bad_interrupt>
+   6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+   8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+   a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+   c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+   e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+  10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+  12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+  14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+  16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+  18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+  1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+  1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+  1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+  20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+  22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+  24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e5       	ldi	r30, 0x52	; 82
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 37       	cpi	r26, 0x70	; 112
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+  48:	51 d0       	rcall	.+162    	; 0xec <main>
+  4a:	81 c0       	rjmp	.+258    	; 0x14e <_exit>
+
+0000004c <__bad_interrupt>:
+  4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
+
+0000004e <DelayMs>:
+	返回参数：无
+*/
+void DelayMs(unsigned int ms)
+{
+unsigned int i;
+for(i=0;i<ms;i++)
+  4e:	00 97       	sbiw	r24, 0x00	; 0
+  50:	61 f0       	breq	.+24     	; 0x6a <DelayMs+0x1c>
+  52:	20 e0       	ldi	r18, 0x00	; 0
+  54:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  56:	4a ef       	ldi	r20, 0xFA	; 250
+  58:	50 e0       	ldi	r21, 0x00	; 0
+  5a:	fa 01       	movw	r30, r20
+  5c:	31 97       	sbiw	r30, 0x01	; 1
+  5e:	f1 f7       	brne	.-4      	; 0x5c <DelayMs+0xe>
+  60:	2f 5f       	subi	r18, 0xFF	; 255
+  62:	3f 4f       	sbci	r19, 0xFF	; 255
+  64:	28 17       	cp	r18, r24
+  66:	39 07       	cpc	r19, r25
+  68:	c0 f3       	brcs	.-16     	; 0x5a <DelayMs+0xc>
+  6a:	08 95       	ret
+
+0000006c <led_out_b>:
+			字节低4位对应数码管显示值。
+		
+	返回参数：无
+	特殊说明：此函数后面常用到，请留意。
+*/
+void led_out_b(unsigned char led_b) {
+  6c:	df 93       	push	r29
+  6e:	cf 93       	push	r28
+  70:	cd b7       	in	r28, 0x3d	; 61
+  72:	de b7       	in	r29, 0x3e	; 62
+  74:	60 97       	sbiw	r28, 0x10	; 16
+  76:	0f b6       	in	r0, 0x3f	; 63
+  78:	f8 94       	cli
+  7a:	de bf       	out	0x3e, r29	; 62
+  7c:	0f be       	out	0x3f, r0	; 63
+  7e:	cd bf       	out	0x3d, r28	; 61
+
+	unsigned char i;
+	unsigned char disp[] = {0xB7,0x14,0xAD,0x9D,0x1E,0x9B,0xBB,0x15,0xBF,0x9F,0x3F,0xBA,0xA3,0xBC,0xAB,0x2B};
+  80:	de 01       	movw	r26, r28
+  82:	11 96       	adiw	r26, 0x01	; 1
+  84:	e0 e6       	ldi	r30, 0x60	; 96
+  86:	f0 e0       	ldi	r31, 0x00	; 0
+  88:	90 e1       	ldi	r25, 0x10	; 16
+  8a:	01 90       	ld	r0, Z+
+  8c:	0d 92       	st	X+, r0
+  8e:	91 50       	subi	r25, 0x01	; 1
+  90:	e1 f7       	brne	.-8      	; 0x8a <led_out_b+0x1e>
+
+	/*提取处理带入参数*/
+	i = disp[led_b&0x0F];								/*取出低4位字节数值，并带出码值*/
+  92:	28 2f       	mov	r18, r24
+  94:	30 e0       	ldi	r19, 0x00	; 0
+  96:	f9 01       	movw	r30, r18
+  98:	ef 70       	andi	r30, 0x0F	; 15
+  9a:	f0 70       	andi	r31, 0x00	; 0
+  9c:	ec 0f       	add	r30, r28
+  9e:	fd 1f       	adc	r31, r29
+  a0:	91 81       	ldd	r25, Z+1	; 0x01
+	if (led_b > 0x7F) {									/*判断其bit7值，确定是否显示数值*/
+  a2:	88 23       	and	r24, r24
+  a4:	0c f4       	brge	.+2      	; 0xa8 <led_out_b+0x3c>
+		i = 0x00;
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+		}
+	if (led_b & 0x10) {									/*判断其bit4值，确定小数点状态*/
+  a8:	24 fd       	sbrc	r18, 4
+		i = i | 0x40;
+  aa:	90 64       	ori	r25, 0x40	; 64
+		}
+
+	/*输出到IO口*/
+	PORTB=i&0x3F;									/*将输入值的低6位赋值给PB口*/
+  ac:	89 2f       	mov	r24, r25
+  ae:	8f 73       	andi	r24, 0x3F	; 63
+  b0:	88 bb       	out	0x18, r24	; 24
+	if (i & 0x80) {										/*取输入值最高位bit7并对应输出*/
+  b2:	99 23       	and	r25, r25
+  b4:	14 f4       	brge	.+4      	; 0xba <led_out_b+0x4e>
+		PORTC|=(1 << PC3);							/*置高其中一位*/
+  b6:	ab 9a       	sbi	0x15, 3	; 21
+  b8:	01 c0       	rjmp	.+2      	; 0xbc <led_out_b+0x50>
+		}
+	else {
+		PORTC &=~(1 << PC3);							/*置低其中一位*/
+  ba:	ab 98       	cbi	0x15, 3	; 21
+		}
+	if (i & 0x40) {										/*取输入值最高位bit6并对应输出*/
+  bc:	96 ff       	sbrs	r25, 6
+  be:	02 c0       	rjmp	.+4      	; 0xc4 <led_out_b+0x58>
+		PORTC|=(1 << PC2);
+  c0:	aa 9a       	sbi	0x15, 2	; 21
+  c2:	01 c0       	rjmp	.+2      	; 0xc6 <led_out_b+0x5a>
+		}
+	else {
+		PORTC&=~(1 << PC2);
+  c4:	aa 98       	cbi	0x15, 2	; 21
+		}
+}
+  c6:	60 96       	adiw	r28, 0x10	; 16
+  c8:	0f b6       	in	r0, 0x3f	; 63
+  ca:	f8 94       	cli
+  cc:	de bf       	out	0x3e, r29	; 62
+  ce:	0f be       	out	0x3f, r0	; 63
+  d0:	cd bf       	out	0x3d, r28	; 61
+  d2:	cf 91       	pop	r28
+  d4:	df 91       	pop	r29
+  d6:	08 95       	ret
+
+000000d8 <io_init>:
+	返回参数：无
+	特殊说明：此函数后面会多次用到，请留意。
+*/
+void io_init(void) {
+
+	DDRB=0xFF;										/*方向输出*/
+  d8:	8f ef       	ldi	r24, 0xFF	; 255
+  da:	87 bb       	out	0x17, r24	; 23
+	PORTB=0x00;										/*低电平*/
+  dc:	18 ba       	out	0x18, r1	; 24
+	DDRC=0x0C;										/*对应LED引脚为输出*/
+  de:	9c e0       	ldi	r25, 0x0C	; 12
+  e0:	94 bb       	out	0x14, r25	; 20
+	PORTC=0xF3;										/*对应LED引脚输出低电平*/
+  e2:	93 ef       	ldi	r25, 0xF3	; 243
+  e4:	95 bb       	out	0x15, r25	; 21
+	DDRD=0x00;										/*方向输入*/
+  e6:	11 ba       	out	0x11, r1	; 17
+	PORTD=0xFF;										/*打开内部上拉*/
+  e8:	82 bb       	out	0x12, r24	; 18
+}
+  ea:	08 95       	ret
+
+000000ec <main>:
+
+/*主函数*/
+void main(void) {
+  ec:	ef 92       	push	r14
+  ee:	ff 92       	push	r15
+  f0:	0f 93       	push	r16
+  f2:	1f 93       	push	r17
+
+	unsigned char j = 0;
+
+	io_init();
+  f4:	f1 df       	rcall	.-30     	; 0xd8 <io_init>
+
+	while (1) {											/*程序中主体部分放在一个死循环中*/
+		
+		/*显示递增*/
+		for (j = 0; j < 10; j ++) {						/*标准for循环用法*/
+  f6:	10 e0       	ldi	r17, 0x00	; 0
+		led_out_b(0x80);								/*熄灭，函数特殊用法*/
+		DelayMs(500);
+		
+		/*显示递减*/
+		//for (j = 9; j > 0; j --) {					/*请大家分析两种语句的区别*/
+		for (j = 9; j < 10; j --) {						/*可以对比两种方式的结果*/
+  f8:	09 e0       	ldi	r16, 0x09	; 9
+  fa:	0f 2e       	mov	r0, r31
+  fc:	f6 e0       	ldi	r31, 0x06	; 6
+  fe:	ff 2e       	mov	r15, r31
+ 100:	f0 2d       	mov	r31, r0
+	io_init();
+
+	while (1) {											/*程序中主体部分放在一个死循环中*/
+		
+		/*显示递增*/
+		for (j = 0; j < 10; j ++) {						/*标准for循环用法*/
+ 102:	ee 24       	eor	r14, r14
+ 104:	06 c0       	rjmp	.+12     	; 0x112 <main+0x26>
+			led_out_b(j);								/*输出变量值到数码管*/
+ 106:	81 2f       	mov	r24, r17
+ 108:	b1 df       	rcall	.-158    	; 0x6c <led_out_b>
+			DelayMs(500);
+ 10a:	84 ef       	ldi	r24, 0xF4	; 244
+ 10c:	91 e0       	ldi	r25, 0x01	; 1
+ 10e:	9f df       	rcall	.-194    	; 0x4e <DelayMs>
+	io_init();
+
+	while (1) {											/*程序中主体部分放在一个死循环中*/
+		
+		/*显示递增*/
+		for (j = 0; j < 10; j ++) {						/*标准for循环用法*/
+ 110:	1f 5f       	subi	r17, 0xFF	; 255
+ 112:	1a 30       	cpi	r17, 0x0A	; 10
+ 114:	c0 f3       	brcs	.-16     	; 0x106 <main+0x1a>
+			led_out_b(j);								/*输出变量值到数码管*/
+			DelayMs(500);
+			}
+		
+		led_out_b(0x80);								/*熄灭，函数特殊用法*/
+ 116:	80 e8       	ldi	r24, 0x80	; 128
+ 118:	a9 df       	rcall	.-174    	; 0x6c <led_out_b>
+		DelayMs(500);
+ 11a:	84 ef       	ldi	r24, 0xF4	; 244
+ 11c:	91 e0       	ldi	r25, 0x01	; 1
+ 11e:	97 df       	rcall	.-210    	; 0x4e <DelayMs>
+		
+		/*显示递减*/
+		//for (j = 9; j > 0; j --) {					/*请大家分析两种语句的区别*/
+		for (j = 9; j < 10; j --) {						/*可以对比两种方式的结果*/
+ 120:	10 2f       	mov	r17, r16
+			led_out_b(j);
+ 122:	81 2f       	mov	r24, r17
+ 124:	a3 df       	rcall	.-186    	; 0x6c <led_out_b>
+			DelayMs(500);
+ 126:	84 ef       	ldi	r24, 0xF4	; 244
+ 128:	91 e0       	ldi	r25, 0x01	; 1
+ 12a:	91 df       	rcall	.-222    	; 0x4e <DelayMs>
+		led_out_b(0x80);								/*熄灭，函数特殊用法*/
+		DelayMs(500);
+		
+		/*显示递减*/
+		//for (j = 9; j > 0; j --) {					/*请大家分析两种语句的区别*/
+		for (j = 9; j < 10; j --) {						/*可以对比两种方式的结果*/
+ 12c:	11 50       	subi	r17, 0x01	; 1
+ 12e:	c8 f7       	brcc	.-14     	; 0x122 <main+0x36>
+ 130:	1f 2d       	mov	r17, r15
+			DelayMs(500);
+			}
+
+		/*显示小数点闪烁*/
+		for (j = 0; j < 6; j ++) {
+			led_out_b(0x90);							/*点亮*/
+ 132:	80 e9       	ldi	r24, 0x90	; 144
+ 134:	9b df       	rcall	.-202    	; 0x6c <led_out_b>
+			DelayMs(500);
+ 136:	84 ef       	ldi	r24, 0xF4	; 244
+ 138:	91 e0       	ldi	r25, 0x01	; 1
+ 13a:	89 df       	rcall	.-238    	; 0x4e <DelayMs>
+			led_out_b(0x80);							/*熄灭*/
+ 13c:	80 e8       	ldi	r24, 0x80	; 128
+ 13e:	96 df       	rcall	.-212    	; 0x6c <led_out_b>
+			DelayMs(500);
+ 140:	84 ef       	ldi	r24, 0xF4	; 244
+ 142:	91 e0       	ldi	r25, 0x01	; 1
+ 144:	84 df       	rcall	.-248    	; 0x4e <DelayMs>
+ 146:	11 50       	subi	r17, 0x01	; 1
+			led_out_b(j);
+			DelayMs(500);
+			}
+
+		/*显示小数点闪烁*/
+		for (j = 0; j < 6; j ++) {
+ 148:	a1 f7       	brne	.-24     	; 0x132 <main+0x46>
+	io_init();
+
+	while (1) {											/*程序中主体部分放在一个死循环中*/
+		
+		/*显示递增*/
+		for (j = 0; j < 10; j ++) {						/*标准for循环用法*/
+ 14a:	1e 2d       	mov	r17, r14
+ 14c:	e2 cf       	rjmp	.-60     	; 0x112 <main+0x26>
+
+0000014e <_exit>:
+ 14e:	f8 94       	cli
+
+00000150 <__stop_program>:
+ 150:	ff cf       	rjmp	.-2      	; 0x150 <__stop_program>

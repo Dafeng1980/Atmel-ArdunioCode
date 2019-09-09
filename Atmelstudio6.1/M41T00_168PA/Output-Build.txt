@@ -1,0 +1,41 @@
+﻿------ Build started: Project: M41T00_168PA, Configuration: Debug AVR ------
+Build started.
+Project "M41T00_168PA.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "C:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Compiler.targets" from project "D:\My Documents\Atmel Studio\M41T00_168PA\M41T00_168PA\M41T00_168PA.cproj" (target "Build" depends on it):
+	Task "RunCompilerTask"
+		C:\Program Files (x86)\Atmel\Atmel Studio 6.0\make\make.exe all 
+		In file included from .././M41T00_168PA.c:10:0:
+c:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/delay.h(36,2): #warning "This file has been moved to <util/delay.h>." [-Wcpp]
+		Building file: .././M41T00_168PA.c
+		Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.0_663) 4.6.2
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-gcc.exe" -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "M41T00_168PA.d" -MT"M41T00_168PA.d" -MT"M41T00_168PA.o"  -mmcu=atmega168pa   -o"M41T00_168PA.o" ".././M41T00_168PA.c" 
+		In file included from c:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/delay.h:37:0,
+		                 from .././M41T00_168PA.c:10:
+c:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay.h(90,3): #warning "F_CPU not defined for <util/delay.h>" [-Wcpp]
+		Finished building: .././M41T00_168PA.c
+D:\My Documents\Atmel Studio\M41T00_168PA\M41T00_168PA\M41T00_168PA.c(13,0): "F_CPU" redefined [enabled by default]
+c:\program files (x86)\atmel\atmel studio 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/util/delay.h(91,0): this is the location of the previous definition
+		Building target: M41T00_168PA.elf
+		Invoking: AVR/GNU Linker : (AVR_8_bit_GNU_Toolchain_3.4.0_663) 4.6.2
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-gcc.exe" -o M41T00_168PA.elf  M41T00_168PA.o   -Wl,-Map="M41T00_168PA.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group  -mmcu=atmega168pa  
+		Finished building target: M41T00_168PA.elf
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "M41T00_168PA.elf" "M41T00_168PA.hex"
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "M41T00_168PA.elf" "M41T00_168PA.eep" || exit 0
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-objdump.exe" -h -S "M41T00_168PA.elf" > "M41T00_168PA.lss"
+		"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.0.65\AVRToolchain\bin\avr-size.exe" "M41T00_168PA.elf"
+		   text	   data	    bss	    dec	    hex	filename
+		   1722	     10	      6	   1738	    6ca	M41T00_168PA.elf
+	Done executing task "RunCompilerTask".
+	Task "RunOutputFileVerifyTask"
+				Program Memory Usage 	:	1732 bytes   10.6 % Full
+				Data Memory Usage 		:	16 bytes   1.6 % Full
+	Done executing task "RunOutputFileVerifyTask".
+Done building target "CoreBuild" in project "M41T00_168PA.cproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "C:\Program Files (x86)\Atmel\Atmel Studio 6.0\Vs\Avr.common.targets" from project "D:\My Documents\Atmel Studio\M41T00_168PA\M41T00_168PA\M41T00_168PA.cproj" (entry point):
+Done building target "Build" in project "M41T00_168PA.cproj".
+Done building project "M41T00_168PA.cproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

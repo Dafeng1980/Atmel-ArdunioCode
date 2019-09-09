@@ -1,0 +1,13 @@
+﻿Visual Micro free version. CTRL+click for secure purchase http://www.visualmicro.com/page/shop.aspx
+
+Compiling 'ESP8266_I2C_sensor' for 'Generic ESP8266 Module'
+Program size: 258,569 bytes (used 25% of a 1,044,464 byte maximum) (2.01 secs)
+Minimum Memory Usage: 34656 bytes (42% of a 81920 byte maximum)
+ 
+Uploading 'ESP8266_I2C_sensor' to 'Generic ESP8266 Module' using 'COM4'
+Uploading 262720 bytes from C:\Users\Dafen\AppData\Local\Temp\VMBuilds\ESP826~1\ESP826~1\Debug/ESP826~1.BIN to flash at 0x00000000
+................................................................................ [ 31% ]
+................................................................................ [ 62% ]
+................................................................................ [ 93% ]
+.................                                                                [ 100% ]
+	The upload process has finished.

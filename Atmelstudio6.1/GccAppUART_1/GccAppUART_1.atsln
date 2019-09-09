@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccAppUART_1", "GccAppUART_1\GccAppUART_1.cproj", "{AE061C37-A0DD-49E6-8DFD-F1F58F3ED851}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE061C37-A0DD-49E6-8DFD-F1F58F3ED851}.Debug|AVR.ActiveCfg = Debug|AVR
+		{AE061C37-A0DD-49E6-8DFD-F1F58F3ED851}.Debug|AVR.Build.0 = Debug|AVR
+		{AE061C37-A0DD-49E6-8DFD-F1F58F3ED851}.Release|AVR.ActiveCfg = Release|AVR
+		{AE061C37-A0DD-49E6-8DFD-F1F58F3ED851}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

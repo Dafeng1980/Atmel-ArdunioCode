@@ -1,0 +1,6 @@
+﻿Visual Micro free version. CTRL+click for secure purchase http://www.visualmicro.com/page/shop.aspx
+
+Compiling '128x64_display' for 'ATmega644'
+Program size: 21,776 bytes (used 34% of a 64,512 byte maximum) (0.52 secs)
+Minimum Memory Usage: 1611 bytes (39% of a 4096 byte maximum)
+ 

@@ -1,0 +1,1093 @@
+
+M41T00_168PA.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  000006ba  0000074e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000006ba  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  0080010a  0080010a  00000758  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000758  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00000e24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 000000a0  00000000  00000000  00000eb0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000069e  00000000  00000000  00000f50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000231  00000000  00000000  000015ee  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000586  00000000  00000000  0000181f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000010c  00000000  00000000  00001da8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000188  00000000  00000000  00001eb4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000314  00000000  00000000  0000203c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 d8 01 	jmp	0x3b0	; 0x3b0 <__vector_13>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea eb       	ldi	r30, 0xBA	; 186
+  7c:	f6 e0       	ldi	r31, 0x06	; 6
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	11 e0       	ldi	r17, 0x01	; 1
+  8c:	aa e0       	ldi	r26, 0x0A	; 10
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a0 31       	cpi	r26, 0x10	; 16
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 39 03 	call	0x672	; 0x672 <main>
+  9e:	0c 94 5b 03 	jmp	0x6b6	; 0x6b6 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <Twi_Init>:
+uchar g_aDisplayBuf[10]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+	uchar i=0, c=0, h=0;
+//TWI≥ı ºªØ
+void Twi_Init(void)
+   {
+   TWBR=12;
+  a6:	8c e0       	ldi	r24, 0x0C	; 12
+  a8:	80 93 b8 00 	sts	0x00B8, r24
+   TWSR=0;
+  ac:	10 92 b9 00 	sts	0x00B9, r1
+   }
+  b0:	08 95       	ret
+
+000000b2 <M41T00_Write>:
+uchar M41T00_Write(uchar slv_addw,uchar sub_suba,uchar Wdata)
+{
+	Start();
+  b2:	94 ea       	ldi	r25, 0xA4	; 164
+  b4:	90 93 bc 00 	sts	0x00BC, r25
+  b8:	ec eb       	ldi	r30, 0xBC	; 188
+  ba:	f0 e0       	ldi	r31, 0x00	; 0
+  bc:	90 81       	ld	r25, Z
+  be:	99 23       	and	r25, r25
+  c0:	ec f7       	brge	.-6      	; 0xbc <M41T00_Write+0xa>
+	if(TestAck()!=START)return I2C_CRR;
+  c2:	90 91 b9 00 	lds	r25, 0x00B9
+  c6:	98 7f       	andi	r25, 0xF8	; 248
+  c8:	98 30       	cpi	r25, 0x08	; 8
+  ca:	09 f0       	breq	.+2      	; 0xce <M41T00_Write+0x1c>
+  cc:	a8 c0       	rjmp	.+336    	; 0x21e <M41T00_Write+0x16c>
+	SendByte(slv_addw);
+  ce:	80 93 bb 00 	sts	0x00BB, r24
+  d2:	84 e8       	ldi	r24, 0x84	; 132
+  d4:	80 93 bc 00 	sts	0x00BC, r24
+  d8:	ec eb       	ldi	r30, 0xBC	; 188
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	80 81       	ld	r24, Z
+  de:	88 23       	and	r24, r24
+  e0:	ec f7       	brge	.-6      	; 0xdc <M41T00_Write+0x2a>
+	if(TestAck()!=MT_SLA_ACK)return I2C_CRR;
+  e2:	80 91 b9 00 	lds	r24, 0x00B9
+  e6:	88 7f       	andi	r24, 0xF8	; 248
+  e8:	88 31       	cpi	r24, 0x18	; 24
+  ea:	09 f0       	breq	.+2      	; 0xee <M41T00_Write+0x3c>
+  ec:	9a c0       	rjmp	.+308    	; 0x222 <M41T00_Write+0x170>
+	SendByte(sub_suba);
+  ee:	60 93 bb 00 	sts	0x00BB, r22
+  f2:	84 e8       	ldi	r24, 0x84	; 132
+  f4:	80 93 bc 00 	sts	0x00BC, r24
+  f8:	ec eb       	ldi	r30, 0xBC	; 188
+  fa:	f0 e0       	ldi	r31, 0x00	; 0
+  fc:	80 81       	ld	r24, Z
+  fe:	88 23       	and	r24, r24
+ 100:	ec f7       	brge	.-6      	; 0xfc <M41T00_Write+0x4a>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;//Seconds and bit7 is STOP bit BCD format
+ 102:	80 91 b9 00 	lds	r24, 0x00B9
+ 106:	88 7f       	andi	r24, 0xF8	; 248
+ 108:	88 32       	cpi	r24, 0x28	; 40
+ 10a:	09 f0       	breq	.+2      	; 0x10e <M41T00_Write+0x5c>
+ 10c:	8c c0       	rjmp	.+280    	; 0x226 <M41T00_Write+0x174>
+	SendByte(Wdata);
+ 10e:	40 93 bb 00 	sts	0x00BB, r20
+ 112:	84 e8       	ldi	r24, 0x84	; 132
+ 114:	80 93 bc 00 	sts	0x00BC, r24
+ 118:	ec eb       	ldi	r30, 0xBC	; 188
+ 11a:	f0 e0       	ldi	r31, 0x00	; 0
+ 11c:	80 81       	ld	r24, Z
+ 11e:	88 23       	and	r24, r24
+ 120:	ec f7       	brge	.-6      	; 0x11c <M41T00_Write+0x6a>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;//Minutes
+ 122:	80 91 b9 00 	lds	r24, 0x00B9
+ 126:	88 7f       	andi	r24, 0xF8	; 248
+ 128:	88 32       	cpi	r24, 0x28	; 40
+ 12a:	09 f0       	breq	.+2      	; 0x12e <M41T00_Write+0x7c>
+ 12c:	7e c0       	rjmp	.+252    	; 0x22a <M41T00_Write+0x178>
+	SendByte(0x13);
+ 12e:	83 e1       	ldi	r24, 0x13	; 19
+ 130:	80 93 bb 00 	sts	0x00BB, r24
+ 134:	84 e8       	ldi	r24, 0x84	; 132
+ 136:	80 93 bc 00 	sts	0x00BC, r24
+ 13a:	ec eb       	ldi	r30, 0xBC	; 188
+ 13c:	f0 e0       	ldi	r31, 0x00	; 0
+ 13e:	80 81       	ld	r24, Z
+ 140:	88 23       	and	r24, r24
+ 142:	ec f7       	brge	.-6      	; 0x13e <M41T00_Write+0x8c>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 144:	80 91 b9 00 	lds	r24, 0x00B9
+ 148:	88 7f       	andi	r24, 0xF8	; 248
+ 14a:	88 32       	cpi	r24, 0x28	; 40
+ 14c:	09 f0       	breq	.+2      	; 0x150 <M41T00_Write+0x9e>
+ 14e:	6f c0       	rjmp	.+222    	; 0x22e <M41T00_Write+0x17c>
+	SendByte(0x18);                            //Hours and Century 
+ 150:	88 e1       	ldi	r24, 0x18	; 24
+ 152:	80 93 bb 00 	sts	0x00BB, r24
+ 156:	84 e8       	ldi	r24, 0x84	; 132
+ 158:	80 93 bc 00 	sts	0x00BC, r24
+ 15c:	ec eb       	ldi	r30, 0xBC	; 188
+ 15e:	f0 e0       	ldi	r31, 0x00	; 0
+ 160:	80 81       	ld	r24, Z
+ 162:	88 23       	and	r24, r24
+ 164:	ec f7       	brge	.-6      	; 0x160 <M41T00_Write+0xae>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 166:	80 91 b9 00 	lds	r24, 0x00B9
+ 16a:	88 7f       	andi	r24, 0xF8	; 248
+ 16c:	88 32       	cpi	r24, 0x28	; 40
+ 16e:	09 f0       	breq	.+2      	; 0x172 <M41T00_Write+0xc0>
+ 170:	60 c0       	rjmp	.+192    	; 0x232 <M41T00_Write+0x180>
+	SendByte(0x05);                               //Day 01-7     
+ 172:	85 e0       	ldi	r24, 0x05	; 5
+ 174:	80 93 bb 00 	sts	0x00BB, r24
+ 178:	84 e8       	ldi	r24, 0x84	; 132
+ 17a:	80 93 bc 00 	sts	0x00BC, r24
+ 17e:	ec eb       	ldi	r30, 0xBC	; 188
+ 180:	f0 e0       	ldi	r31, 0x00	; 0
+ 182:	80 81       	ld	r24, Z
+ 184:	88 23       	and	r24, r24
+ 186:	ec f7       	brge	.-6      	; 0x182 <M41T00_Write+0xd0>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 188:	80 91 b9 00 	lds	r24, 0x00B9
+ 18c:	88 7f       	andi	r24, 0xF8	; 248
+ 18e:	88 32       	cpi	r24, 0x28	; 40
+ 190:	09 f0       	breq	.+2      	; 0x194 <M41T00_Write+0xe2>
+ 192:	51 c0       	rjmp	.+162    	; 0x236 <M41T00_Write+0x184>
+	SendByte(0x02);                               //Date 01-31
+ 194:	82 e0       	ldi	r24, 0x02	; 2
+ 196:	80 93 bb 00 	sts	0x00BB, r24
+ 19a:	84 e8       	ldi	r24, 0x84	; 132
+ 19c:	80 93 bc 00 	sts	0x00BC, r24
+ 1a0:	ec eb       	ldi	r30, 0xBC	; 188
+ 1a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a4:	80 81       	ld	r24, Z
+ 1a6:	88 23       	and	r24, r24
+ 1a8:	ec f7       	brge	.-6      	; 0x1a4 <M41T00_Write+0xf2>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 1aa:	80 91 b9 00 	lds	r24, 0x00B9
+ 1ae:	88 7f       	andi	r24, 0xF8	; 248
+ 1b0:	88 32       	cpi	r24, 0x28	; 40
+ 1b2:	09 f0       	breq	.+2      	; 0x1b6 <M41T00_Write+0x104>
+ 1b4:	42 c0       	rjmp	.+132    	; 0x23a <M41T00_Write+0x188>
+	SendByte(0x11);                               //Month 01-12
+ 1b6:	81 e1       	ldi	r24, 0x11	; 17
+ 1b8:	80 93 bb 00 	sts	0x00BB, r24
+ 1bc:	84 e8       	ldi	r24, 0x84	; 132
+ 1be:	80 93 bc 00 	sts	0x00BC, r24
+ 1c2:	ec eb       	ldi	r30, 0xBC	; 188
+ 1c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c6:	80 81       	ld	r24, Z
+ 1c8:	88 23       	and	r24, r24
+ 1ca:	ec f7       	brge	.-6      	; 0x1c6 <M41T00_Write+0x114>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 1cc:	80 91 b9 00 	lds	r24, 0x00B9
+ 1d0:	88 7f       	andi	r24, 0xF8	; 248
+ 1d2:	88 32       	cpi	r24, 0x28	; 40
+ 1d4:	a1 f5       	brne	.+104    	; 0x23e <M41T00_Write+0x18c>
+	SendByte(0x12);                               //Year 00-99
+ 1d6:	82 e1       	ldi	r24, 0x12	; 18
+ 1d8:	80 93 bb 00 	sts	0x00BB, r24
+ 1dc:	84 e8       	ldi	r24, 0x84	; 132
+ 1de:	80 93 bc 00 	sts	0x00BC, r24
+ 1e2:	ec eb       	ldi	r30, 0xBC	; 188
+ 1e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e6:	80 81       	ld	r24, Z
+ 1e8:	88 23       	and	r24, r24
+ 1ea:	ec f7       	brge	.-6      	; 0x1e6 <M41T00_Write+0x134>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 1ec:	80 91 b9 00 	lds	r24, 0x00B9
+ 1f0:	88 7f       	andi	r24, 0xF8	; 248
+ 1f2:	88 32       	cpi	r24, 0x28	; 40
+ 1f4:	31 f5       	brne	.+76     	; 0x242 <M41T00_Write+0x190>
+	SendByte(0x00);                               //Control
+ 1f6:	10 92 bb 00 	sts	0x00BB, r1
+ 1fa:	84 e8       	ldi	r24, 0x84	; 132
+ 1fc:	80 93 bc 00 	sts	0x00BC, r24
+ 200:	ec eb       	ldi	r30, 0xBC	; 188
+ 202:	f0 e0       	ldi	r31, 0x00	; 0
+ 204:	80 81       	ld	r24, Z
+ 206:	88 23       	and	r24, r24
+ 208:	ec f7       	brge	.-6      	; 0x204 <M41T00_Write+0x152>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 20a:	80 91 b9 00 	lds	r24, 0x00B9
+ 20e:	88 7f       	andi	r24, 0xF8	; 248
+ 210:	88 32       	cpi	r24, 0x28	; 40
+ 212:	c9 f4       	brne	.+50     	; 0x246 <M41T00_Write+0x194>
+	Stop();
+ 214:	84 e9       	ldi	r24, 0x94	; 148
+ 216:	80 93 bc 00 	sts	0x00BC, r24
+	return I2C_ERR;
+ 21a:	80 e0       	ldi	r24, 0x00	; 0
+ 21c:	08 95       	ret
+   TWSR=0;
+   }
+uchar M41T00_Write(uchar slv_addw,uchar sub_suba,uchar Wdata)
+{
+	Start();
+	if(TestAck()!=START)return I2C_CRR;
+ 21e:	81 e0       	ldi	r24, 0x01	; 1
+ 220:	08 95       	ret
+	SendByte(slv_addw);
+	if(TestAck()!=MT_SLA_ACK)return I2C_CRR;
+ 222:	81 e0       	ldi	r24, 0x01	; 1
+ 224:	08 95       	ret
+	SendByte(sub_suba);
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;//Seconds and bit7 is STOP bit BCD format
+ 226:	81 e0       	ldi	r24, 0x01	; 1
+ 228:	08 95       	ret
+	SendByte(Wdata);
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;//Minutes
+ 22a:	81 e0       	ldi	r24, 0x01	; 1
+ 22c:	08 95       	ret
+	SendByte(0x13);
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 22e:	81 e0       	ldi	r24, 0x01	; 1
+ 230:	08 95       	ret
+	SendByte(0x18);                            //Hours and Century 
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 232:	81 e0       	ldi	r24, 0x01	; 1
+ 234:	08 95       	ret
+	SendByte(0x05);                               //Day 01-7     
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 236:	81 e0       	ldi	r24, 0x01	; 1
+ 238:	08 95       	ret
+	SendByte(0x02);                               //Date 01-31
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 23a:	81 e0       	ldi	r24, 0x01	; 1
+ 23c:	08 95       	ret
+	SendByte(0x11);                               //Month 01-12
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 23e:	81 e0       	ldi	r24, 0x01	; 1
+ 240:	08 95       	ret
+	SendByte(0x12);                               //Year 00-99
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 242:	81 e0       	ldi	r24, 0x01	; 1
+ 244:	08 95       	ret
+	SendByte(0x00);                               //Control
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 246:	81 e0       	ldi	r24, 0x01	; 1
+	Stop();
+	return I2C_ERR;
+}
+ 248:	08 95       	ret
+
+0000024a <M41T00_Read>:
+uchar M41T00_Read(uchar slv_addr,uchar suba,uchar *s,uchar num)
+{
+ 24a:	ef 92       	push	r14
+ 24c:	ff 92       	push	r15
+ 24e:	0f 93       	push	r16
+ 250:	1f 93       	push	r17
+ 252:	cf 93       	push	r28
+ 254:	df 93       	push	r29
+	uchar n;
+	Start();
+ 256:	94 ea       	ldi	r25, 0xA4	; 164
+ 258:	90 93 bc 00 	sts	0x00BC, r25
+ 25c:	ec eb       	ldi	r30, 0xBC	; 188
+ 25e:	f0 e0       	ldi	r31, 0x00	; 0
+ 260:	90 81       	ld	r25, Z
+ 262:	99 23       	and	r25, r25
+ 264:	ec f7       	brge	.-6      	; 0x260 <M41T00_Read+0x16>
+	if(TestAck()!=START)return I2C_CRR;
+ 266:	90 91 b9 00 	lds	r25, 0x00B9
+ 26a:	98 7f       	andi	r25, 0xF8	; 248
+ 26c:	98 30       	cpi	r25, 0x08	; 8
+ 26e:	09 f0       	breq	.+2      	; 0x272 <M41T00_Read+0x28>
+ 270:	7d c0       	rjmp	.+250    	; 0x36c <M41T00_Read+0x122>
+	SendByte(slv_addr-1);
+ 272:	98 2f       	mov	r25, r24
+ 274:	91 50       	subi	r25, 0x01	; 1
+ 276:	90 93 bb 00 	sts	0x00BB, r25
+ 27a:	94 e8       	ldi	r25, 0x84	; 132
+ 27c:	90 93 bc 00 	sts	0x00BC, r25
+ 280:	ec eb       	ldi	r30, 0xBC	; 188
+ 282:	f0 e0       	ldi	r31, 0x00	; 0
+ 284:	90 81       	ld	r25, Z
+ 286:	99 23       	and	r25, r25
+ 288:	ec f7       	brge	.-6      	; 0x284 <M41T00_Read+0x3a>
+	if(TestAck()!=MT_SLA_ACK)return I2C_CRR;
+ 28a:	90 91 b9 00 	lds	r25, 0x00B9
+ 28e:	98 7f       	andi	r25, 0xF8	; 248
+ 290:	98 31       	cpi	r25, 0x18	; 24
+ 292:	09 f0       	breq	.+2      	; 0x296 <M41T00_Read+0x4c>
+ 294:	6d c0       	rjmp	.+218    	; 0x370 <M41T00_Read+0x126>
+	SendByte(suba);
+ 296:	60 93 bb 00 	sts	0x00BB, r22
+ 29a:	94 e8       	ldi	r25, 0x84	; 132
+ 29c:	90 93 bc 00 	sts	0x00BC, r25
+ 2a0:	ec eb       	ldi	r30, 0xBC	; 188
+ 2a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a4:	90 81       	ld	r25, Z
+ 2a6:	99 23       	and	r25, r25
+ 2a8:	ec f7       	brge	.-6      	; 0x2a4 <M41T00_Read+0x5a>
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 2aa:	90 91 b9 00 	lds	r25, 0x00B9
+ 2ae:	98 7f       	andi	r25, 0xF8	; 248
+ 2b0:	98 32       	cpi	r25, 0x28	; 40
+ 2b2:	09 f0       	breq	.+2      	; 0x2b6 <M41T00_Read+0x6c>
+ 2b4:	5f c0       	rjmp	.+190    	; 0x374 <M41T00_Read+0x12a>
+	Stop();
+ 2b6:	ec eb       	ldi	r30, 0xBC	; 188
+ 2b8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ba:	94 e9       	ldi	r25, 0x94	; 148
+ 2bc:	90 83       	st	Z, r25
+	Start();
+ 2be:	94 ea       	ldi	r25, 0xA4	; 164
+ 2c0:	90 83       	st	Z, r25
+ 2c2:	90 81       	ld	r25, Z
+ 2c4:	99 23       	and	r25, r25
+ 2c6:	ec f7       	brge	.-6      	; 0x2c2 <M41T00_Read+0x78>
+	if(TestAck()!=RESTART)return I2C_CRR;
+ 2c8:	90 91 b9 00 	lds	r25, 0x00B9
+ 2cc:	98 7f       	andi	r25, 0xF8	; 248
+ 2ce:	90 31       	cpi	r25, 0x10	; 16
+ 2d0:	09 f0       	breq	.+2      	; 0x2d4 <M41T00_Read+0x8a>
+ 2d2:	52 c0       	rjmp	.+164    	; 0x378 <M41T00_Read+0x12e>
+	SendByte(slv_addr);
+ 2d4:	80 93 bb 00 	sts	0x00BB, r24
+ 2d8:	84 e8       	ldi	r24, 0x84	; 132
+ 2da:	80 93 bc 00 	sts	0x00BC, r24
+ 2de:	ec eb       	ldi	r30, 0xBC	; 188
+ 2e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e2:	80 81       	ld	r24, Z
+ 2e4:	88 23       	and	r24, r24
+ 2e6:	ec f7       	brge	.-6      	; 0x2e2 <M41T00_Read+0x98>
+	if(TestAck()!=MR_SLA_ACK)return I2C_CRR;
+ 2e8:	80 91 b9 00 	lds	r24, 0x00B9
+ 2ec:	88 7f       	andi	r24, 0xF8	; 248
+ 2ee:	80 34       	cpi	r24, 0x40	; 64
+ 2f0:	09 f0       	breq	.+2      	; 0x2f4 <M41T00_Read+0xaa>
+ 2f2:	44 c0       	rjmp	.+136    	; 0x37c <M41T00_Read+0x132>
+	for (n=0;n<num-1;n++)
+ 2f4:	30 e0       	ldi	r19, 0x00	; 0
+ 2f6:	21 50       	subi	r18, 0x01	; 1
+ 2f8:	30 40       	sbci	r19, 0x00	; 0
+ 2fa:	12 16       	cp	r1, r18
+ 2fc:	13 06       	cpc	r1, r19
+ 2fe:	04 f5       	brge	.+64     	; 0x340 <M41T00_Read+0xf6>
+ 300:	04 2f       	mov	r16, r20
+ 302:	a4 2f       	mov	r26, r20
+ 304:	b5 2f       	mov	r27, r21
+	{
+		rcvAckByte();
+ 306:	ec eb       	ldi	r30, 0xBC	; 188
+ 308:	f0 e0       	ldi	r31, 0x00	; 0
+ 30a:	14 ec       	ldi	r17, 0xC4	; 196
+			if(TestAck()!=MR_DATA_ACK)return I2C_CRR;
+ 30c:	0f 2e       	mov	r0, r31
+ 30e:	f9 eb       	ldi	r31, 0xB9	; 185
+ 310:	ef 2e       	mov	r14, r31
+ 312:	ff 24       	eor	r15, r15
+ 314:	f0 2d       	mov	r31, r0
+				*s=TWDR;
+ 316:	6b eb       	ldi	r22, 0xBB	; 187
+ 318:	70 e0       	ldi	r23, 0x00	; 0
+	if(TestAck()!=RESTART)return I2C_CRR;
+	SendByte(slv_addr);
+	if(TestAck()!=MR_SLA_ACK)return I2C_CRR;
+	for (n=0;n<num-1;n++)
+	{
+		rcvAckByte();
+ 31a:	10 83       	st	Z, r17
+ 31c:	80 81       	ld	r24, Z
+ 31e:	88 23       	and	r24, r24
+ 320:	ec f7       	brge	.-6      	; 0x31c <M41T00_Read+0xd2>
+			if(TestAck()!=MR_DATA_ACK)return I2C_CRR;
+ 322:	e7 01       	movw	r28, r14
+ 324:	88 81       	ld	r24, Y
+ 326:	88 7f       	andi	r24, 0xF8	; 248
+ 328:	80 35       	cpi	r24, 0x50	; 80
+ 32a:	51 f5       	brne	.+84     	; 0x380 <M41T00_Read+0x136>
+				*s=TWDR;
+ 32c:	eb 01       	movw	r28, r22
+ 32e:	88 81       	ld	r24, Y
+ 330:	8d 93       	st	X+, r24
+					s++;
+ 332:	ad 01       	movw	r20, r26
+	SendByte(0x00);                               //Control
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+	Stop();
+	return I2C_ERR;
+}
+uchar M41T00_Read(uchar slv_addr,uchar suba,uchar *s,uchar num)
+ 334:	8a 2f       	mov	r24, r26
+ 336:	80 1b       	sub	r24, r16
+	Stop();
+	Start();
+	if(TestAck()!=RESTART)return I2C_CRR;
+	SendByte(slv_addr);
+	if(TestAck()!=MR_SLA_ACK)return I2C_CRR;
+	for (n=0;n<num-1;n++)
+ 338:	90 e0       	ldi	r25, 0x00	; 0
+ 33a:	82 17       	cp	r24, r18
+ 33c:	93 07       	cpc	r25, r19
+ 33e:	6c f3       	brlt	.-38     	; 0x31a <M41T00_Read+0xd0>
+		rcvAckByte();
+			if(TestAck()!=MR_DATA_ACK)return I2C_CRR;
+				*s=TWDR;
+					s++;
+	}
+	rcvNackByte();
+ 340:	84 e8       	ldi	r24, 0x84	; 132
+ 342:	80 93 bc 00 	sts	0x00BC, r24
+ 346:	ec eb       	ldi	r30, 0xBC	; 188
+ 348:	f0 e0       	ldi	r31, 0x00	; 0
+ 34a:	80 81       	ld	r24, Z
+ 34c:	88 23       	and	r24, r24
+ 34e:	ec f7       	brge	.-6      	; 0x34a <M41T00_Read+0x100>
+	if(TestAck()!=MR_DATA_NACK)return I2C_CRR;
+ 350:	80 91 b9 00 	lds	r24, 0x00B9
+ 354:	88 7f       	andi	r24, 0xF8	; 248
+ 356:	88 35       	cpi	r24, 0x58	; 88
+ 358:	a9 f4       	brne	.+42     	; 0x384 <M41T00_Read+0x13a>
+		*s=TWDR;
+ 35a:	80 91 bb 00 	lds	r24, 0x00BB
+ 35e:	fa 01       	movw	r30, r20
+ 360:	80 83       	st	Z, r24
+	Stop();
+ 362:	84 e9       	ldi	r24, 0x94	; 148
+ 364:	80 93 bc 00 	sts	0x00BC, r24
+	return 0;	
+ 368:	80 e0       	ldi	r24, 0x00	; 0
+ 36a:	0d c0       	rjmp	.+26     	; 0x386 <M41T00_Read+0x13c>
+}
+uchar M41T00_Read(uchar slv_addr,uchar suba,uchar *s,uchar num)
+{
+	uchar n;
+	Start();
+	if(TestAck()!=START)return I2C_CRR;
+ 36c:	81 e0       	ldi	r24, 0x01	; 1
+ 36e:	0b c0       	rjmp	.+22     	; 0x386 <M41T00_Read+0x13c>
+	SendByte(slv_addr-1);
+	if(TestAck()!=MT_SLA_ACK)return I2C_CRR;
+ 370:	81 e0       	ldi	r24, 0x01	; 1
+ 372:	09 c0       	rjmp	.+18     	; 0x386 <M41T00_Read+0x13c>
+	SendByte(suba);
+	if(TestAck()!=MT_DATA_ACK)return I2C_CRR;
+ 374:	81 e0       	ldi	r24, 0x01	; 1
+ 376:	07 c0       	rjmp	.+14     	; 0x386 <M41T00_Read+0x13c>
+	Stop();
+	Start();
+	if(TestAck()!=RESTART)return I2C_CRR;
+ 378:	81 e0       	ldi	r24, 0x01	; 1
+ 37a:	05 c0       	rjmp	.+10     	; 0x386 <M41T00_Read+0x13c>
+	SendByte(slv_addr);
+	if(TestAck()!=MR_SLA_ACK)return I2C_CRR;
+ 37c:	81 e0       	ldi	r24, 0x01	; 1
+ 37e:	03 c0       	rjmp	.+6      	; 0x386 <M41T00_Read+0x13c>
+	for (n=0;n<num-1;n++)
+	{
+		rcvAckByte();
+			if(TestAck()!=MR_DATA_ACK)return I2C_CRR;
+ 380:	81 e0       	ldi	r24, 0x01	; 1
+ 382:	01 c0       	rjmp	.+2      	; 0x386 <M41T00_Read+0x13c>
+				*s=TWDR;
+					s++;
+	}
+	rcvNackByte();
+	if(TestAck()!=MR_DATA_NACK)return I2C_CRR;
+ 384:	81 e0       	ldi	r24, 0x01	; 1
+		*s=TWDR;
+	Stop();
+	return 0;	
+}
+ 386:	df 91       	pop	r29
+ 388:	cf 91       	pop	r28
+ 38a:	1f 91       	pop	r17
+ 38c:	0f 91       	pop	r16
+ 38e:	ff 90       	pop	r15
+ 390:	ef 90       	pop	r14
+ 392:	08 95       	ret
+
+00000394 <Timer1_init>:
+void Timer1_init(void)
+{
+	TCCR1B=0x00;
+ 394:	e1 e8       	ldi	r30, 0x81	; 129
+ 396:	f0 e0       	ldi	r31, 0x00	; 0
+ 398:	10 82       	st	Z, r1
+	TCNT1H=0x8F;
+ 39a:	8f e8       	ldi	r24, 0x8F	; 143
+ 39c:	80 93 85 00 	sts	0x0085, r24
+	TCNT1L=0x80;
+ 3a0:	80 e8       	ldi	r24, 0x80	; 128
+ 3a2:	80 93 84 00 	sts	0x0084, r24
+	TCCR1A=0x00;
+ 3a6:	10 92 80 00 	sts	0x0080, r1
+	TCCR1B=0x03;
+ 3aa:	83 e0       	ldi	r24, 0x03	; 3
+ 3ac:	80 83       	st	Z, r24
+}
+ 3ae:	08 95       	ret
+
+000003b0 <__vector_13>:
+SIGNAL(TIMER1_OVF_vect)
+
+{
+ 3b0:	1f 92       	push	r1
+ 3b2:	0f 92       	push	r0
+ 3b4:	0f b6       	in	r0, 0x3f	; 63
+ 3b6:	0f 92       	push	r0
+ 3b8:	11 24       	eor	r1, r1
+ 3ba:	2f 93       	push	r18
+ 3bc:	3f 93       	push	r19
+ 3be:	4f 93       	push	r20
+ 3c0:	5f 93       	push	r21
+ 3c2:	6f 93       	push	r22
+ 3c4:	7f 93       	push	r23
+ 3c6:	8f 93       	push	r24
+ 3c8:	9f 93       	push	r25
+ 3ca:	af 93       	push	r26
+ 3cc:	bf 93       	push	r27
+ 3ce:	ef 93       	push	r30
+ 3d0:	ff 93       	push	r31
+	TCNT1H=0xAF;
+ 3d2:	8f ea       	ldi	r24, 0xAF	; 175
+ 3d4:	80 93 85 00 	sts	0x0085, r24
+	TCNT1L=0x80;
+ 3d8:	80 e8       	ldi	r24, 0x80	; 128
+ 3da:	80 93 84 00 	sts	0x0084, r24
+	uchar key=0x00;
+	if (bit_is_clear(PIND,PD2))
+ 3de:	4a 99       	sbic	0x09, 2	; 9
+ 3e0:	10 c0       	rjmp	.+32     	; 0x402 <__vector_13+0x52>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 3e2:	83 ec       	ldi	r24, 0xC3	; 195
+ 3e4:	99 e0       	ldi	r25, 0x09	; 9
+ 3e6:	01 97       	sbiw	r24, 0x01	; 1
+ 3e8:	f1 f7       	brne	.-4      	; 0x3e6 <__vector_13+0x36>
+ 3ea:	00 c0       	rjmp	.+0      	; 0x3ec <__vector_13+0x3c>
+ 3ec:	00 00       	nop
+	{
+		delayMs(10);
+		c++;
+ 3ee:	80 91 0b 01 	lds	r24, 0x010B
+ 3f2:	8f 5f       	subi	r24, 0xFF	; 255
+ 3f4:	80 93 0b 01 	sts	0x010B, r24
+		//delayMs(10);
+		if(c>2)	c=0;
+ 3f8:	83 30       	cpi	r24, 0x03	; 3
+ 3fa:	18 f0       	brcs	.+6      	; 0x402 <__vector_13+0x52>
+ 3fc:	10 92 0b 01 	sts	0x010B, r1
+ 400:	59 c0       	rjmp	.+178    	; 0x4b4 <__vector_13+0x104>
+		
+		//delayMs(25);
+		
+	}
+	
+	if((c==1) && (PIND != key))
+ 402:	80 91 0b 01 	lds	r24, 0x010B
+ 406:	81 30       	cpi	r24, 0x01	; 1
+ 408:	f1 f4       	brne	.+60     	; 0x446 <__vector_13+0x96>
+ 40a:	89 b1       	in	r24, 0x09	; 9
+ 40c:	88 23       	and	r24, r24
+ 40e:	09 f4       	brne	.+2      	; 0x412 <__vector_13+0x62>
+ 410:	51 c0       	rjmp	.+162    	; 0x4b4 <__vector_13+0x104>
+	{
+		key = PIND;
+ 412:	89 b1       	in	r24, 0x09	; 9
+	M41T00_Read(0xD1,0x03,buff,3);
+ 414:	81 ed       	ldi	r24, 0xD1	; 209
+ 416:	63 e0       	ldi	r22, 0x03	; 3
+ 418:	4d e0       	ldi	r20, 0x0D	; 13
+ 41a:	51 e0       	ldi	r21, 0x01	; 1
+ 41c:	23 e0       	ldi	r18, 0x03	; 3
+ 41e:	0e 94 25 01 	call	0x24a	; 0x24a <M41T00_Read>
+		buff[0]&=0x07;   //weeks 
+ 422:	80 91 0d 01 	lds	r24, 0x010D
+ 426:	87 70       	andi	r24, 0x07	; 7
+ 428:	80 93 0d 01 	sts	0x010D, r24
+		buff[1]&=0x3F;   //date
+ 42c:	80 91 0e 01 	lds	r24, 0x010E
+ 430:	8f 73       	andi	r24, 0x3F	; 63
+ 432:	80 93 0e 01 	sts	0x010E, r24
+		buff[2]&=0x1f;   //months
+ 436:	80 91 0f 01 	lds	r24, 0x010F
+ 43a:	8f 71       	andi	r24, 0x1F	; 31
+ 43c:	80 93 0f 01 	sts	0x010F, r24
+		h=0;
+ 440:	10 92 0a 01 	sts	0x010A, r1
+ 444:	4f c0       	rjmp	.+158    	; 0x4e4 <__vector_13+0x134>
+		}
+	else if((c==2) && (PIND != key))
+ 446:	82 30       	cpi	r24, 0x02	; 2
+ 448:	a9 f5       	brne	.+106    	; 0x4b4 <__vector_13+0x104>
+ 44a:	89 b1       	in	r24, 0x09	; 9
+ 44c:	88 23       	and	r24, r24
+ 44e:	91 f1       	breq	.+100    	; 0x4b4 <__vector_13+0x104>
+	{
+		key = PIND;
+ 450:	89 b1       	in	r24, 0x09	; 9
+		M41T00_Read(0x93,0x00,buff,2);
+ 452:	83 e9       	ldi	r24, 0x93	; 147
+ 454:	60 e0       	ldi	r22, 0x00	; 0
+ 456:	4d e0       	ldi	r20, 0x0D	; 13
+ 458:	51 e0       	ldi	r21, 0x01	; 1
+ 45a:	22 e0       	ldi	r18, 0x02	; 2
+ 45c:	0e 94 25 01 	call	0x24a	; 0x24a <M41T00_Read>
+		buff[1]=buff[1]>>4;
+ 460:	20 91 0e 01 	lds	r18, 0x010E
+		buff[2]=buff[1]*10/16;
+ 464:	82 2f       	mov	r24, r18
+ 466:	82 95       	swap	r24
+ 468:	8f 70       	andi	r24, 0x0F	; 15
+ 46a:	90 e0       	ldi	r25, 0x00	; 0
+ 46c:	9c 01       	movw	r18, r24
+ 46e:	22 0f       	add	r18, r18
+ 470:	33 1f       	adc	r19, r19
+ 472:	c9 01       	movw	r24, r18
+ 474:	88 0f       	add	r24, r24
+ 476:	99 1f       	adc	r25, r25
+ 478:	88 0f       	add	r24, r24
+ 47a:	99 1f       	adc	r25, r25
+ 47c:	82 0f       	add	r24, r18
+ 47e:	93 1f       	adc	r25, r19
+ 480:	99 23       	and	r25, r25
+ 482:	0c f4       	brge	.+2      	; 0x486 <__vector_13+0xd6>
+ 484:	0f 96       	adiw	r24, 0x0f	; 15
+ 486:	95 95       	asr	r25
+ 488:	87 95       	ror	r24
+ 48a:	95 95       	asr	r25
+ 48c:	87 95       	ror	r24
+ 48e:	95 95       	asr	r25
+ 490:	87 95       	ror	r24
+ 492:	95 95       	asr	r25
+ 494:	87 95       	ror	r24
+ 496:	80 93 0f 01 	sts	0x010F, r24
+		buff[1]=buff[0]%10;
+ 49a:	80 91 0d 01 	lds	r24, 0x010D
+ 49e:	6a e0       	ldi	r22, 0x0A	; 10
+ 4a0:	0e 94 4f 03 	call	0x69e	; 0x69e <__udivmodqi4>
+ 4a4:	90 93 0e 01 	sts	0x010E, r25
+		buff[0]=buff[0]/10;
+ 4a8:	80 93 0d 01 	sts	0x010D, r24
+		h=1;
+ 4ac:	81 e0       	ldi	r24, 0x01	; 1
+ 4ae:	80 93 0a 01 	sts	0x010A, r24
+ 4b2:	18 c0       	rjmp	.+48     	; 0x4e4 <__vector_13+0x134>
+		}
+	
+	
+	else	
+	{
+	M41T00_Read(0xD1,0x00,buff,3);
+ 4b4:	81 ed       	ldi	r24, 0xD1	; 209
+ 4b6:	60 e0       	ldi	r22, 0x00	; 0
+ 4b8:	4d e0       	ldi	r20, 0x0D	; 13
+ 4ba:	51 e0       	ldi	r21, 0x01	; 1
+ 4bc:	23 e0       	ldi	r18, 0x03	; 3
+ 4be:	0e 94 25 01 	call	0x24a	; 0x24a <M41T00_Read>
+		buff[0]&=0x7F;
+ 4c2:	80 91 0d 01 	lds	r24, 0x010D
+ 4c6:	8f 77       	andi	r24, 0x7F	; 127
+ 4c8:	80 93 0d 01 	sts	0x010D, r24
+		buff[1]&=0x7F;
+ 4cc:	80 91 0e 01 	lds	r24, 0x010E
+ 4d0:	8f 77       	andi	r24, 0x7F	; 127
+ 4d2:	80 93 0e 01 	sts	0x010E, r24
+		buff[2]&=0x3F;
+ 4d6:	80 91 0f 01 	lds	r24, 0x010F
+ 4da:	8f 73       	andi	r24, 0x3F	; 63
+ 4dc:	80 93 0f 01 	sts	0x010F, r24
+		h=0;
+ 4e0:	10 92 0a 01 	sts	0x010A, r1
+	}	
+}
+ 4e4:	ff 91       	pop	r31
+ 4e6:	ef 91       	pop	r30
+ 4e8:	bf 91       	pop	r27
+ 4ea:	af 91       	pop	r26
+ 4ec:	9f 91       	pop	r25
+ 4ee:	8f 91       	pop	r24
+ 4f0:	7f 91       	pop	r23
+ 4f2:	6f 91       	pop	r22
+ 4f4:	5f 91       	pop	r21
+ 4f6:	4f 91       	pop	r20
+ 4f8:	3f 91       	pop	r19
+ 4fa:	2f 91       	pop	r18
+ 4fc:	0f 90       	pop	r0
+ 4fe:	0f be       	out	0x3f, r0	; 63
+ 500:	0f 90       	pop	r0
+ 502:	1f 90       	pop	r1
+ 504:	18 95       	reti
+
+00000506 <displayNumber>:
+
+void displayNumber(uchar num[],uchar i)
+
+{
+ 506:	fc 01       	movw	r30, r24
+	if (i==1)
+ 508:	61 30       	cpi	r22, 0x01	; 1
+ 50a:	a1 f5       	brne	.+104    	; 0x574 <displayNumber+0x6e>
+	{
+			CLR_SHC;
+ 50c:	5b 98       	cbi	0x0b, 3	; 11
+			SPI_595_T(0x10);
+ 50e:	80 e1       	ldi	r24, 0x10	; 16
+ 510:	8e bd       	out	0x2e, r24	; 46
+ 512:	0d b4       	in	r0, 0x2d	; 45
+ 514:	07 fe       	sbrs	r0, 7
+ 516:	fd cf       	rjmp	.-6      	; 0x512 <displayNumber+0xc>
+			SPI_595_T(g_aDisplayBuf[num[0]]);
+ 518:	80 81       	ld	r24, Z
+ 51a:	a0 e0       	ldi	r26, 0x00	; 0
+ 51c:	b1 e0       	ldi	r27, 0x01	; 1
+ 51e:	a8 0f       	add	r26, r24
+ 520:	b1 1d       	adc	r27, r1
+ 522:	8c 91       	ld	r24, X
+ 524:	8e bd       	out	0x2e, r24	; 46
+ 526:	0d b4       	in	r0, 0x2d	; 45
+ 528:	07 fe       	sbrs	r0, 7
+ 52a:	fd cf       	rjmp	.-6      	; 0x526 <displayNumber+0x20>
+			SET_SHC;
+ 52c:	5b 9a       	sbi	0x0b, 3	; 11
+			CLR_SHC;
+ 52e:	5b 98       	cbi	0x0b, 3	; 11
+			SPI_595_T(0x20);
+ 530:	80 e2       	ldi	r24, 0x20	; 32
+ 532:	8e bd       	out	0x2e, r24	; 46
+ 534:	0d b4       	in	r0, 0x2d	; 45
+ 536:	07 fe       	sbrs	r0, 7
+ 538:	fd cf       	rjmp	.-6      	; 0x534 <displayNumber+0x2e>
+			SPI_595_T(g_aDisplayBuf[num[1]]);
+ 53a:	81 81       	ldd	r24, Z+1	; 0x01
+ 53c:	a0 e0       	ldi	r26, 0x00	; 0
+ 53e:	b1 e0       	ldi	r27, 0x01	; 1
+ 540:	a8 0f       	add	r26, r24
+ 542:	b1 1d       	adc	r27, r1
+ 544:	8c 91       	ld	r24, X
+ 546:	8e bd       	out	0x2e, r24	; 46
+ 548:	0d b4       	in	r0, 0x2d	; 45
+ 54a:	07 fe       	sbrs	r0, 7
+ 54c:	fd cf       	rjmp	.-6      	; 0x548 <displayNumber+0x42>
+			SET_SHC;
+ 54e:	5b 9a       	sbi	0x0b, 3	; 11
+			CLR_SHC;
+ 550:	5b 98       	cbi	0x0b, 3	; 11
+			SPI_595_T(0x80);
+ 552:	80 e8       	ldi	r24, 0x80	; 128
+ 554:	8e bd       	out	0x2e, r24	; 46
+ 556:	0d b4       	in	r0, 0x2d	; 45
+ 558:	07 fe       	sbrs	r0, 7
+ 55a:	fd cf       	rjmp	.-6      	; 0x556 <displayNumber+0x50>
+			SPI_595_T(g_aDisplayBuf[num[2]]);
+ 55c:	82 81       	ldd	r24, Z+2	; 0x02
+ 55e:	e0 e0       	ldi	r30, 0x00	; 0
+ 560:	f1 e0       	ldi	r31, 0x01	; 1
+ 562:	e8 0f       	add	r30, r24
+ 564:	f1 1d       	adc	r31, r1
+ 566:	80 81       	ld	r24, Z
+ 568:	8e bd       	out	0x2e, r24	; 46
+ 56a:	0d b4       	in	r0, 0x2d	; 45
+ 56c:	07 fe       	sbrs	r0, 7
+ 56e:	fd cf       	rjmp	.-6      	; 0x56a <displayNumber+0x64>
+			SET_SHC;
+ 570:	5b 9a       	sbi	0x0b, 3	; 11
+ 572:	08 95       	ret
+	}
+	else
+	{
+	CLR_SHC;
+ 574:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x80);
+ 576:	80 e8       	ldi	r24, 0x80	; 128
+ 578:	8e bd       	out	0x2e, r24	; 46
+ 57a:	0d b4       	in	r0, 0x2d	; 45
+ 57c:	07 fe       	sbrs	r0, 7
+ 57e:	fd cf       	rjmp	.-6      	; 0x57a <displayNumber+0x74>
+	SPI_595_T(g_aDisplayBuf[num[0]&0x0F]);
+ 580:	a0 81       	ld	r26, Z
+ 582:	b0 e0       	ldi	r27, 0x00	; 0
+ 584:	af 70       	andi	r26, 0x0F	; 15
+ 586:	b0 70       	andi	r27, 0x00	; 0
+ 588:	a0 50       	subi	r26, 0x00	; 0
+ 58a:	bf 4f       	sbci	r27, 0xFF	; 255
+ 58c:	8c 91       	ld	r24, X
+ 58e:	8e bd       	out	0x2e, r24	; 46
+ 590:	0d b4       	in	r0, 0x2d	; 45
+ 592:	07 fe       	sbrs	r0, 7
+ 594:	fd cf       	rjmp	.-6      	; 0x590 <displayNumber+0x8a>
+	SET_SHC;
+ 596:	5b 9a       	sbi	0x0b, 3	; 11
+	CLR_SHC;
+ 598:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x40);
+ 59a:	80 e4       	ldi	r24, 0x40	; 64
+ 59c:	8e bd       	out	0x2e, r24	; 46
+ 59e:	0d b4       	in	r0, 0x2d	; 45
+ 5a0:	07 fe       	sbrs	r0, 7
+ 5a2:	fd cf       	rjmp	.-6      	; 0x59e <displayNumber+0x98>
+	SPI_595_T(g_aDisplayBuf[num[0]>>4]);
+ 5a4:	80 81       	ld	r24, Z
+ 5a6:	82 95       	swap	r24
+ 5a8:	8f 70       	andi	r24, 0x0F	; 15
+ 5aa:	a0 e0       	ldi	r26, 0x00	; 0
+ 5ac:	b1 e0       	ldi	r27, 0x01	; 1
+ 5ae:	a8 0f       	add	r26, r24
+ 5b0:	b1 1d       	adc	r27, r1
+ 5b2:	8c 91       	ld	r24, X
+ 5b4:	8e bd       	out	0x2e, r24	; 46
+ 5b6:	0d b4       	in	r0, 0x2d	; 45
+ 5b8:	07 fe       	sbrs	r0, 7
+ 5ba:	fd cf       	rjmp	.-6      	; 0x5b6 <displayNumber+0xb0>
+	SET_SHC;
+ 5bc:	5b 9a       	sbi	0x0b, 3	; 11
+	CLR_SHC;
+ 5be:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x10);
+ 5c0:	80 e1       	ldi	r24, 0x10	; 16
+ 5c2:	8e bd       	out	0x2e, r24	; 46
+ 5c4:	0d b4       	in	r0, 0x2d	; 45
+ 5c6:	07 fe       	sbrs	r0, 7
+ 5c8:	fd cf       	rjmp	.-6      	; 0x5c4 <displayNumber+0xbe>
+	SPI_595_T(g_aDisplayBuf[num[1]&0x0F]);
+ 5ca:	a1 81       	ldd	r26, Z+1	; 0x01
+ 5cc:	b0 e0       	ldi	r27, 0x00	; 0
+ 5ce:	af 70       	andi	r26, 0x0F	; 15
+ 5d0:	b0 70       	andi	r27, 0x00	; 0
+ 5d2:	a0 50       	subi	r26, 0x00	; 0
+ 5d4:	bf 4f       	sbci	r27, 0xFF	; 255
+ 5d6:	8c 91       	ld	r24, X
+ 5d8:	8e bd       	out	0x2e, r24	; 46
+ 5da:	0d b4       	in	r0, 0x2d	; 45
+ 5dc:	07 fe       	sbrs	r0, 7
+ 5de:	fd cf       	rjmp	.-6      	; 0x5da <displayNumber+0xd4>
+	SET_SHC;
+ 5e0:	5b 9a       	sbi	0x0b, 3	; 11
+	CLR_SHC;
+ 5e2:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x08);
+ 5e4:	88 e0       	ldi	r24, 0x08	; 8
+ 5e6:	8e bd       	out	0x2e, r24	; 46
+ 5e8:	0d b4       	in	r0, 0x2d	; 45
+ 5ea:	07 fe       	sbrs	r0, 7
+ 5ec:	fd cf       	rjmp	.-6      	; 0x5e8 <displayNumber+0xe2>
+	SPI_595_T(g_aDisplayBuf[num[1]>>4]);
+ 5ee:	81 81       	ldd	r24, Z+1	; 0x01
+ 5f0:	82 95       	swap	r24
+ 5f2:	8f 70       	andi	r24, 0x0F	; 15
+ 5f4:	a0 e0       	ldi	r26, 0x00	; 0
+ 5f6:	b1 e0       	ldi	r27, 0x01	; 1
+ 5f8:	a8 0f       	add	r26, r24
+ 5fa:	b1 1d       	adc	r27, r1
+ 5fc:	8c 91       	ld	r24, X
+ 5fe:	8e bd       	out	0x2e, r24	; 46
+ 600:	0d b4       	in	r0, 0x2d	; 45
+ 602:	07 fe       	sbrs	r0, 7
+ 604:	fd cf       	rjmp	.-6      	; 0x600 <displayNumber+0xfa>
+	SET_SHC;
+ 606:	5b 9a       	sbi	0x0b, 3	; 11
+	CLR_SHC;
+ 608:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x02);
+ 60a:	82 e0       	ldi	r24, 0x02	; 2
+ 60c:	8e bd       	out	0x2e, r24	; 46
+ 60e:	0d b4       	in	r0, 0x2d	; 45
+ 610:	07 fe       	sbrs	r0, 7
+ 612:	fd cf       	rjmp	.-6      	; 0x60e <displayNumber+0x108>
+	SPI_595_T(g_aDisplayBuf[num[2]&0x0F]);
+ 614:	a2 81       	ldd	r26, Z+2	; 0x02
+ 616:	b0 e0       	ldi	r27, 0x00	; 0
+ 618:	af 70       	andi	r26, 0x0F	; 15
+ 61a:	b0 70       	andi	r27, 0x00	; 0
+ 61c:	a0 50       	subi	r26, 0x00	; 0
+ 61e:	bf 4f       	sbci	r27, 0xFF	; 255
+ 620:	8c 91       	ld	r24, X
+ 622:	8e bd       	out	0x2e, r24	; 46
+ 624:	0d b4       	in	r0, 0x2d	; 45
+ 626:	07 fe       	sbrs	r0, 7
+ 628:	fd cf       	rjmp	.-6      	; 0x624 <displayNumber+0x11e>
+	SET_SHC;
+ 62a:	5b 9a       	sbi	0x0b, 3	; 11
+	CLR_SHC;
+ 62c:	5b 98       	cbi	0x0b, 3	; 11
+	SPI_595_T(0x01);
+ 62e:	81 e0       	ldi	r24, 0x01	; 1
+ 630:	8e bd       	out	0x2e, r24	; 46
+ 632:	0d b4       	in	r0, 0x2d	; 45
+ 634:	07 fe       	sbrs	r0, 7
+ 636:	fd cf       	rjmp	.-6      	; 0x632 <displayNumber+0x12c>
+	SPI_595_T(g_aDisplayBuf[num[2]>>4]);
+ 638:	82 81       	ldd	r24, Z+2	; 0x02
+ 63a:	82 95       	swap	r24
+ 63c:	8f 70       	andi	r24, 0x0F	; 15
+ 63e:	e0 e0       	ldi	r30, 0x00	; 0
+ 640:	f1 e0       	ldi	r31, 0x01	; 1
+ 642:	e8 0f       	add	r30, r24
+ 644:	f1 1d       	adc	r31, r1
+ 646:	80 81       	ld	r24, Z
+ 648:	8e bd       	out	0x2e, r24	; 46
+ 64a:	0d b4       	in	r0, 0x2d	; 45
+ 64c:	07 fe       	sbrs	r0, 7
+ 64e:	fd cf       	rjmp	.-6      	; 0x64a <displayNumber+0x144>
+	SET_SHC;
+ 650:	5b 9a       	sbi	0x0b, 3	; 11
+ 652:	08 95       	ret
+
+00000654 <Port_init>:
+	}	
+	}
+void Port_init(void)
+{
+	PORTC=0xff;		DDRC=0x00;
+ 654:	8f ef       	ldi	r24, 0xFF	; 255
+ 656:	88 b9       	out	0x08, r24	; 8
+ 658:	17 b8       	out	0x07, r1	; 7
+	PORTD=0x04;		DDRD=0x0C;
+ 65a:	84 e0       	ldi	r24, 0x04	; 4
+ 65c:	8b b9       	out	0x0b, r24	; 11
+ 65e:	8c e0       	ldi	r24, 0x0C	; 12
+ 660:	8a b9       	out	0x0a, r24	; 10
+}
+ 662:	08 95       	ret
+
+00000664 <Spi_init>:
+void Spi_init(void)
+{
+	DDRB|=_BV(PB5) | _BV(PB3) | _BV(PB2);
+ 664:	84 b1       	in	r24, 0x04	; 4
+ 666:	8c 62       	ori	r24, 0x2C	; 44
+ 668:	84 b9       	out	0x04, r24	; 4
+		SPCR=_BV(SPE) | _BV(MSTR) | _BV(SPR0);
+ 66a:	81 e5       	ldi	r24, 0x51	; 81
+ 66c:	8c bd       	out	0x2c, r24	; 44
+			SPSR=0x00;
+ 66e:	1d bc       	out	0x2d, r1	; 45
+}
+ 670:	08 95       	ret
+
+00000672 <main>:
+int main(void)
+
+{
+	Port_init();
+ 672:	0e 94 2a 03 	call	0x654	; 0x654 <Port_init>
+		Spi_init();
+ 676:	0e 94 32 03 	call	0x664	; 0x664 <Spi_init>
+			Twi_Init();
+ 67a:	0e 94 53 00 	call	0xa6	; 0xa6 <Twi_Init>
+				//M41T00_Write(0xD0,0x00,0x00);
+		cli();
+ 67e:	f8 94       	cli
+			Timer1_init();
+ 680:	0e 94 ca 01 	call	0x394	; 0x394 <Timer1_init>
+	MCUCR=0x00;
+ 684:	15 be       	out	0x35, r1	; 53
+	//GICR=0x00;
+	TIMSK1=0x01;
+ 686:	81 e0       	ldi	r24, 0x01	; 1
+ 688:	80 93 6f 00 	sts	0x006F, r24
+	sei();
+ 68c:	78 94       	sei
+	//UBRR0L=47;//baud=9600 UBRR=CK/(baud*16) -
+	
+    while(1)
+    {
+	
+	  displayNumber(buff,h);
+ 68e:	cd e0       	ldi	r28, 0x0D	; 13
+ 690:	d1 e0       	ldi	r29, 0x01	; 1
+ 692:	ce 01       	movw	r24, r28
+ 694:	60 91 0a 01 	lds	r22, 0x010A
+ 698:	0e 94 83 02 	call	0x506	; 0x506 <displayNumber>
+ 69c:	fa cf       	rjmp	.-12     	; 0x692 <main+0x20>
+
+0000069e <__udivmodqi4>:
+ 69e:	99 1b       	sub	r25, r25
+ 6a0:	79 e0       	ldi	r23, 0x09	; 9
+ 6a2:	04 c0       	rjmp	.+8      	; 0x6ac <__udivmodqi4_ep>
+
+000006a4 <__udivmodqi4_loop>:
+ 6a4:	99 1f       	adc	r25, r25
+ 6a6:	96 17       	cp	r25, r22
+ 6a8:	08 f0       	brcs	.+2      	; 0x6ac <__udivmodqi4_ep>
+ 6aa:	96 1b       	sub	r25, r22
+
+000006ac <__udivmodqi4_ep>:
+ 6ac:	88 1f       	adc	r24, r24
+ 6ae:	7a 95       	dec	r23
+ 6b0:	c9 f7       	brne	.-14     	; 0x6a4 <__udivmodqi4_loop>
+ 6b2:	80 95       	com	r24
+ 6b4:	08 95       	ret
+
+000006b6 <_exit>:
+ 6b6:	f8 94       	cli
+
+000006b8 <__stop_program>:
+ 6b8:	ff cf       	rjmp	.-2      	; 0x6b8 <__stop_program>

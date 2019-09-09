@@ -1,0 +1,55 @@
+(ExpressProject ""
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (File ".\led.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (NoModify))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\led.dsn")
+      (Path "Design Resources" ".\led.dsn" "SCHEMATIC1")
+      (Select "Design Resources" ".\led.dsn" "SCHEMATIC1" "PAGE4"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -30 0 200 0 323"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -30 12 979 42 399")
+        (Scroll "436 252")
+        (Zoom "200")
+        (Occurrence "/"))
+      (Path "D:\MY DOCUMENTS\LED.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -30 66 1037 87 448")
+        (Scroll "0 0")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "D:\MY DOCUMENTS\LED.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE2"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -4 -30 88 1059 116 477")
+        (Scroll "-50 0")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "D:\MY DOCUMENTS\LED.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE4"))))

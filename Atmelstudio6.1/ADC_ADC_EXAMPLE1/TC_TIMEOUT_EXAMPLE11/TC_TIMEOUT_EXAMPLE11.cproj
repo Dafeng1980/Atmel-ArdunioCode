@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <ProjectGuid>{c48d93c7-3823-493d-b8bf-198a4a7f0d07}</ProjectGuid>
+    <avrdevice>ATmega168A</avrdevice>
+    <avrdeviceseries>mega</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>TC_TIMEOUT_EXAMPLE11</AssemblyName>
+    <Name>TC_TIMEOUT_EXAMPLE11</Name>
+    <RootNamespace>TC_TIMEOUT_EXAMPLE11</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>3.1.3</AsfVersion>
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+  <options>
+    <option id="mega.drivers.tc_timeout" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="mega.drivers.tc_timeout.example1" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="mega.utils" value="Add" config="" content-id="Atmel.ASF" />
+  </options>
+  <configurations />
+  <files>
+    <file path="src/asf.h" framework="" version="3.1.3" source="./mega/drivers/tc/tc_timeout_example1/mega168a_stk600/as5_8/asf.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/common/utils/interrupt.h" framework="" version="3.1.3" source="common/utils/interrupt.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/common/utils/interrupt/interrupt_avr8.h" framework="" version="3.1.3" source="common/utils/interrupt/interrupt_avr8.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/common/utils/make/Makefile.avr.in" framework="" version="3.1.3" source="common/utils/make/Makefile.avr.in" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/mega/drivers/tc/tc_timeout.c" framework="" version="3.1.3" source="mega/drivers/tc/tc_timeout.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/mega/drivers/tc/tc_timeout.h" framework="" version="3.1.3" source="mega/drivers/tc/tc_timeout.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/config/conf_board.h" framework="" version="3.1.3" source="mega/drivers/tc/tc_timeout_example1/mega168a_stk600/conf_board.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/config/conf_tc_timeout.h" framework="" version="3.1.3" source="mega/drivers/tc/tc_timeout_example1/mega168a_stk600/conf_tc_timeout.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/tc_timeout_example1.c" framework="" version="3.1.3" source="mega/drivers/tc/tc_timeout_example1/tc_timeout_example1.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/mega/utils/compiler.h" framework="" version="3.1.3" source="mega/utils/compiler.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/mega/utils/parts.h" framework="" version="3.1.3" source="mega/utils/parts.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/asf/mega/utils/status_codes.h" framework="" version="3.1.3" source="mega/utils/status_codes.h" changed="False" content-id="Atmel.ASF" />
+  </files>
+  <documentation help="http://asf.atmel.com/docs/3.1.3/mega.drivers.tc_timeout.example1.mega168a_stk600/html/index.html" />
+</framework-data>
+    </AsfFrameworkConfig>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue />
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>BOARD=STK600_MEGA</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../src/asf/mega/drivers/tc/tc_timeout_example1/mega168a_stk600</Value>
+      <Value>../src/asf/mega/utils</Value>
+      <Value>../src/asf/mega/drivers/tc</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src</Value>
+      <Value>../src/config</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.OtherFlags>-fdata-sections</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-Werror-implicit-function-declaration -Wmissing-prototypes -Wpointer-arith -Wstrict-prototypes -mrelax -std=gnu99</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.optimization.GarbageCollectUnusedSections>True</avrgcc.linker.optimization.GarbageCollectUnusedSections>
+  <avrgcc.linker.optimization.RelaxBranches>True</avrgcc.linker.optimization.RelaxBranches>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.general.AssemblerFlags>-DBOARD=STK600_MEGA -mrelax</avrgcc.assembler.general.AssemblerFlags>
+  <avrgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>../src/asf/mega/drivers/tc/tc_timeout_example1/mega168a_stk600</Value>
+      <Value>../src/asf/mega/utils</Value>
+      <Value>../src/asf/mega/drivers/tc</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src</Value>
+      <Value>../src/config</Value>
+    </ListValues>
+  </avrgcc.assembler.general.IncludePaths>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>BOARD=STK600_MEGA</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../src/asf/mega/drivers/tc/tc_timeout_example1/mega168a_stk600</Value>
+      <Value>../src/asf/mega/utils</Value>
+      <Value>../src/asf/mega/drivers/tc</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src</Value>
+      <Value>../src/config</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.OtherFlags>-fdata-sections</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Maximum (-g3)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-Werror-implicit-function-declaration -Wmissing-prototypes -Wpointer-arith -Wstrict-prototypes -mrelax -std=gnu99</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.optimization.GarbageCollectUnusedSections>True</avrgcc.linker.optimization.GarbageCollectUnusedSections>
+  <avrgcc.linker.optimization.RelaxBranches>True</avrgcc.linker.optimization.RelaxBranches>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.general.AssemblerFlags>-DBOARD=STK600_MEGA -mrelax</avrgcc.assembler.general.AssemblerFlags>
+  <avrgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>../src/asf/mega/drivers/tc/tc_timeout_example1/mega168a_stk600</Value>
+      <Value>../src/asf/mega/utils</Value>
+      <Value>../src/asf/mega/drivers/tc</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src</Value>
+      <Value>../src/config</Value>
+    </ListValues>
+  </avrgcc.assembler.general.IncludePaths>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\asf\" />
+    <Folder Include="src\asf\common\" />
+    <Folder Include="src\asf\common\utils\" />
+    <Folder Include="src\asf\common\utils\interrupt\" />
+    <Folder Include="src\asf\common\utils\make\" />
+    <Folder Include="src\asf\mega\" />
+    <Folder Include="src\asf\mega\drivers\" />
+    <Folder Include="src\asf\mega\drivers\tc\" />
+    <Folder Include="src\asf\mega\utils\" />
+    <Folder Include="src\config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\common\utils\make\Makefile.avr.in">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\mega\utils\status_codes.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\mega\utils\compiler.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\common\utils\interrupt.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\mega\utils\parts.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\common\utils\interrupt\interrupt_avr8.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\config\conf_board.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\config\conf_tc_timeout.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf\mega\drivers\tc\tc_timeout.h">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\asf.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\asf\mega\drivers\tc\tc_timeout.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tc_timeout_example1.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

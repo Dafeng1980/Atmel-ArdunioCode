@@ -1,0 +1,5 @@
+﻿19:23:43: [WARNING] TCF command: Stream:setLogBits timed out
+19:38:52: [WARNING] TCF command: Stream:setLogBits timed out
+19:39:24: [WARNING] TCF command: Tool:setupTool timed out
+19:39:46: [ERROR] Timed out in cmd Tool:setupTool
+19:39:46: [ERROR] Failed to set-up tool (no context id returned).

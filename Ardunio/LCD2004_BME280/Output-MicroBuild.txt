@@ -1,0 +1,9 @@
+﻿Visual Micro free version. CTRL+click for secure purchase http://www.visualmicro.com/page/shop.aspx
+
+Compiling 'LCD2004_BME280' for 'ATmega128'
+Program size: 13,430 bytes (used 10% of a 130,048 byte maximum) (0.73 secs)
+Minimum Memory Usage: 455 bytes (11% of a 4096 byte maximum)
+ 
+Visual Micro free version. CTRL+click for secure purchase http://www.visualmicro.com/page/shop.aspx
+Uploading 'LCD2004_BME280' to 'ATmega128' using 'COM4'
+	The upload process has finished.

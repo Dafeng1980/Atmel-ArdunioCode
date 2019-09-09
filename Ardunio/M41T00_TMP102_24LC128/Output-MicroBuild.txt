@@ -1,0 +1,11 @@
+﻿Visual Micro free version. CTRL+click for secure purchase http://www.visualmicro.com/page/shop.aspx
+
+Compiling 'M41T00_TMP102_24LC128' for 'ATmega128'
+Program size: 10,456 bytes (used 8% of a 130,048 byte maximum) (0.57 secs)
+Minimum Memory Usage: 452 bytes (11% of a 4096 byte maximum)
+ 
+Uploading 'M41T00_TMP102_24LC128' to 'ATmega128' using 'COM4'
+The uploader returned an error
+avrdude: verification error, first mismatch at byte 0x2573
+         0x50 != 0xe1
+avrdude: verification error; content mismatch

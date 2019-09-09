@@ -1,0 +1,152 @@
+
+GccAppUART.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000e6  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  0000013c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000085  00000000  00000000  00000808  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000080  00000000  00000000  00000890  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000362  00000000  00000000  00000910  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000000b0  00000000  00000000  00000c72  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   0000029b  00000000  00000000  00000d22  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000044  00000000  00000000  00000fc0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    000000aa  00000000  00000000  00001004  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 ee       	ldi	r30, 0xE6	; 230
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 30       	cpi	r26, 0x00	; 0
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	11 e0       	ldi	r17, 0x01	; 1
+  8c:	a0 e0       	ldi	r26, 0x00	; 0
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a0 30       	cpi	r26, 0x00	; 0
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 63 00 	call	0xc6	; 0xc6 <main>
+  9e:	0c 94 71 00 	jmp	0xe2	; 0xe2 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <putc>:
+#define uchar unsigned char
+#define uint unsigned int
+//uart 发送一字节数据
+void putc(uchar c)
+{
+	loop_until_bit_is_set(UCSR0A,UDRE0);
+  a6:	e0 ec       	ldi	r30, 0xC0	; 192
+  a8:	f0 e0       	ldi	r31, 0x00	; 0
+  aa:	90 81       	ld	r25, Z
+  ac:	95 ff       	sbrs	r25, 5
+  ae:	fd cf       	rjmp	.-6      	; 0xaa <putc+0x4>
+	UDR0=c;
+  b0:	80 93 c6 00 	sts	0x00C6, r24
+}
+  b4:	08 95       	ret
+
+000000b6 <getc>:
+//uart 等待并接收一字节数据
+uchar getc(void)
+{
+	loop_until_bit_is_set(UCSR0A,RXC0);
+  b6:	e0 ec       	ldi	r30, 0xC0	; 192
+  b8:	f0 e0       	ldi	r31, 0x00	; 0
+  ba:	80 81       	ld	r24, Z
+  bc:	88 23       	and	r24, r24
+  be:	ec f7       	brge	.-6      	; 0xba <getc+0x4>
+	return UDR0;
+  c0:	80 91 c6 00 	lds	r24, 0x00C6
+}
+  c4:	08 95       	ret
+
+000000c6 <main>:
+int main(void)
+{
+	//uart 初始化
+	UCSR0B=(1<<RXEN0)|(1<<TXEN0);
+  c6:	88 e1       	ldi	r24, 0x18	; 24
+  c8:	80 93 c1 00 	sts	0x00C1, r24
+	//UCSRC=(1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+	UBRR0=47;
+  cc:	8f e2       	ldi	r24, 0x2F	; 47
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	90 93 c5 00 	sts	0x00C5, r25
+  d4:	80 93 c4 00 	sts	0x00C4, r24
+	; //baud=9600 UBRR=CK/(baud*16) -1
+	while(1)
+	{
+		putc(getc());
+  d8:	0e 94 5b 00 	call	0xb6	; 0xb6 <getc>
+  dc:	0e 94 53 00 	call	0xa6	; 0xa6 <putc>
+  e0:	fb cf       	rjmp	.-10     	; 0xd8 <main+0x12>
+
+000000e2 <_exit>:
+  e2:	f8 94       	cli
+
+000000e4 <__stop_program>:
+  e4:	ff cf       	rjmp	.-2      	; 0xe4 <__stop_program>

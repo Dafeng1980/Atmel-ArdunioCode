@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LedDisplay", "LedDisplay\LedDisplay_6_0.cproj", "{E15CEB7E-6260-42DE-B0C0-B33D39B18A6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E15CEB7E-6260-42DE-B0C0-B33D39B18A6D}.Debug|AVR.ActiveCfg = Debug|AVR
+		{E15CEB7E-6260-42DE-B0C0-B33D39B18A6D}.Debug|AVR.Build.0 = Debug|AVR
+		{E15CEB7E-6260-42DE-B0C0-B33D39B18A6D}.Release|AVR.ActiveCfg = Release|AVR
+		{E15CEB7E-6260-42DE-B0C0-B33D39B18A6D}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,162 @@
+
+AVRGCC4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000006e  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000006cc  00000000  00000000  000000c4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000090  00000000  00000000  00000790  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000020  00000000  00000000  00000820  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000001b  00000000  00000000  00000840  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000000b5  00000000  00000000  0000085b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000006a  00000000  00000000  00000910  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000159  00000000  00000000  0000097a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000020  00000000  00000000  00000ad4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000008f  00000000  00000000  00000af4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000069  00000000  00000000  00000b83  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_pubtypes 0000001e  00000000  00000000  00000bec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	02 d0       	rcall	.+4      	; 0x38 <main>
+  34:	1a c0       	rjmp	.+52     	; 0x6a <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <main>:
+
+int main(void)
+{
+	
+		unsigned char i,j,k,led=0;
+	        DDRB=0xFF;
+  38:	8f ef       	ldi	r24, 0xFF	; 255
+  3a:	87 bb       	out	0x17, r24	; 23
+#include <avr/delay.h>
+
+int main(void)
+{
+	
+		unsigned char i,j,k,led=0;
+  3c:	30 e0       	ldi	r19, 0x00	; 0
+  3e:	4f ef       	ldi	r20, 0xFF	; 255
+  40:	24 2f       	mov	r18, r20
+		PORTB|=0x01;
+		
+		else
+		 PORTB&=0xFE;
+		 
+		 led=!led;
+  42:	61 e0       	ldi	r22, 0x01	; 1
+  44:	50 e0       	ldi	r21, 0x00	; 0
+		unsigned char i,j,k,led=0;
+	        DDRB=0xFF;
+    while(1)
+    {
+	
+		if (led)
+  46:	33 23       	and	r19, r19
+  48:	11 f0       	breq	.+4      	; 0x4e <__SREG__+0xf>
+		PORTB|=0x01;
+  4a:	c0 9a       	sbi	0x18, 0	; 24
+  4c:	01 c0       	rjmp	.+2      	; 0x50 <__SREG__+0x11>
+		
+		else
+		 PORTB&=0xFE;
+  4e:	c0 98       	cbi	0x18, 0	; 24
+#include <avr/delay.h>
+
+int main(void)
+{
+	
+		unsigned char i,j,k,led=0;
+  50:	94 2f       	mov	r25, r20
+  52:	09 c0       	rjmp	.+18     	; 0x66 <__SREG__+0x27>
+	
+		if (led)
+		PORTB|=0x01;
+		
+		else
+		 PORTB&=0xFE;
+  54:	81 50       	subi	r24, 0x01	; 1
+		 
+		 led=!led;
+		 
+		 for(i=0; i<255; i++)
+		      
+			  for(j=0; j<255; j++)
+  56:	f1 f7       	brne	.-4      	; 0x54 <__SREG__+0x15>
+  58:	91 50       	subi	r25, 0x01	; 1
+		else
+		 PORTB&=0xFE;
+		 
+		 led=!led;
+		 
+		 for(i=0; i<255; i++)
+  5a:	29 f4       	brne	.+10     	; 0x66 <__SREG__+0x27>
+		PORTB|=0x01;
+		
+		else
+		 PORTB&=0xFE;
+		 
+		 led=!led;
+  5c:	86 2f       	mov	r24, r22
+  5e:	31 11       	cpse	r19, r1
+  60:	85 2f       	mov	r24, r21
+  62:	38 2f       	mov	r19, r24
+  64:	f0 cf       	rjmp	.-32     	; 0x46 <__SREG__+0x7>
+#include <avr/delay.h>
+
+int main(void)
+{
+	
+		unsigned char i,j,k,led=0;
+  66:	82 2f       	mov	r24, r18
+  68:	f5 cf       	rjmp	.-22     	; 0x54 <__SREG__+0x15>
+
+0000006a <_exit>:
+  6a:	f8 94       	cli
+
+0000006c <__stop_program>:
+  6c:	ff cf       	rjmp	.-2      	; 0x6c <__stop_program>

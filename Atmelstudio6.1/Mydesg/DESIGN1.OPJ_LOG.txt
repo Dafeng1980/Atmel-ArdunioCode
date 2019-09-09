@@ -1,0 +1,12 @@
+***** START ******
+Mon Mar 12 09:02:37 2012
+ DM FileSave 
+ Design Name: C:\MYDESG\DESIGN1.DSN
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ DM FileSave 
+ Design Name: 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplicationtest_delay", "GccApplicationtest_delay\GccApplicationtest_delay.cproj", "{83F88815-E35A-4507-B0A9-8A11ACBE8564}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83F88815-E35A-4507-B0A9-8A11ACBE8564}.Debug|AVR.ActiveCfg = Debug|AVR
+		{83F88815-E35A-4507-B0A9-8A11ACBE8564}.Debug|AVR.Build.0 = Debug|AVR
+		{83F88815-E35A-4507-B0A9-8A11ACBE8564}.Release|AVR.ActiveCfg = Release|AVR
+		{83F88815-E35A-4507-B0A9-8A11ACBE8564}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
